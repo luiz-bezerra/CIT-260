@@ -22,51 +22,7 @@ public class Player implements Serializable {
 
     public Player() {
     }
-
-    @Override
-    public int hashCode() {
-        int hash = 3;
-        hash = 23 * hash + Objects.hashCode(this.name);
-        hash = 23 * hash + Objects.hashCode(this.rankAchieved);
-        hash = 23 * hash + Objects.hashCode(this.crimesSolved);
-        hash = 23 * hash + (int) (Double.doubleToLongBits(this.timeAsDetective) ^ (Double.doubleToLongBits(this.timeAsDetective) >>> 32));
-        return hash;
-    }
-
-    @Override
-    public String toString() {
-        return "Player{" + "name=" + name + ", rankAchieved=" + rankAchieved + ", crimesSolved=" + crimesSolved + ", timeAsDetective=" + timeAsDetective + '}';
-    }
     
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final Player other = (Player) obj;
-        if (Double.doubleToLongBits(this.timeAsDetective) != Double.doubleToLongBits(other.timeAsDetective)) {
-            return false;
-        }
-        if (!Objects.equals(this.name, other.name)) {
-            return false;
-        }
-        if (!Objects.equals(this.rankAchieved, other.rankAchieved)) {
-            return false;
-        }
-        if (!Objects.equals(this.crimesSolved, other.crimesSolved)) {
-            return false;
-        }
-        return true;
-    }
-    
-    
-
     public String getName() {
         return name;
     }
@@ -97,6 +53,48 @@ public class Player implements Serializable {
 
     public void setTimeAsDetective(double timeAsDetective) {
         this.timeAsDetective = timeAsDetective;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 71 * hash + Objects.hashCode(this.name);
+        hash = 71 * hash + Objects.hashCode(this.rankAchieved);
+        hash = 71 * hash + Objects.hashCode(this.crimesSolved);
+        hash = 71 * hash + (int) (Double.doubleToLongBits(this.timeAsDetective) ^ (Double.doubleToLongBits(this.timeAsDetective) >>> 32));
+        return hash;
+    }
+
+    @Override
+    public String toString() {
+        return "Player{" + "name=" + name + ", rankAchieved=" + rankAchieved + ", crimesSolved=" + crimesSolved + ", timeAsDetective=" + timeAsDetective + '}';
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Player other = (Player) obj;
+        if (Double.doubleToLongBits(this.timeAsDetective) != Double.doubleToLongBits(other.timeAsDetective)) {
+            return false;
+        }
+        if (!Objects.equals(this.name, other.name)) {
+            return false;
+        }
+        if (!Objects.equals(this.rankAchieved, other.rankAchieved)) {
+            return false;
+        }
+        if (!Objects.equals(this.crimesSolved, other.crimesSolved)) {
+            return false;
+        }
+        return true;
     }
     
     
