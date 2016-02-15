@@ -10,7 +10,7 @@ import java.util.Date;
 
 /**
  *
- * @author Daniel
+ * @author Daniel and Luiz
  */
 public class GameMenuControl {
   
@@ -92,8 +92,7 @@ public class GameMenuControl {
            return -1;
        }
        
-       double searchRadius = (currentTime.getTime() - timeOfDeath.getTime()) / MILISSECONDS_IN_HOUR * speedOfTravel;
-       return searchRadius;
+       return (currentTime.getTime() - timeOfDeath.getTime()) / MILISSECONDS_IN_HOUR * speedOfTravel;
    }           
    
    public boolean validateAlibi(double place, double time, double timeOfDeath, double searchRadius) {
