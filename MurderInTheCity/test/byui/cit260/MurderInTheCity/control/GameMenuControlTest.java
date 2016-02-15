@@ -10,7 +10,7 @@ import static org.junit.Assert.*;
 
 /**
  *
- * @author Daniel
+ * @author Daniel and Luiz
  */
 public class GameMenuControlTest {
     
@@ -25,47 +25,47 @@ public class GameMenuControlTest {
         System.out.println("calcTimeOfDeath Test 1");
         double bodyTemp = 32;
         double roomTemp = 20;
-        double timeFound = 9;
+        String timeFound = "09:00 AM";
         GameMenuControl instance = new GameMenuControl();
-        double expResult = 6;
-        double result = instance.calcTimeOfDeath(bodyTemp, roomTemp, timeFound);
-        assertEquals(expResult, result, 0.001);
+        String expResult = "06:00 AM";
+        String result = instance.calcTimeOfDeath(bodyTemp, roomTemp, timeFound);
+        assertEquals(expResult, result);
         
         System.out.println("calcTimeOfDeath Test 2");
         bodyTemp = 20;
         roomTemp = 32;
-        timeFound = 9;
+        timeFound = "09:00 AM";
         
-        expResult = -1;
+        expResult = "Body temperature too low";
         result = instance.calcTimeOfDeath(bodyTemp, roomTemp, timeFound);
-        assertEquals(expResult, result, 0.001);
+        assertEquals(expResult, result);
         
         System.out.println("calcTimeOfDeath Test 3");
         bodyTemp = 32;
         roomTemp = 20;
-        timeFound = -14;
+        timeFound = "Blah";
         
-        expResult = -1;
+        expResult = "Invalid time found";
         result = instance.calcTimeOfDeath(bodyTemp, roomTemp, timeFound);
-        assertEquals(expResult, result, 0.001);
+        assertEquals(expResult, result);
         
         System.out.println("calcTimeOfDeath Test 4");
         bodyTemp = 50;
         roomTemp = 20;
-        timeFound = 9;
+        timeFound = "09:00 AM";
         
-        expResult = -1;
+        expResult = "Body temperature too high";
         result = instance.calcTimeOfDeath(bodyTemp, roomTemp, timeFound);
-        assertEquals(expResult, result, 0.001);
+        assertEquals(expResult, result);
         
         System.out.println("calcTimeOfDeath Test 5");
         bodyTemp = 17;
         roomTemp = 15;
-        timeFound = 17;
+        timeFound = "05:00 PM";
         
-        expResult = 4;
+        expResult = "04:00 AM";
         result = instance.calcTimeOfDeath(bodyTemp, roomTemp, timeFound);
-        assertEquals(expResult, result, 0.001);
+        assertEquals(expResult, result);
     }
 
     /**
@@ -184,4 +184,42 @@ public class GameMenuControlTest {
         assertEquals(expResult, result);
     }
     
+    /**
+     * Test of calcSearchRadius_Luiz method, of class GameMenuControl.
+     */
+    @Test
+    public void testCalcSearchRadius_Luiz() {
+        System.out.println("CalcSearchRadius_Luiz Test 1");
+        double speedOfTravel = 60;
+        String currentTime = "11:00 AM";
+        String timeOfDeath = "09:00 AM";
+        GameMenuControl instance = new GameMenuControl();
+        double expResult = 120;
+        double result = instance.calcSearchRadius_Luiz(speedOfTravel, currentTime, timeOfDeath);
+        assertEquals(expResult, result, 0.0001);
+        
+        System.out.println("CalcSearchRadius_Luiz Test 2");
+        speedOfTravel = 300;
+        currentTime = "06:00 PM";
+        timeOfDeath = "05:00 PM";
+        expResult = -1;
+        result = instance.calcSearchRadius_Luiz(speedOfTravel, currentTime, timeOfDeath);
+        assertEquals(expResult, result, 0.0001);
+        
+        System.out.println("CalcSearchRadius_Luiz Test 3");
+        speedOfTravel = 0;
+        currentTime = "06:00 PM";
+        timeOfDeath = "05:00 PM";
+        expResult = -1;
+        result = instance.calcSearchRadius_Luiz(speedOfTravel, currentTime, timeOfDeath);
+        assertEquals(expResult, result, 0.0001);
+        
+        System.out.println("CalcSearchRadius_Luiz Test 4");
+        speedOfTravel = 100;
+        currentTime = "06:00 PM";
+        timeOfDeath = "05:00 PM";
+        expResult = 100;
+        result = instance.calcSearchRadius_Luiz(speedOfTravel, currentTime, timeOfDeath);
+        assertEquals(expResult, result, 0.0001);
+    }
 }
