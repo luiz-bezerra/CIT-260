@@ -19,6 +19,10 @@ import byui.cit260.MurderInTheCity.model.Crime;
 import byui.cit260.MurderInTheCity.model.CrimeScene;
 import byui.cit260.MurderInTheCity.model.Evidence;
 
+import java.util.Date;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+
 /**
  *
  * @author Daniel and Luiz
@@ -29,7 +33,7 @@ public class MurderInTheCity {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-    
+        
         // Test string for classes
         String classInfo;
 

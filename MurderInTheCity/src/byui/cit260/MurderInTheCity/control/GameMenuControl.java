@@ -4,6 +4,9 @@
  * and open the template in the editor.
  */
 package byui.cit260.MurderInTheCity.control;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  *
@@ -24,27 +27,41 @@ public class GameMenuControl {
        return ;
    }
    */
-    
-   public double calcTimeOfDeath(double bodyTemp, double roomTemp, double timeFound) {
+   long MILISSECONDS_IN_HOUR = 3600 * 1000;
+   
+   public String calcTimeOfDeath(double bodyTemp, double roomTemp, String timeFoundStr) {
        
-       if (bodyTemp > 42 || bodyTemp < roomTemp) {
-           return -1;
+       if (bodyTemp > 42) {
+           return "Body temperature too high";
        }
-       if (timeFound < 0) {
-           return -1;
+       else if (bodyTemp < roomTemp) {
+           return "Body temperature too low";
+       }
+       
+       DateFormat dateFormat = new SimpleDateFormat("hh:mm a");
+       Date timeFound;
+       
+       try
+       {
+           timeFound = dateFormat.parse(timeFoundStr);
+       }
+       catch(Exception ex)
+       {
+           return "Invalid time found";
        }
        
        double STANDARD_TEMP = 36.5;
        double TEMP_LOST_PER_HOUR = 1.5;
        
-       double timeOfDeath = timeFound - ((STANDARD_TEMP - bodyTemp)/ TEMP_LOST_PER_HOUR);
+       long hoursAgo = (long)((STANDARD_TEMP - bodyTemp)/ TEMP_LOST_PER_HOUR);
+       Date timeOfDeath = new Date(timeFound.getTime() - hoursAgo * MILISSECONDS_IN_HOUR);
        
-       return timeOfDeath;
+       return dateFormat.format(timeOfDeath);
    }
    
-   public double calcSearchRadius(double speedOfTravel,double timeSinceDeath) {
+   public double calcSearchRadius(double speedOfTravel, double timeSinceDeath) {
        
-       if (speedOfTravel < 1 || speedOfTravel > 130) {
+       if (speedOfTravel <= 0 || speedOfTravel > 130) {
            return -1;
        }
        
@@ -57,8 +74,29 @@ public class GameMenuControl {
        return searchRadius;
    }
    
+   public double calcSearchRadius_Luiz(double speedOfTravel, String currentTimeStr, String timeOfDeathStr){
+       
+       if (speedOfTravel > 200 || speedOfTravel <= 0)
+           return -1;
+       
+       DateFormat dateFormat = new SimpleDateFormat("hh:mm a");
+       Date currentTime, timeOfDeath;
+       
+       try
+       {
+           currentTime = dateFormat.parse(currentTimeStr);
+           timeOfDeath = dateFormat.parse(timeOfDeathStr);
+       }
+       catch(Exception ex)
+       {
+           return -1;
+       }
+       
+       double searchRadius = (currentTime.getTime() - timeOfDeath.getTime()) / MILISSECONDS_IN_HOUR * speedOfTravel;
+       return searchRadius;
+   }           
    
-   public boolean validateAlibi(double place,double time,double timeOfDeath,double searchRadius) {
+   public boolean validateAlibi(double place, double time, double timeOfDeath, double searchRadius) {
        
        return (place <= searchRadius && time == timeOfDeath);
    }
