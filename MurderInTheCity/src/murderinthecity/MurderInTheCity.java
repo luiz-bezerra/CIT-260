@@ -18,6 +18,7 @@ import byui.cit260.MurderInTheCity.model.DefenseAttorneyOffice;
 import byui.cit260.MurderInTheCity.model.Crime;
 import byui.cit260.MurderInTheCity.model.CrimeScene;
 import byui.cit260.MurderInTheCity.model.Evidence;
+import byui.cit260.MurderInTheCity.view.StartProgramView;
 
 /**
  *
@@ -28,7 +29,29 @@ public class MurderInTheCity {
     /**
      * @param args the command line arguments
      */
+    
+    private static Game currentGame = null;
+    private static Player player = null;
+    
+    public static Game getCurrentGame() {
+        return currentGame;
+    }
+    
+    public static void setCurrentGame(Game currentGame) {
+        MurderInTheCity.currentGame = currentGame;
+    }
+    
+    public static Player getPlayer() {
+        return player;
+    }
+    
+    public static void setPlayer(Player player) {
+        MurderInTheCity.player = player
+    }
+    
     public static void main(String[] args) {
+        
+        
         
         // Test string for classes
         String classInfo;
@@ -164,6 +187,12 @@ public class MurderInTheCity {
         classInfo = evidence.toString();
         System.out.println(classInfo);
 //>>>>>>> origin/master
+
+        StartProgramView startProgramView = new StartProgramView();
+        
+        startProgramView.StartProgramView();
+        
+        
     }
     
 }

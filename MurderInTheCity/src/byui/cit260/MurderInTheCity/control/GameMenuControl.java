@@ -7,6 +7,8 @@ package byui.cit260.MurderInTheCity.control;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import byui.cit260.MurderInTheCity.model.Player;
+import murderinthecity.MurderInTheCity;
 
 /**
  *
@@ -100,6 +102,23 @@ public class GameMenuControl {
        return (place <= searchRadius && time == timeOfDeath);
    }
    
+   public static Player createPlayer(String playerName) {
+       
+       if (playerName == null) {
+           return null;
+       }
+       
+       Player player = new Player();
+       player.setName(playerName);
+       
+       MurderInTheCity.setPlayer(player);
+       
+       return player;
+   }
+   
+   public static void createNewGame(Player player) {
+       System.out.println("\ncreateNewGame function called.");
+   }
    /**
    public void solveCrime() {
        
