@@ -7,17 +7,19 @@ package byui.cit260.MurderInTheCity.control;
 
 /**
  *
- * @author Daniel
+ * @author Daniel and Luiz
  */
 public class SuspectControl {
     
-    /**
     public String showSuspects() {
-        return ;
+        return "\nshowSuspects function called";
     }
     
-    public void removeSuspect(name) {
-        
+    public boolean removeSuspect(int suspectNumber) {
+        System.out.println("\nremoveSuspect function called");
+        // Just for a matter of test
+        if (suspectNumber < 1)
+            return false;
+        return true;
     }
-    */
 }

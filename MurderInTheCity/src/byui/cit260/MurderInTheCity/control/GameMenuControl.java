@@ -31,8 +31,10 @@ public class GameMenuControl {
    */
    long MILISSECONDS_IN_HOUR = 3600 * 1000;
    
-   public String calcTimeOfDeath(double bodyTemp, double roomTemp, String timeFoundStr) {
+   public String calcTimeOfDeath(double bodyTemp, double roomTemp, Date timeFound) {
        
+       /*
+       This validation is already done in the CalcTimeOfDeathView class
        if (bodyTemp > 42) {
            return "Body temperature too high";
        }
@@ -50,15 +52,16 @@ public class GameMenuControl {
        catch(Exception ex)
        {
            return "Invalid time found";
-       }
+       }*/
        
+       DateFormat dateFormat = new SimpleDateFormat("hh:mm a");
        double STANDARD_TEMP = 36.5;
        double TEMP_LOST_PER_HOUR = 1.5;
        
        long hoursAgo = (long)((STANDARD_TEMP - bodyTemp)/ TEMP_LOST_PER_HOUR);
        Date timeOfDeath = new Date(timeFound.getTime() - hoursAgo * MILISSECONDS_IN_HOUR);
        
-       return dateFormat.format(timeOfDeath);
+       return "The time of death is " + dateFormat.format(timeOfDeath);
    }
    
    public double calcSearchRadius(double speedOfTravel, double timeSinceDeath) {
