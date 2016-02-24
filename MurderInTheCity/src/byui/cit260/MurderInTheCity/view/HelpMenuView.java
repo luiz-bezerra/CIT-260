@@ -8,7 +8,7 @@ package byui.cit260.MurderInTheCity.view;
 import java.util.Scanner;
 /**
  *
- * @author Daniel
+ * @author Daniel and Luiz
  */
 public class HelpMenuView {
 

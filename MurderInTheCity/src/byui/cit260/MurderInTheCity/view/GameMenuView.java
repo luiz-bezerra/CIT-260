@@ -8,7 +8,7 @@ package byui.cit260.MurderInTheCity.view;
 import java.util.Scanner;
 /**
  *
- * @author Daniel
+ * @author Daniel and Luiz
  */
 public class GameMenuView {
 
@@ -52,61 +52,62 @@ public class GameMenuView {
         boolean valid = true;
         String input;
         
-        do { input = keyboard.nextLine();
-        input = input.toUpperCase();
-        switch (input) {
-            case "C":
-                this.showCity();
-                break;
-            case "I":
-                this.showEvidenceList();
-                break;
-            case "L":
-                this.showSuspectList();
-                break;
-            case "D":
-                this.calcTimeOfDeath();
-                break;
-            case "R":
-                this.calcSearchRadius();
-                break;
-            case "V":
-                this.validateAlibi();
-                break;
-            case "O":
-                this.solveCrime();
-                break;
-            case "M":
-                this.moveToLocation();
-                break;
-            case "X":
-                this.exploreCity();
-                break;
-            case "P":
-                this.showProgress();
-                break;
-            case "S":
-                this.showCrimesSolved();
-                break;
-            case "H":
-                this.displayHelpMenu();
-                break;
-            case "U":
-                this.resumeGame();
-                break;
-            case "T":
-                this.restartGame();
-                break;
-            case "G":
-                this.saveGame();
-                break;
-            case "E":
-                return input;
-            default:
-                System.out.println("\nInvalid Selection. Try again.");
-                valid = false;
-                break;
-        }
+        do {
+            input = keyboard.nextLine();
+            input = input.toUpperCase();
+            switch (input) {
+                case "C":
+                    this.showCity();
+                    break;
+                case "I":
+                    this.showEvidenceList();
+                    break;
+                case "L":
+                    this.showSuspectList();
+                    break;
+                case "D":
+                    this.calcTimeOfDeath();
+                    break;
+                case "R":
+                    this.calcSearchRadius();
+                    break;
+                case "V":
+                    this.validateAlibi();
+                    break;
+                case "O":
+                    this.solveCrime();
+                    break;
+                case "M":
+                    this.moveToLocation();
+                    break;
+                case "X":
+                    this.exploreCity();
+                    break;
+                case "P":
+                    this.showProgress();
+                    break;
+                case "S":
+                    this.showCrimesSolved();
+                    break;
+                case "H":
+                    this.displayHelpMenu();
+                    break;
+                case "U":
+                    this.resumeGame();
+                    break;
+                case "T":
+                    this.restartGame();
+                    break;
+                case "G":
+                    this.saveGame();
+                    break;
+                case "E":
+                    return input;
+                default:
+                    System.out.println("\nInvalid Selection. Try again.");
+                    valid = false;
+                    break;
+            }
         } while (!valid);
         
         return input;
@@ -121,18 +122,13 @@ public class GameMenuView {
     }
     
     private void showSuspectList() {
-        System.out.println("showSuspectList function called");
+        SuspectListView suspectList = new SuspectListView();
+        suspectList.displaySuspectListView();
     }
     
     private void calcTimeOfDeath() {
-        /*
-        GameMenuControl.calcTimeOfDeath( bodyTemp, roomTemp, timeFound);
-        
         CalcTimeOfDeathView calcTimeOfDeath = new CalcTimeOfDeathView();
-        calcTimeOfDeath.calcTimeOfDeath();
-        */
-        
-        System.out.println("calcTimeOfDeath function called");
+        calcTimeOfDeath.displayCalcTimeOfDeathView();
     }
     
     private void calcSearchRadius() {

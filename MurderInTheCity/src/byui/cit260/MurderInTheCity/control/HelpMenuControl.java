@@ -7,7 +7,7 @@ package byui.cit260.MurderInTheCity.control;
 
 /**
  *
- * @author Daniel
+ * @author Daniel and Luiz
  */
 public class HelpMenuControl {
     

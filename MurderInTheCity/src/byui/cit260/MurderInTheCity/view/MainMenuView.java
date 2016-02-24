@@ -10,7 +10,7 @@ import java.util.Scanner;
 import murderinthecity.MurderInTheCity;
 /**
  *
- * @author Daniel
+ * @author Daniel and Luiz
  */
 public class MainMenuView {
 
@@ -43,28 +43,29 @@ public class MainMenuView {
         boolean valid = true;
         String input;
         
-        do { input = keyboard.nextLine();
-        input = input.toUpperCase();
-        switch (input) {
-            case "N":
-                this.startNewGame();
-                break;
-            case "R":
-                this.startExistingGame();
-                break;
-            case "H":
-                this.displayHelpMenu();
-                break;
-            case "S":
-                this.saveGame();
-                break;
-            case "E":
-                return input;
-            default:
-                System.out.println("\nInvalid Selection. Try again.");
-                valid = false;
-                break;
-        }
+        do { 
+            input = keyboard.nextLine();
+            input = input.toUpperCase();
+            switch (input) {
+                case "N":
+                    this.startNewGame();
+                    break;
+                case "R":
+                    this.startExistingGame();
+                    break;
+                case "H":
+                    this.displayHelpMenu();
+                    break;
+                case "S":
+                    this.saveGame();
+                    break;
+                case "E":
+                    return input;
+                default:
+                    System.out.println("\nInvalid Selection. Try again.");
+                    valid = false;
+                    break;
+            }
         } while (!valid);
         
         return input;

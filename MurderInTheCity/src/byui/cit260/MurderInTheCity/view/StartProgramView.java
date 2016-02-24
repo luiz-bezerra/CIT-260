@@ -11,7 +11,7 @@ import java.io.Serializable;
 import java.util.Scanner;
 /**
  *
- * @author Daniel
+ * @author Daniel and Luiz
  */
 public class StartProgramView implements Serializable {
     
