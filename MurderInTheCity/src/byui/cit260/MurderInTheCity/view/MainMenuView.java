@@ -6,7 +6,6 @@
 package byui.cit260.MurderInTheCity.view;
 
 import byui.cit260.MurderInTheCity.control.GameMenuControl;
-import java.util.Locale;
 import java.util.Scanner;
 import murderinthecity.MurderInTheCity;
 /**
@@ -75,7 +74,7 @@ public class MainMenuView {
         GameMenuControl.createNewGame(MurderInTheCity.getPlayer());
         
         GameMenuView gameMenu = new GameMenuView();
-        gameMenu.displayMenu();
+        gameMenu.displayGameMenuView();
     }
     
     private void startExistingGame() {

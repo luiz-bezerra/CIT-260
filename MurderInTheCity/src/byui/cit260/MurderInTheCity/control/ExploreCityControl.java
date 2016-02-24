@@ -10,26 +10,19 @@ package byui.cit260.MurderInTheCity.control;
  * @author Daniel
  */
 public class ExploreCityControl {
-   
-    /**
-    public String showPurpose() {
-        return ;
-    }
     
-    public String showPlacesForEvidence() {
-        return ;
-    }
-    
-    public String showListOfPeople() {
-        return ;
-    }
-    
-    public Boolean marksVisited() {
-        return ;
-    }
-    
-    public void addEvidence() {
+    public String information() {
+        String description, searchForEvidence, listOfPeople, info;
+        description = "\n(FILLER TEXT)";
+        searchForEvidence = "\n(FILLER TEXT)";
+        listOfPeople = "\n(FILLER TEXT)";
         
+        info = description + searchForEvidence + listOfPeople;
+        return info;
     }
-    */
+    
+    public boolean markAsVisited() {
+        System.out.println("markAsVisited function called.");
+        return true;
+    }
 }

@@ -46,7 +46,7 @@ public class MurderInTheCity {
     }
     
     public static void setPlayer(Player player) {
-        MurderInTheCity.player = player
+        MurderInTheCity.player = player;
     }
     
     public static void main(String[] args) {
