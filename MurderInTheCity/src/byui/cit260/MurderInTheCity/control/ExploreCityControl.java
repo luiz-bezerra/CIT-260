@@ -21,8 +21,16 @@ public class ExploreCityControl {
         return info;
     }
     
-    public boolean markAsVisited() {
-        System.out.println("markAsVisited function called.");
-        return true;
+    public void markAsVisited() {
+        
+        boolean visited = false; // Variable that determines whether or not a location has already been visited.
+        
+        if (visited == false) {
+            System.out.println("markAsVisited function called.");
+            visited = true;
+        }
+        else {
+            System.out.println("You have already visited this location.");
+        }
     }
 }
