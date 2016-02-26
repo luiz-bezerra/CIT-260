@@ -33,8 +33,8 @@ public class GameMenuControl {
    
    public String calcTimeOfDeath(double bodyTemp, double roomTemp, Date timeFound) {
        
-       /*
-       This validation is already done in the CalcTimeOfDeathView class
+       // This validation is already done in the CalcTimeOfDeathView class
+       // It is still kept here for testing purposes, though.
        if (bodyTemp > 42) {
            return "Body temperature too high";
        }
@@ -42,7 +42,7 @@ public class GameMenuControl {
            return "Body temperature too low";
        }
        
-       DateFormat dateFormat = new SimpleDateFormat("hh:mm a");
+       /*DateFormat dateFormat = new SimpleDateFormat("hh:mm a");
        Date timeFound;
        
        try

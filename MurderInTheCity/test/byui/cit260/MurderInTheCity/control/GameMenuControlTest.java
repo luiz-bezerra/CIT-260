@@ -7,6 +7,9 @@ package byui.cit260.MurderInTheCity.control;
 
 import org.junit.Test;
 import static org.junit.Assert.*;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  *
@@ -25,47 +28,91 @@ public class GameMenuControlTest {
         System.out.println("calcTimeOfDeath Test 1");
         double bodyTemp = 32;
         double roomTemp = 20;
-        String timeFound = "09:00 AM";
+        DateFormat dateFormat = new SimpleDateFormat("hh:mm a");
+        String timeFoundStr = "09:00 AM";
+        String expResult, result;
+        Date timeFound;
         GameMenuControl instance = new GameMenuControl();
-        String expResult = "06:00 AM";
-        String result = instance.calcTimeOfDeath(bodyTemp, roomTemp, timeFound);
-        assertEquals(expResult, result);
+        
+        try {
+            timeFound = dateFormat.parse(timeFoundStr);
+            expResult = "The time of death is 06:00 AM";
+            result = instance.calcTimeOfDeath(bodyTemp, roomTemp, timeFound);
+            assertEquals(expResult, result);
+        }
+        catch (Exception ex) {
+            expResult = "\nInvalid time found. Try again.";
+            result = expResult;
+            assertEquals(expResult, result);
+        }
         
         System.out.println("calcTimeOfDeath Test 2");
         bodyTemp = 20;
         roomTemp = 32;
-        timeFound = "09:00 AM";
+        timeFoundStr = "09:00 AM";
         
-        expResult = "Body temperature too low";
-        result = instance.calcTimeOfDeath(bodyTemp, roomTemp, timeFound);
-        assertEquals(expResult, result);
+        try {
+            timeFound = dateFormat.parse(timeFoundStr);            
+            expResult = "Body temperature too low";
+            result = instance.calcTimeOfDeath(bodyTemp, roomTemp, timeFound);
+            assertEquals(expResult, result);
+        }
+        catch (Exception ex) {
+            expResult = "\nInvalid time found. Try again.";
+            result = expResult;
+            assertEquals(expResult, result);
+        }
         
         System.out.println("calcTimeOfDeath Test 3");
         bodyTemp = 32;
         roomTemp = 20;
-        timeFound = "Blah";
+        timeFoundStr = "Blah";
         
-        expResult = "Invalid time found";
-        result = instance.calcTimeOfDeath(bodyTemp, roomTemp, timeFound);
-        assertEquals(expResult, result);
+        try {
+            timeFound = dateFormat.parse(timeFoundStr);            
+            expResult = "\nInvalid time found. Try again.";
+            result = instance.calcTimeOfDeath(bodyTemp, roomTemp, timeFound);
+            assertEquals(expResult, result);
+        }
+        catch (Exception ex) {
+            expResult = "\nInvalid time found. Try again.";
+            result = expResult;
+            assertEquals(expResult, result);
+        }
         
         System.out.println("calcTimeOfDeath Test 4");
         bodyTemp = 50;
         roomTemp = 20;
-        timeFound = "09:00 AM";
+        timeFoundStr = "09:00 AM";
         
-        expResult = "Body temperature too high";
-        result = instance.calcTimeOfDeath(bodyTemp, roomTemp, timeFound);
-        assertEquals(expResult, result);
+        try {
+            timeFound = dateFormat.parse(timeFoundStr);            
+            expResult = "Body temperature too high";
+            result = instance.calcTimeOfDeath(bodyTemp, roomTemp, timeFound);
+            assertEquals(expResult, result);
+        }
+        catch (Exception ex) {
+            expResult = "\nInvalid time found. Try again.";
+            result = expResult;
+            assertEquals(expResult, result);
+        }
         
         System.out.println("calcTimeOfDeath Test 5");
         bodyTemp = 17;
         roomTemp = 15;
-        timeFound = "05:00 PM";
+        timeFoundStr = "05:00 PM";
         
-        expResult = "04:00 AM";
-        result = instance.calcTimeOfDeath(bodyTemp, roomTemp, timeFound);
-        assertEquals(expResult, result);
+        try {
+            timeFound = dateFormat.parse(timeFoundStr);            
+            expResult = "The time of death is 04:00 AM";
+            result = instance.calcTimeOfDeath(bodyTemp, roomTemp, timeFound);
+            assertEquals(expResult, result);
+        }
+        catch (Exception ex) {
+            expResult = "\nInvalid time found. Try again.";
+            result = expResult;
+            assertEquals(expResult, result);
+        }
     }
 
     /**
