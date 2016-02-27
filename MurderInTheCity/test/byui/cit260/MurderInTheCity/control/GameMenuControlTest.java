@@ -269,4 +269,5 @@ public class GameMenuControlTest {
         result = instance.calcSearchRadius_Luiz(speedOfTravel, currentTime, timeOfDeath);
         assertEquals(expResult, result, 0.0001);
     }
+    
 }

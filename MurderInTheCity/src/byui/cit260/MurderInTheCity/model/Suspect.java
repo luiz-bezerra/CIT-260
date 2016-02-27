@@ -9,7 +9,7 @@ import java.io.Serializable;
 
 /**
  *
- * @author Daniel
+ * @author Daniel & Luiz
  */
 public class Suspect implements Serializable {
     

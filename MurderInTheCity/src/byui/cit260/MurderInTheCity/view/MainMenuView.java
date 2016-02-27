@@ -6,6 +6,7 @@
 package byui.cit260.MurderInTheCity.view;
 
 import byui.cit260.MurderInTheCity.control.GameMenuControl;
+import byui.cit260.MurderInTheCity.model.Suspect;
 import java.util.Scanner;
 import murderinthecity.MurderInTheCity;
 /**
@@ -79,7 +80,27 @@ public class MainMenuView {
     }
     
     private void startExistingGame() {
+        // Pass variable by value:
+        Suspect suspect = new Suspect();
+        suspect.setTimeAtLocation(10);
+        double timeAtLocation = suspect.getTimeAtLocation();
+        System.out.println(timeAtLocation);
+        this.passByValue(timeAtLocation);
+        System.out.println(timeAtLocation);
         
+        // Pass variable by reference:
+        this.passByReference(suspect);
+        System.out.println(suspect.getTimeAtLocation());
+    }
+    
+    private void passByReference(Suspect suspectedPerson) {
+        System.out.println(suspectedPerson.getTimeAtLocation());
+        suspectedPerson.setTimeAtLocation(12);
+    }
+    
+    private void passByValue(double time) {
+        time = 4;
+        System.out.println(time);
     }
     
     private void displayHelpMenu() {
