@@ -7,29 +7,37 @@ package byui.cit260.MurderInTheCity.view;
 
 import byui.cit260.MurderInTheCity.control.GameMenuControl;
 import byui.cit260.MurderInTheCity.model.Player;
-import java.io.Serializable;
 import java.util.Scanner;
 /**
  *
  * @author Daniel and Luiz
  */
-public class StartProgramView implements Serializable {
+public class StartProgramView extends View {
     
-    public void StartProgramView() {
-        // Show banner & description
-        this.showBanner();
-        
-        // Ask player's name
-        Player player = this.getName();
-        
-        // Show welcome message
-        this.showWelcomeMessage(player);
-        
-        // Show main menu
-        this.showMainMenu();
+    public StartProgramView() {
+        super("\n*******************************************" +
+            "\n*                                         *" +
+            "\n*            Murder in the City           *" +
+            "\n*                                         *" +
+            "\n*******************************************" +
+            "\n*                                         *" +
+            "\n* In this game you will take the role of  *" +
+            "\n* police officer Albert Hancock in his    *" +
+            "\n* quest to move up in the ranks, to Chief *" +
+            "\n* of Police, while solving crimes that    *" +
+            "\n* will shock the nation.                  *" +
+            "\n*                                         *" +
+            "\n* Travel throughout the city, determine   *" +
+            "\n* the difference between murder-suicides  *" +
+            "\n* protect you family from danger, and     *" +
+            "\n* work with other agencies to solve       *" +
+            "\n* crimes and bring justice to criminals!  *" +
+            "\n*                                         *" +
+            "\n*******************************************");
         
     }
     
+    /**
     private void showBanner() {
         System.out.println(
             "\n*******************************************" +
@@ -76,6 +84,7 @@ public class StartProgramView implements Serializable {
         return player;
     }
     
+    
     private void showWelcomeMessage(Player player) {
         System.out.println("Welcome to Murder in the City, " + player.getName());
     }
@@ -83,7 +92,20 @@ public class StartProgramView implements Serializable {
     private void showMainMenu() {
         MainMenuView mainMenuView = new MainMenuView();
         
-        mainMenuView.displayMainMenuView();
+        mainMenuView.display();
+    }
+    **/
+
+    @Override
+    public boolean doAction(String value) {
+        boolean valid = false;
+        System.out.println("Welcome to Murder in the City, " + value);
+                
+        MainMenuView mainMenuView = new MainMenuView();
+        
+        mainMenuView.display();
+        
+        return valid;
     }
             
 }

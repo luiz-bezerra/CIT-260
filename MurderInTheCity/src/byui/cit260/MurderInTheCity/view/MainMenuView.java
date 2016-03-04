@@ -13,8 +13,23 @@ import murderinthecity.MurderInTheCity;
  *
  * @author Daniel and Luiz
  */
-public class MainMenuView {
+public class MainMenuView extends View {
 
+    
+    public MainMenuView() {
+        super("\n" +
+            "\n----------------------------------------------" +
+            "\n| Main Menu                                  |" +
+            "\n----------------------------------------------" +
+            "\n N - New Game                                 " +
+            "\n H - Get Help                                 " +
+            "\n S - Save Game                                " +
+            "\n R - Resume Game                              " +
+            "\n E - Exit Game                                " +
+            "\n----------------------------------------------");
+    }
+    
+    /**
     private final String MENU = "\n" +
             "\n----------------------------------------------" +
             "\n| Main Menu                                  |" +
@@ -71,6 +86,7 @@ public class MainMenuView {
         
         return input;
     }
+    **/
     
     private void startNewGame() {
         GameMenuControl.createNewGame(MurderInTheCity.getPlayer());
@@ -91,6 +107,7 @@ public class MainMenuView {
         // Pass variable by reference:
         this.passByReference(suspect);
         System.out.println(suspect.getTimeAtLocation());
+        
     }
     
     private void passByReference(Suspect suspectedPerson) {
@@ -110,5 +127,35 @@ public class MainMenuView {
     
     private void saveGame() {
         System.out.println("saveGame function called!");
+    }
+
+    @Override
+    public boolean doAction(String value) {
+        boolean valid = false;
+        do {
+            value = value.toUpperCase();
+            switch (value) {
+                case "N":
+                    this.startNewGame();
+                    break;
+                case "R":
+                    this.startExistingGame();
+                    break;
+                case "H":
+                    this.displayHelpMenu();
+                    break;
+                case "S":
+                    this.saveGame();
+                    break;
+                case "E":
+                    return valid;
+                default:
+                    System.out.println("\nInvalid Selection. Try again.");
+                    valid = false;
+                    break;
+            }
+        } while (!valid);
+        
+        return valid;
     }
 }

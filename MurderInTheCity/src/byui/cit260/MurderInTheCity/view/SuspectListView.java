@@ -25,7 +25,7 @@ public class SuspectListView {
         do {
             System.out.println(menu);
             
-            input = this.getInput();   
+            input = this.getInput();
             
         } while (!input.equals("E"));
     }

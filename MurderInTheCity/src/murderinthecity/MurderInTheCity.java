@@ -190,7 +190,7 @@ public class MurderInTheCity {
 
         StartProgramView startProgramView = new StartProgramView();
         
-        startProgramView.StartProgramView();
+        startProgramView.display();
         
         
     }
