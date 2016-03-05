@@ -4,10 +4,6 @@
  * and open the template in the editor.
  */
 package byui.cit260.MurderInTheCity.view;
-
-import byui.cit260.MurderInTheCity.control.GameMenuControl;
-import byui.cit260.MurderInTheCity.model.Player;
-import java.util.Scanner;
 /**
  *
  * @author Daniel and Luiz
@@ -98,8 +94,8 @@ public class StartProgramView extends View {
 
     @Override
     public boolean doAction(String value) {
-        boolean valid = false;
-        System.out.println("Welcome to Murder in the City, " + value);
+        boolean valid = true;
+        System.out.println("Welcome to Murder in the City, " + value + ".");
                 
         MainMenuView mainMenuView = new MainMenuView();
         

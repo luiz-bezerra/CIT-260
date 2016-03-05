@@ -4,15 +4,14 @@
  * and open the template in the editor.
  */
 package byui.cit260.MurderInTheCity.view;
-
-import java.util.Scanner;
 /**
  *
  * @author Daniel and Luiz
  */
-public class HelpMenuView {
+public class HelpMenuView extends View {
 
-    private final String MENU = "\n" +
+    public HelpMenuView() {
+        super("\n" +
             "\n----------------------------------------------" +
             "\n| Help Menu                                  |" +
             "\n----------------------------------------------" +
@@ -22,8 +21,9 @@ public class HelpMenuView {
             "\n D - Calculate search radius                  " +
             "\n V - Validate suspect's alibi                 " +
             "\n E - Exit Menu                                " +
-            "\n----------------------------------------------";
-    
+            "\n----------------------------------------------");
+    }
+    /**  
     public void displayHelpMenuView() {
         String input;
         do {
@@ -71,6 +71,7 @@ public class HelpMenuView {
         
         return input;
     }
+    **/
     
     private void showPurpose() {
         System.out.println(
@@ -132,5 +133,36 @@ public class HelpMenuView {
             "\n* computes whether or not the alibi is    *" +
             "\n* valid, and shows you.                   *" +
             "\n*******************************************");
+    }
+
+    @Override
+    public boolean doAction(String value) {    
+        boolean valid = true;
+        
+        value = value.toUpperCase();
+        switch (value) {
+            case "P":
+                this.showPurpose();
+                break;
+            case "M":
+                this.showMoving();
+                break;
+            case "T":
+                this.showTimeOfDeath();
+                break;
+            case "D":
+                this.showSearchRadius();
+                break;
+            case "V":
+                this.showValidateAlibi();
+                break;
+            case "E":
+                return valid;
+            default:
+                System.out.println("\nInvalid Selection. Try again.");
+                valid = false;
+                break;
+        }
+        return valid;
     }
 }

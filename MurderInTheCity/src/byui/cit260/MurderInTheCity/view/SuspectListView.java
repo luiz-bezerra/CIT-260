@@ -12,10 +12,22 @@ import java.util.Scanner;
  *
  * @author Luiz
  */
-public class SuspectListView {
+public class SuspectListView extends View {
     
     String menu;
     SuspectControl suspects = new SuspectControl();
+    
+    public SuspectListView() {
+        super("\n" +
+            "\n----------------------------------------------" +
+            "\n| Suspect List                               |" +
+            "\n----------------------------------------------" +
+            //suspects.showSuspects() +
+            "\n----------------------------------------------" +
+            "\n R - Remove a suspect from list               " +
+            "\n E - Exit suspect list                        " +
+            "\n----------------------------------------------");
+    }
     
     public void displaySuspectListView() {
         
@@ -42,6 +54,7 @@ public class SuspectListView {
             "\n----------------------------------------------";
     }
     
+    /**
     private String getInput() {
         Scanner keyboard;
         keyboard = new Scanner(System.in);
@@ -67,6 +80,7 @@ public class SuspectListView {
         
         return input;
     }
+    
     
     private void removeSuspect() {
         Scanner keyboard;
@@ -99,5 +113,41 @@ public class SuspectListView {
                 }
             }
         } while (!valid);
+    }
+    **/
+
+    @Override
+    public boolean doAction(String value) {
+        Scanner keyboard;
+        keyboard = new Scanner(System.in);
+        boolean valid;
+        String input;
+        String menu = "\n" +
+                "\nEnter the number of the suspect to be removed" +
+                "\nor press E to go back to the previous menu.";
+                
+        do { 
+            System.out.println(menu);
+            valid = true;
+            input = keyboard.nextLine();
+            input = input.toUpperCase();
+            if (!input.equals("E")) {
+                try {
+                    if (suspects.removeSuspect(Integer.parseInt(input))){
+                        System.out.println("\nSuspect " + input + " removed from list.");
+                        this.updateSuspectList();
+                    }
+                    else{
+                        System.out.println("\nInvalid suspect number. Try again.");
+                        valid = false;
+                    }
+                }
+                catch (Exception ex) {
+                    System.out.println("\nInvalid Selection. Try again.");
+                        valid = false;
+                }
+            }
+        } while (!valid);
+        return true;
     }
 }

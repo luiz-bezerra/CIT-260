@@ -7,7 +7,6 @@ package byui.cit260.MurderInTheCity.view;
 
 import byui.cit260.MurderInTheCity.control.GameMenuControl;
 import byui.cit260.MurderInTheCity.model.Suspect;
-import java.util.Scanner;
 import murderinthecity.MurderInTheCity;
 /**
  *
@@ -92,7 +91,7 @@ public class MainMenuView extends View {
         GameMenuControl.createNewGame(MurderInTheCity.getPlayer());
         
         GameMenuView gameMenu = new GameMenuView();
-        gameMenu.displayGameMenuView();
+        gameMenu.display();
     }
     
     private void startExistingGame() {
@@ -122,7 +121,7 @@ public class MainMenuView extends View {
     
     private void displayHelpMenu() {
         HelpMenuView helpMenuView = new HelpMenuView();
-        helpMenuView.displayHelpMenuView();
+        helpMenuView.display();
     }
     
     private void saveGame() {
@@ -131,8 +130,8 @@ public class MainMenuView extends View {
 
     @Override
     public boolean doAction(String value) {
-        boolean valid = false;
-        do {
+        boolean valid = true;
+        
             value = value.toUpperCase();
             switch (value) {
                 case "N":
@@ -154,7 +153,6 @@ public class MainMenuView extends View {
                     valid = false;
                     break;
             }
-        } while (!valid);
         
         return valid;
     }

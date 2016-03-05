@@ -4,15 +4,14 @@
  * and open the template in the editor.
  */
 package byui.cit260.MurderInTheCity.view;
-
-import java.util.Scanner;
 /**
  *
  * @author Daniel and Luiz
  */
-public class GameMenuView {
+public class GameMenuView extends View {
 
-    private final String MENU = "\n" +
+    public GameMenuView() {
+            super("\n" +
             "\n----------------------------------------------" +
             "\n| Game Menu                                  |" +
             "\n----------------------------------------------" +
@@ -32,8 +31,10 @@ public class GameMenuView {
             "\n T - Restart Game                             " +
             "\n G - Save Game                                " +
             "\n E - Exit Game                                " +
-            "\n----------------------------------------------";
+            "\n----------------------------------------------");
+    }
     
+    /**
     public void displayGameMenuView() {
         String input;
         do {
@@ -44,17 +45,10 @@ public class GameMenuView {
         } while (!input.equals("E"));
     }
     
+    
+    public String getInput() {
         
-    private String getInput() {
-        Scanner keyboard;
-        keyboard = new Scanner(System.in);
-        
-        boolean valid = true;
-        String input;
-        
-        do {
-            input = keyboard.nextLine();
-            input = input.toUpperCase();
+            value = value.toUpperCase();
             switch (input) {
                 case "C":
                     this.showCity();
@@ -112,6 +106,7 @@ public class GameMenuView {
         
         return input;
     }
+    **/
     
     private void showCity() {
         System.out.println("showCity function called");
@@ -128,7 +123,7 @@ public class GameMenuView {
     
     private void calcTimeOfDeath() {
         CalcTimeOfDeathView calcTimeOfDeath = new CalcTimeOfDeathView();
-        calcTimeOfDeath.displayCalcTimeOfDeathView();
+        calcTimeOfDeath.display();
     }
     
     private void calcSearchRadius() {
@@ -175,7 +170,7 @@ public class GameMenuView {
     
     private void displayHelpMenu() {
         HelpMenuView helpMenuView = new HelpMenuView();
-        helpMenuView.displayHelpMenuView();
+        helpMenuView.display();
     }
     
     private void resumeGame() {
@@ -188,5 +183,67 @@ public class GameMenuView {
     
     private void saveGame() {
         System.out.println("saveGame function called");
+    }
+
+    @Override
+    public boolean doAction(String value) {
+        boolean valid = true;
+        
+        value = value.toUpperCase();
+            switch (value) {
+                case "C":
+                    this.showCity();
+                    break;
+                case "I":
+                    this.showEvidenceList();
+                    break;
+                case "L":
+                    this.showSuspectList();
+                    break;
+                case "D":
+                    this.calcTimeOfDeath();
+                    break;
+                case "R":
+                    this.calcSearchRadius();
+                    break;
+                case "V":
+                    this.validateAlibi();
+                    break;
+                case "O":
+                    this.solveCrime();
+                    break;
+                case "M":
+                    this.moveToLocation();
+                    break;
+                case "X":
+                    this.exploreCity();
+                    break;
+                case "P":
+                    this.showProgress();
+                    break;
+                case "S":
+                    this.showCrimesSolved();
+                    break;
+                case "H":
+                    this.displayHelpMenu();
+                    break;
+                case "U":
+                    this.resumeGame();
+                    break;
+                case "T":
+                    this.restartGame();
+                    break;
+                case "G":
+                    this.saveGame();
+                    break;
+                case "E":
+                    return valid;
+                default:
+                    System.out.println("\nInvalid Selection. Try again.");
+                    valid = false;
+                    break;
+            }
+        
+        return valid;
     }
 }
