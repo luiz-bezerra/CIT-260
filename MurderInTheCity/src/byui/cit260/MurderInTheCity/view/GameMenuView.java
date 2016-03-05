@@ -161,7 +161,8 @@ public class GameMenuView extends View {
     }
     
     private void showProgress() {
-        System.out.println("showProgress function called");
+        ProfessionalProgressionView professionalProgressionView = new ProfessionalProgressionView();
+        professionalProgressionView.display();
     }
     
     private void showCrimesSolved() {
