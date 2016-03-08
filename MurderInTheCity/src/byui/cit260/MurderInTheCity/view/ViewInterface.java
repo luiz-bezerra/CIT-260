@@ -15,6 +15,4 @@ public interface ViewInterface {
     public String getInput();
     public boolean doAction(String value);
     
-    
-    
 }

@@ -29,7 +29,9 @@ public class StartProgramView extends View {
             "\n* work with other agencies to solve       *" +
             "\n* crimes and bring justice to criminals!  *" +
             "\n*                                         *" +
-            "\n*******************************************");
+            "\n*******************************************" +
+            "\n" +
+            "\nWhat is your name?");
         
     }
     

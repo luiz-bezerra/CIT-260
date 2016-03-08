@@ -24,28 +24,27 @@ public class ProfessionalProgressionView extends View {
     }
     @Override
     public boolean doAction(String value) {
-        boolean valid = true;
+        boolean finish = false;
+        value = value.toUpperCase();
         
-            value = value.toUpperCase();
-            switch (value) {
-                case "C":
-                    this.showCrimesSolved();
-                    break;
-                case "T":
-                    this.showTimeSpent();
-                    break;
-                case "R":
-                    this.showCurrentRank();
-                    break;
-                case "E":
-                    return valid;
-                default:
-                    System.out.println("\nInvalid Selection. Try again.");
-                    valid = false;
-                    break;
-            }
+        switch (value) {
+            case "C":
+                this.showCrimesSolved();
+                break;
+            case "T":
+                this.showTimeSpent();
+                break;
+            case "R":
+                this.showCurrentRank();
+                break;
+            case "E":
+                finish = true;
+                break;
+            default:
+                System.out.println("\nInvalid Selection. Try again.");
+        }
         
-        return valid;
+        return finish;
     }
     
     private void showCrimesSolved() {

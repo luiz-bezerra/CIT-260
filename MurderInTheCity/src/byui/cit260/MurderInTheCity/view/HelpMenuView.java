@@ -136,10 +136,10 @@ public class HelpMenuView extends View {
     }
 
     @Override
-    public boolean doAction(String value) {    
-        boolean valid = true;
-        
+    public boolean doAction(String value) {
+        boolean finish = false;
         value = value.toUpperCase();
+        
         switch (value) {
             case "P":
                 this.showPurpose();
@@ -157,12 +157,12 @@ public class HelpMenuView extends View {
                 this.showValidateAlibi();
                 break;
             case "E":
-                return valid;
+                finish = true;
+                break;
             default:
                 System.out.println("\nInvalid Selection. Try again.");
-                valid = false;
-                break;
         }
-        return valid;
+        
+        return finish;
     }
 }

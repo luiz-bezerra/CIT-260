@@ -15,6 +15,7 @@ import java.util.Date;
  * @author Luiz
  */
 public class CalcTimeOfDeathView extends View {
+    
     /**
     public void displayCalcTimeOfDeathView(){
         Scanner keyboard;
@@ -80,9 +81,9 @@ public class CalcTimeOfDeathView extends View {
         System.out.println(output);
     }
     **/
-
+    
     @Override
-    public boolean doAction(String value) {
+    public void display () {
         Scanner keyboard;
         keyboard = new Scanner(System.in);
         String input, output;
@@ -144,6 +145,12 @@ public class CalcTimeOfDeathView extends View {
         GameMenuControl gameControl = new GameMenuControl();
         output = gameControl.calcTimeOfDeath(bodyTemperature, roomTemperature, timeFound);
         System.out.println(output);
+        //return true;
+    }
+    
+    @Override
+    public boolean doAction(String value) {
+        //This function shouldn't be used
         return true;
     }
 }

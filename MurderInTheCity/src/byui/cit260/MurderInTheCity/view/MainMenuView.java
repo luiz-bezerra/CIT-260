@@ -130,30 +130,29 @@ public class MainMenuView extends View {
 
     @Override
     public boolean doAction(String value) {
-        boolean valid = true;
+        boolean finish = false;
+        value = value.toUpperCase();
         
-            value = value.toUpperCase();
-            switch (value) {
-                case "N":
-                    this.startNewGame();
-                    break;
-                case "R":
-                    this.startExistingGame();
-                    break;
-                case "H":
-                    this.displayHelpMenu();
-                    break;
-                case "S":
-                    this.saveGame();
-                    break;
-                case "E":
-                    return valid;
-                default:
-                    System.out.println("\nInvalid Selection. Try again.");
-                    valid = false;
-                    break;
-            }
+        switch (value) {
+            case "N":
+                this.startNewGame();
+                break;
+            case "R":
+                this.startExistingGame();
+                break;
+            case "H":
+                this.displayHelpMenu();
+                break;
+            case "S":
+                this.saveGame();
+                break;
+            case "E":
+                finish = true;
+                break;
+            default:
+                System.out.println("\nInvalid Selection. Try again.");
+        }
         
-        return valid;
+        return finish;
     }
 }

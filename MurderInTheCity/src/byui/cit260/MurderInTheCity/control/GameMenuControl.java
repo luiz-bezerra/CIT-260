@@ -19,13 +19,13 @@ public class GameMenuControl {
     /**
    public String showCityLocations() {
        return ;
+   }*/
+   
+   public void showEvidence() {
+       System.out.println("\nshowEvidence function called.");
    }
    
-   public String showEvidence() {
-       return ;
-   }
-   
-   public String ShowSuspectList() {
+   /*public String ShowSuspectList() {
        return ;
    }
    */
