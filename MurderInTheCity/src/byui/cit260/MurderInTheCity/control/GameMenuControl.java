@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package byui.cit260.MurderInTheCity.control;
+import byui.cit260.MurderInTheCity.model.Game;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -120,7 +121,16 @@ public class GameMenuControl {
    }
    
    public static void createNewGame(Player player) {
-       System.out.println("\ncreateNewGame function called.");
+       Game game = new Game();
+       MurderInTheCity.setCurrentGame(game);
+       
+       game.setPlayer(player);
+       
+       Map map = MapControl.createMap();
+       game.setMap(map);
+       
+       Crime[] crime = GameControl.createCrime();
+       game.setCrime(crime);
    }
    /**
    public void solveCrime() {

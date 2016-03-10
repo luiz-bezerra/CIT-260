@@ -12,15 +12,19 @@ import java.util.Objects;
  *
  * @author Daniel
  */
-public class Player implements Serializable {
+public enum Player implements Serializable {
+    
+    probationalPoliceDetective(0),
+    policeDetective(4),
+    headDetective(6),
+    chiefOfPolice(12);
     
     //class instance variables
     private String name;
-    private String rankAchieved;
     private Integer crimesSolved;
     private double timeAsDetective;
 
-    public Player() {
+    Player(Integer crimesSolved) {
     }
     
     public String getName() {
@@ -31,71 +35,17 @@ public class Player implements Serializable {
         this.name = name;
     }
 
-    public String getRankAchieved() {
-        return rankAchieved;
-    }
-
-    public void setRankAchieved(String rankAchieved) {
-        this.rankAchieved = rankAchieved;
-    }
-
     public Integer getCrimesSolved() {
         return crimesSolved;
-    }
-
-    public void setCrimesSolved(Integer crimesSolved) {
-        this.crimesSolved = crimesSolved;
     }
 
     public double getTimeAsDetective() {
         return timeAsDetective;
     }
 
-    public void setTimeAsDetective(double timeAsDetective) {
-        this.timeAsDetective = timeAsDetective;
-    }
-
-    @Override
-    public int hashCode() {
-        int hash = 7;
-        hash = 71 * hash + Objects.hashCode(this.name);
-        hash = 71 * hash + Objects.hashCode(this.rankAchieved);
-        hash = 71 * hash + Objects.hashCode(this.crimesSolved);
-        hash = 71 * hash + (int) (Double.doubleToLongBits(this.timeAsDetective) ^ (Double.doubleToLongBits(this.timeAsDetective) >>> 32));
-        return hash;
-    }
-
     @Override
     public String toString() {
-        return "Player{" + "name=" + name + ", rankAchieved=" + rankAchieved + ", crimesSolved=" + crimesSolved + ", timeAsDetective=" + timeAsDetective + '}';
+        return "Player{" + "name=" + name + ", rankAchieved=" /**+ rankAchieved**/ + ", crimesSolved=" + crimesSolved + ", timeAsDetective=" + timeAsDetective + '}';
     }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final Player other = (Player) obj;
-        if (Double.doubleToLongBits(this.timeAsDetective) != Double.doubleToLongBits(other.timeAsDetective)) {
-            return false;
-        }
-        if (!Objects.equals(this.name, other.name)) {
-            return false;
-        }
-        if (!Objects.equals(this.rankAchieved, other.rankAchieved)) {
-            return false;
-        }
-        if (!Objects.equals(this.crimesSolved, other.crimesSolved)) {
-            return false;
-        }
-        return true;
-    }
-    
     
 }

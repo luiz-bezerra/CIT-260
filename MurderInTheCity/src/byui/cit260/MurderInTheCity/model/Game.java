@@ -13,9 +13,15 @@ import java.util.Objects;
  * @author Luiz
  */
 public class Game implements Serializable {
-    
+       
     // Class instance variable
     private Integer savedGame;
+    
+    private Player player;
+    private Map map;
+    
+    private Crime[] crime;
+    
 
     @Override
     public int hashCode() {
@@ -56,5 +62,29 @@ public class Game implements Serializable {
 
     public void setSavedGame(Integer savedGame) {
         this.savedGame = savedGame;
+    }
+    
+    public Player getPlayer() {
+        return player;
+    }
+    
+    public void setPlayer(Player player) {
+        this.player = player;
+    }
+    
+    public Map getMap() {
+        return map;
+    }
+    
+    public void setMap(Map map) {
+        this.map = map;
+    }
+    
+    public Crime[] getCrime() {
+        return crime;
+    }
+    
+    public void setCrime(Crime[] crime) {
+        this.crime = crime;
     }
 }

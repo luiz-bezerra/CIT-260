@@ -11,50 +11,19 @@ import java.util.Objects;
  *
  * @author Daniel
  */
-public class Detective implements Serializable {
+public enum Detective implements Serializable {
     
-    //class instance variables
-    private String typeOfDetective;
+    probationalPoliceDetective(),
+    policeDetective(),
+    headDetective(),
+    chiefOfPolice();
     
-    public Detective(){
-    }
-
-    public String getTypeOfDetective() {
-        return typeOfDetective;
-    }
-
-    public void setTypeOfDetective(String typeOfDetective) {
-        this.typeOfDetective = typeOfDetective;
-    }
-
-    @Override
-    public int hashCode() {
-        int hash = 3;
-        hash = 79 * hash + Objects.hashCode(this.typeOfDetective);
-        return hash;
+    Detective(){
     }
 
     @Override
     public String toString() {
-        return "Detective{" + "typeOfDetective=" + typeOfDetective + '}';
-    }
-    
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final Detective other = (Detective) obj;
-        if (!Objects.equals(this.typeOfDetective, other.typeOfDetective)) {
-            return false;
-        }
-        return true;
+        return "Detective{" + "typeOfDetective=" +/**typeOfDetective **/+ '}';
     }
     
 }
