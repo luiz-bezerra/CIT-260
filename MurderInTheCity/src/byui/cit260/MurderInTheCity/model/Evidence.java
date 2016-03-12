@@ -19,7 +19,8 @@ public enum Evidence implements Serializable {
     bullet(""),
     bulletCasing(""),
     brokenGlass(""),
-    leadPipe("");
+    leadPipe(""),
+    bloodyHammer("");
     
     // Class instance variables
     private final String description;

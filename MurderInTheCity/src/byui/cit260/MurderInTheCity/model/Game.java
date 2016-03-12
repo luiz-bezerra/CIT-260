@@ -21,6 +21,7 @@ public class Game implements Serializable {
     private Map map;
     
     private Crime[] crime;
+    private Evidence[] evidence;
     
 
     @Override
@@ -86,5 +87,13 @@ public class Game implements Serializable {
     
     public void setCrime(Crime[] crime) {
         this.crime = crime;
+    }
+    
+    public Evidence[] getEvidene() {
+        return evidence;
+    }
+    
+    public void setEvidence(Evidence[] evidence) {
+        this.evidence = evidence;
     }
 }

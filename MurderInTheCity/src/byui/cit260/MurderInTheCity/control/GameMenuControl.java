@@ -131,6 +131,8 @@ public class GameMenuControl {
        
        Crime[] crime = GameControl.createCrime();
        game.setCrime(crime);
+       
+       
    }
    /**
    public void solveCrime() {

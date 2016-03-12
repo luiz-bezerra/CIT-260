@@ -6,6 +6,7 @@
 package byui.cit260.MurderInTheCity.model;
 
 import java.io.Serializable;
+import java.util.Arrays;
 import java.util.Objects;
 
 /**
@@ -15,17 +16,21 @@ import java.util.Objects;
 public class Map implements Serializable {
     
     // Class instance variables
-    private Integer locationCount;
+    private int noOfRows;
+    private int noOfColumns;
+    private Location[][] locations;
 
     @Override
     public String toString() {
-        return "Map{" + "locationCount=" + locationCount + '}';
+        return "Map{" + "noOfRows=" + noOfRows + "noOfColumns=" + noOfColumns +'}';
     }
 
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 29 * hash + Objects.hashCode(this.locationCount);
+        hash = 71 * hash + this.noOfRows;
+        hash = 71 * hash + this.noOfColumns;
+        hash = 71 * hash + Arrays.deepHashCode(this.locations);
         return hash;
     }
 
@@ -41,7 +46,7 @@ public class Map implements Serializable {
             return false;
         }
         final Map other = (Map) obj;
-        if (!Objects.equals(this.locationCount, other.locationCount)) {
+        if (!Objects.equals(this.noOfRows, other.noOfRows)) {
             return false;
         }
         return true;
@@ -50,11 +55,21 @@ public class Map implements Serializable {
     public Map() {
     }
 
-    public Integer getLocationCount() {
-        return locationCount;
+    public int getNoOfRows() {
+        return noOfRows;
     }
 
-    public void setLocationCount(Integer locationCount) {
-        this.locationCount = locationCount;
+    public int getNoOfColumns() {
+        return noOfColumns;
     }
+
+    public Location[][] getLocations() {
+        return locations;
+    }
+
+    public void setLocations(Location[][] locations) {
+        this.locations = locations;
+    }
+
+    
 }

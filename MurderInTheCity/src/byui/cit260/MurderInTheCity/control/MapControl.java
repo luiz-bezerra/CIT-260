@@ -5,6 +5,8 @@
  */
 package byui.cit260.MurderInTheCity.control;
 
+import byui.cit260.MurderInTheCity.model.Map;
+
 /**
  *
  * @author Daniel
@@ -16,4 +18,15 @@ public class MapControl {
         
     }
     */
+    
+    public static Map createMap() {
+        
+        Map map = new Map(20, 20);
+        
+        Scene[] scenes createScenes();
+        
+        assignScenesToLocations(map, scenes);
+        
+        return map;
+    }
 }
