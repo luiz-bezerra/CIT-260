@@ -14,21 +14,21 @@ import java.util.Objects;
  */
 public enum Actor implements Serializable{
     
-    AlbertHancock(""),
-    HarrisSheldon(""),
-    TonyMilner(""),
-    AuraMcKee(""),
-    JoanDelger(""),
-    DanSumner(""),
-    HudsonConnors("");
+    albert("Albert Hancock"),
+    harris("Harris Sheldon"),
+    tony("Tony Milner"),
+    aura("Aura McKee"),
+    joan("Joan Delger"),
+    dan("Dan Sumner"),
+    hudson("Hudson Connors");
     //class instance variables
     private final String description;
-    private final Point location;
+    private final String location;
     private final String typeOfActor;
 
     Actor(String description) {
         this.description = description;
-        location = new Point(1,1);
+        location = "Office";
         this.typeOfActor = "Detective";
     }
 

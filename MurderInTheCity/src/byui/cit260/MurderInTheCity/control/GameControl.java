@@ -42,46 +42,32 @@ public class GameControl {
     public static Evidence[] createEvidenceList() {
         Evidence[] evidence = new Evidence[7];
         
-        Evidence knife = new Evidence();
-        knife.setDescription("Knife");
-        knife.setLocationCollected("Cafe");
-        Evidence[knife.ordinal()] = knife;
+        Evidence knife = evidence[0];
+        evidence[knife.ordinal()] = knife;
         evidence[0] = knife;
         
-        Evidence gun = new Evidence();
-        gun.setDescription("Gun");
-        gun.setLocationCollected("Pub");
-        Evidence[gun.ordinal()] = gun;
+        Evidence gun = evidence[1];
+        evidence[gun.ordinal()] = gun;
         evidence[1] = gun;
         
-        Evidence bullet = new Evidence();
-        bullet.setDescription("Bullet");
-        bullet.setLocationCollected("House");
-        Evidence[bullet.ordinal()] = bullet;
+        Evidence bullet = evidence[2];
+        evidence[bullet.ordinal()] = bullet;
         evidence[2] = bullet;
         
-        Evidence bulletCasing = new Evidence();
-        bulletCasing.setDescription("Bullet Casing");
-        bulletCasing.setLocationCollected("5th Street");
-        Evidence[bulletCasing.ordinal()] = bulletCasing;
+        Evidence bulletCasing = evidence[3];
+        evidence[bulletCasing.ordinal()] = bulletCasing;
         evidence[3] = bulletCasing;
         
-        Evidence brokenGlass = new Evidence();
-        brokenGlass.setDescription("Broken Glass");
-        brokenGlass.setLocationCollected("Alleyway");
-        Evidence[brokenGlass.ordinal()] = brokenGlass;
+        Evidence brokenGlass = evidence[4];
+        evidence[brokenGlass.ordinal()] = brokenGlass;
         evidence[4] = brokenGlass;
         
-        Evidence leadPipe = new Evidence();
-        leadPipe.setDescription("Lead Pipe");
-        leadPipe.setLocationCollected("Park");
-        Evidence[leadPipe.ordinal()] = leadPipe;
+        Evidence leadPipe = evidence[5];
+        evidence[leadPipe.ordinal()] = leadPipe;
         evidence[5] = leadPipe;
         
-        Evidence bloodyHammer = new Evidence();
-        bloodyHammer.setDescription("Bloody Hammer");
-        bloodyHammer.setLocationCollected("Store");
-        Evidence[bloodyHammer.ordinal()] = bloodyHammer;
+        Evidence bloodyHammer = evidence[6];
+        evidence[bloodyHammer.ordinal()] = bloodyHammer;
         evidence[6] = bloodyHammer;
         
         return evidence;

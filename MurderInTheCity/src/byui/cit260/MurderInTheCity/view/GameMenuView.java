@@ -109,7 +109,8 @@ public class GameMenuView extends View {
     **/
     
     private void showCity() {
-        System.out.println("showCity function called");
+        MapView map = new MapView();
+        map.display();
     }
     
     private void showEvidenceList() {

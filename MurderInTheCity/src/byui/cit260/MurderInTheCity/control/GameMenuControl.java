@@ -4,7 +4,9 @@
  * and open the template in the editor.
  */
 package byui.cit260.MurderInTheCity.control;
+import byui.cit260.MurderInTheCity.model.Crime;
 import byui.cit260.MurderInTheCity.model.Game;
+import byui.cit260.MurderInTheCity.model.Map;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;

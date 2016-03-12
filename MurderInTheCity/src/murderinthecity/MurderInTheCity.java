@@ -52,7 +52,7 @@ public class MurderInTheCity {
     public static void main(String[] args) {
         
         
-        
+        /**
         // Test string for classes
         String classInfo;
 
@@ -186,6 +186,7 @@ public class MurderInTheCity {
         
         classInfo = evidence.toString();
         System.out.println(classInfo);
+        **/
 //>>>>>>> origin/master
 
         StartProgramView startProgramView = new StartProgramView();

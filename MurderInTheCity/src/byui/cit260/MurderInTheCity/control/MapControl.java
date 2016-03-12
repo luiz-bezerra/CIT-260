@@ -21,11 +21,7 @@ public class MapControl {
     
     public static Map createMap() {
         
-        Map map = new Map(20, 20);
-        
-        Scene[] scenes createScenes();
-        
-        assignScenesToLocations(map, scenes);
+        Map map = new Map(2, 3);
         
         return map;
     }

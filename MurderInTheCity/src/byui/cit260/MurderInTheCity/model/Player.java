@@ -12,19 +12,15 @@ import java.util.Objects;
  *
  * @author Daniel
  */
-public enum Player implements Serializable {
-    
-    probationalPoliceDetective(0),
-    policeDetective(4),
-    headDetective(6),
-    chiefOfPolice(12);
+public class Player implements Serializable {
     
     //class instance variables
     private String name;
+    private String rankAchieved;
     private Integer crimesSolved;
     private double timeAsDetective;
 
-    Player(Integer crimesSolved) {
+    public Player() {
     }
     
     public String getName() {

@@ -12,46 +12,117 @@ import java.util.Objects;
  *
  * @author Luiz
  */
-public enum Location implements Serializable {
+public class Location implements Serializable {
     
-    cafe(""),
-    pub(""),
-    store(""),
-    office(""),
-    park(""),
-    prison("");
     
     // Class instance variables
-    private final Boolean visited;
-    private final String description;
-    private final double distanceFromCrime;
-    private final String parentLocation;
+    private int row;
+    private int column;
+    private Boolean visited;
+    private String description;
+    private double distanceFromCrime;
+    private String parentLocation;
 
-    Location(String description) {
-        this.visited = true;
-        this.description = description;
-        this.distanceFromCrime = 10;
-        this.parentLocation = "34th Street.";
+    public Location() {
     }
 
-    public Boolean getVisited() {
-        return visited;
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 23 * hash + this.row;
+        hash = 23 * hash + this.column;
+        hash = 23 * hash + Objects.hashCode(this.visited);
+        hash = 23 * hash + Objects.hashCode(this.description);
+        hash = 23 * hash + (int) (Double.doubleToLongBits(this.distanceFromCrime) ^ (Double.doubleToLongBits(this.distanceFromCrime) >>> 32));
+        hash = 23 * hash + Objects.hashCode(this.parentLocation);
+        return hash;
     }
 
-    public String getDescription() {
-        return description;
-    }
-
-    public double getDistanceFromCrime() {
-        return distanceFromCrime;
-    }
-
-    public String getParentLocation() {
-        return parentLocation;
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Location other = (Location) obj;
+        if (this.row != other.row) {
+            return false;
+        }
+        if (this.column != other.column) {
+            return false;
+        }
+        if (Double.doubleToLongBits(this.distanceFromCrime) != Double.doubleToLongBits(other.distanceFromCrime)) {
+            return false;
+        }
+        if (!Objects.equals(this.description, other.description)) {
+            return false;
+        }
+        if (!Objects.equals(this.parentLocation, other.parentLocation)) {
+            return false;
+        }
+        if (!Objects.equals(this.visited, other.visited)) {
+            return false;
+        }
+        return true;
     }
 
     @Override
     public String toString() {
         return "Location{" + "visited=" + visited + ", name=" /**+ name **/+ ", description=" + description + ", distanceFromCrime=" + distanceFromCrime + ", parentLocation=" + parentLocation + '}';
     }
+
+    public int getRow() {
+        return row;
+    }
+
+    public void setRow(int row) {
+        this.row = row;
+    }
+
+    public int getColumn() {
+        return column;
+    }
+
+    public void setColumn(int column) {
+        this.column = column;
+    }
+
+    public Boolean getVisited() {
+        return visited;
+    }
+
+    public void setVisited(Boolean visited) {
+        this.visited = visited;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public double getDistanceFromCrime() {
+        return distanceFromCrime;
+    }
+
+    public void setDistanceFromCrime(double distanceFromCrime) {
+        this.distanceFromCrime = distanceFromCrime;
+    }
+
+    public String getParentLocation() {
+        return parentLocation;
+    }
+
+    public void setParentLocation(String parentLocation) {
+        this.parentLocation = parentLocation;
+    }
+
+    
 }

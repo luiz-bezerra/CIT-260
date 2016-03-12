@@ -14,13 +14,13 @@ import java.util.Objects;
  */
 public enum Evidence implements Serializable {
     
-    knife(""),
-    gun(""),
-    bullet(""),
-    bulletCasing(""),
-    brokenGlass(""),
-    leadPipe(""),
-    bloodyHammer("");
+    knife("Knife"),
+    gun("Gun"),
+    bullet("Bullet"),
+    bulletCasing("Bullet Casing"),
+    brokenGlass("Broken Glass"),
+    leadPipe("Lead Pipe"),
+    bloodyHammer("Bloody Hammer");
     
     // Class instance variables
     private final String description;

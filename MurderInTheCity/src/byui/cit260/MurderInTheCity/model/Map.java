@@ -54,6 +54,30 @@ public class Map implements Serializable {
 
     public Map() {
     }
+    
+    public Map(int noOfRows, int noOfColumns) {
+        
+        if (noOfRows < 1 || noOfColumns < 1) {
+            System.out.println("Needs more rows and columns.");
+            return;
+        }
+        
+        this.noOfColumns = noOfColumns;
+        this.noOfRows = noOfRows;
+        
+        this.locations = new Location[noOfRows][noOfColumns];
+        
+        for (int row = 0; row < noOfRows; row++) {
+            for (int column = 0; column < noOfColumns; column++) {
+                Location location = new Location();
+                location.setColumn(column);
+                location.setRow(row);
+                location.setVisited(false);
+                
+                locations[row][column] = location;
+            }
+        }
+    }
 
     public int getNoOfRows() {
         return noOfRows;
