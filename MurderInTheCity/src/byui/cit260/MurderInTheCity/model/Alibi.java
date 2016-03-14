@@ -13,12 +13,9 @@ import java.util.Objects;
  */
 public enum Alibi implements Serializable {
     
-    cafe(""),
-    pub(""),
-    store(""),
-    office(""),
-    park(""),
-    prison("");
+    Harris("Harris Sheldon was watching TV home with his wife"),
+    Tony("Tony Sumner was running close to his house, practicing for a marathon"),
+    Dan("Dan Sumner was at the movies with his girlfriend");
     
     //class instance variables
     private final double time;
