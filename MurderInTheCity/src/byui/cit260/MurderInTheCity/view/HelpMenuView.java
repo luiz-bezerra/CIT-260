@@ -4,6 +4,9 @@
  * and open the template in the editor.
  */
 package byui.cit260.MurderInTheCity.view;
+
+import byui.cit260.MurderInTheCity.model.Detective;
+
 /**
  *
  * @author Daniel and Luiz
@@ -15,7 +18,7 @@ public class HelpMenuView extends View {
             "\n----------------------------------------------" +
             "\n| Help Menu                                  |" +
             "\n----------------------------------------------" +
-            "\n P - Purpose of the game                      " +
+            "\n P - ~~~ SHOW DETECTIVE RANKS ~~~             " + // "\n P - Purpose of the game                      "
             "\n M - Moving in the game                       " +
             "\n T - Calculate time of death                  " +
             "\n D - Calculate search radius                  " +
@@ -74,7 +77,7 @@ public class HelpMenuView extends View {
     **/
     
     private void showPurpose() {
-        System.out.println(
+        /**System.out.println(
             "\n*******************************************" +
             "\n* In this game you will take the role of  *" +
             "\n* police officer Albert Hancock in his    *" +
@@ -88,6 +91,25 @@ public class HelpMenuView extends View {
             "\n* work with other agencies to solve       *" +
             "\n* crimes and bring justice to criminals!  *" +
             "\n*******************************************");
+           **/
+        Detective detective = new Detective();
+        String[] typeOfDetective = detective.getTypeOfDetective();
+        
+        
+        int i = 0;
+        for (String rank : typeOfDetective) {
+            
+            System.out.println(typeOfDetective[i]);
+            i++;
+        }
+        
+        for (i=0; i < typeOfDetective.length; i++) {
+            if ("Lieutenant".equals(typeOfDetective[i])) {
+                System.out.println("Lieutenant is in index " + i);
+                return;
+            }
+        }
+        
     }
     
     private void showMoving() {

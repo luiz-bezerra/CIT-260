@@ -4,6 +4,9 @@
  * and open the template in the editor.
  */
 package byui.cit260.MurderInTheCity.view;
+
+import byui.cit260.MurderInTheCity.model.Detective;
+
 /**
  *
  * @author Daniel and Luiz
@@ -126,6 +129,7 @@ public class GameMenuView extends View {
     private void calcTimeOfDeath() {
         CalcTimeOfDeathView calcTimeOfDeath = new CalcTimeOfDeathView();
         calcTimeOfDeath.display();
+        
     }
     
     private void calcSearchRadius() {
