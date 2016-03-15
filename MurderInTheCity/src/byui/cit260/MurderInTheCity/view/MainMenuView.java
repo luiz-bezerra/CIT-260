@@ -95,28 +95,7 @@ public class MainMenuView extends View {
     }
     
     private void startExistingGame() {
-        // Pass variable by value:
-        Suspect suspect = new Suspect();
-        suspect.setTimeAtLocation(10);
-        double timeAtLocation = suspect.getTimeAtLocation();
-        System.out.println(timeAtLocation);
-        this.passByValue(timeAtLocation);
-        System.out.println(timeAtLocation);
-        
-        // Pass variable by reference:
-        this.passByReference(suspect);
-        System.out.println(suspect.getTimeAtLocation());
-        
-    }
-    
-    private void passByReference(Suspect suspectedPerson) {
-        System.out.println(suspectedPerson.getTimeAtLocation());
-        suspectedPerson.setTimeAtLocation(12);
-    }
-    
-    private void passByValue(double time) {
-        time = 4;
-        System.out.println(time);
+        System.out.println("\nstartExistingGame function called");        
     }
     
     private void displayHelpMenu() {

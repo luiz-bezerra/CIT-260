@@ -5,12 +5,20 @@
  */
 package byui.cit260.MurderInTheCity.model;
 
-import java.io.Serializable;
+//import java.io.Serializable;
 
 /**
  *
  * @author Daniel & Luiz
  */
+
+public enum Suspect {
+    HarrisSheldon(),
+    TonySumner(),
+    DanSumner();
+}
+
+/*
 public class Suspect implements Serializable {
     
     //class instance variables
@@ -59,3 +67,4 @@ public class Suspect implements Serializable {
     
     
 }
+*/

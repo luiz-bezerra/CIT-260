@@ -22,6 +22,7 @@ public class Game implements Serializable {
     
     private Crime[] crime;
     private Evidence[] evidence;
+    private Alibi[] alibi;
     
 
     @Override
@@ -89,11 +90,19 @@ public class Game implements Serializable {
         this.crime = crime;
     }
     
-    public Evidence[] getEvidene() {
+    public Evidence[] getEvidence() {
         return evidence;
     }
     
     public void setEvidence(Evidence[] evidence) {
         this.evidence = evidence;
+    }
+    
+    public Alibi[] getAlibi() {
+        return alibi;
+    }
+    
+    public void setAlibi(Alibi[] alibi) {
+        this.alibi = alibi;
     }
 }

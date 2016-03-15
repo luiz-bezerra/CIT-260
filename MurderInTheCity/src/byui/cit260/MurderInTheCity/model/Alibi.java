@@ -6,43 +6,54 @@
 package byui.cit260.MurderInTheCity.model;
 
 import java.io.Serializable;
-import java.util.Objects;
 /**
  *
  * @author Daniel
  */
-public enum Alibi implements Serializable {
+public class Alibi implements Serializable {
     
-    Harris("Harris Sheldon was watching TV home with his wife"),
+    /*Harris("Harris Sheldon was watching TV home with his wife"),
     Tony("Tony Sumner was running close to his house, practicing for a marathon"),
-    Dan("Dan Sumner was at the movies with his girlfriend");
+    Dan("Dan Sumner was at the movies with his girlfriend");*/
     
     //class instance variables
-    private final double time;
-    private final String corroborator;
-    private final String description;
-    private final boolean validated;
+    private String time;
+    private String corroborator;
+    private String description;
+    private boolean validated;
     
-    Alibi(String description) {
-        this.description = description;
-        this.time = 15;
-        this.corroborator = "Aura";
-        this.validated = true;
+    public Alibi() {
     }
 
-    public double getTime() {
+    public void setTime(String time) {
+        this.time = time;
+    }
+
+    public String getTime() {
         return time;
     }
-
+    
+    public void setCorroborator(String corroborator) {
+        this.corroborator = corroborator;
+    }
+    
     public String getCorroborator() {
         return corroborator;
+    }
+    
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public String getDescription() {
         return description;
     }
 
-    public boolean isValidated() {
+    public void setValidated(boolean validated) {
+        this.validated = validated;
+    }
+    
+    public boolean getValidated() {
         return validated;
     }
 

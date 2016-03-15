@@ -6,7 +6,6 @@
 package byui.cit260.MurderInTheCity.model;
 
 import java.io.Serializable;
-import java.util.Objects;
 
 /**
  *
@@ -14,27 +13,27 @@ import java.util.Objects;
  */
 public enum Actor implements Serializable{
     
-    Albert("Albert Hancock, a police officer who recently started working as a detective"),
-    Jessica("Jessica Waters, Albert's partner"),
-    Nick("Nick Wright, deffense attorney"),
-    Hudson("Hudson Connors, the first victim, a police officer who was a personal friend of Albert Hancock"),
-    Harris("Harris Sheldon, 47 years old man, suspect of killing Hudson Connors"),
-    Tony("Tony Sumner, 20 years old man, brother of Dan Sumner, suspect of killing Hudson Connors"),
-    Dan("Dan Sumner, 23 years old man, brother of Tony Sumner, suspect of killing Hudson Connors"),
-    Aura("Aura Sheldon, Harris Sheldon's wife"),
-    Mark("Mark Jones, Sumner brothers' neighbor"),
-    Joan("Joan Delger, Dan Sumner's girlfriend"),
-    StoreOwner("Owner of the convenience store close to the first crime scene");
+    Albert("Albert Hancock, a police officer who recently started working as a detective", "Detective"),
+    Jessica("Jessica Waters, Albert's partner", "Partner"),
+    Nick("Nick Wright, deffense attorney", "Deffense Attorney"),
+    Hudson("Hudson Connors, the first victim, a police officer who was a personal friend of Albert Hancock", "Victim"),
+    Harris("Harris Sheldon, 47 years old man, suspect of killing Hudson Connors", "Suspect"),
+    Tony("Tony Sumner, 20 years old man, brother of Dan Sumner, suspect of killing Hudson Connors", "Suspect"),
+    Dan("Dan Sumner, 23 years old man, brother of Tony Sumner, suspect of killing Hudson Connors", "Suspect"),
+    Aura("Aura Sheldon, Harris Sheldon's wife", "Witness"),
+    Mark("Mark Jones, Sumner brothers' neighbor", "Witness"),
+    Joan("Joan Delger, Dan Sumner's girlfriend", "Witness"),
+    StoreOwner("Owner of the convenience store close to the first crime scene", "Witness");
     
     //class instance variables
     private final String description;
     private final String location;
     private final String typeOfActor;
 
-    Actor(String description) {
+    Actor(String description, String typeOfActor) {
         this.description = description;
-        location = "Office";
-        this.typeOfActor = "Detective";
+        this.location = "";
+        this.typeOfActor = typeOfActor;
     }
 
     public String getDescription() {
