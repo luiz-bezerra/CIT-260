@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package byui.cit260.MurderInTheCity.control;
+import byui.cit260.MurderInTheCity.exceptions.GameMenuControlException;
 import byui.cit260.MurderInTheCity.model.Crime;
 import byui.cit260.MurderInTheCity.model.Evidence;
 import byui.cit260.MurderInTheCity.model.Game;
@@ -106,7 +107,7 @@ public class GameMenuControl {
        return "The time of death is " + dateFormat.format(timeOfDeath);
    }
    
-   public double calcSearchRadius(double speedOfTravel, double timeSinceDeath) {
+   /*public double calcSearchRadius(double speedOfTravel, double timeSinceDeath) {
        
        if (speedOfTravel <= 0 || speedOfTravel > 130) {
            return -1;
@@ -119,12 +120,13 @@ public class GameMenuControl {
        double searchRadius = speedOfTravel * timeSinceDeath;
        
        return searchRadius;
-   }
+   }*/
    
-   public double calcSearchRadius_Luiz(double speedOfTravel, String currentTimeStr, String timeOfDeathStr){
+   public double calcSearchRadius(double speedOfTravel, String currentTimeStr, String timeOfDeathStr)
+                    throws GameMenuControlException {
        
        if (speedOfTravel > 200 || speedOfTravel <= 0)
-           return -1;
+           throw new GameMenuControlException("Speed of travel should be between 0 and 200");
        
        DateFormat dateFormat = new SimpleDateFormat("hh:mm a");
        Date currentTime, timeOfDeath;
@@ -136,7 +138,7 @@ public class GameMenuControl {
        }
        catch(Exception ex)
        {
-           return -1;
+           throw new GameMenuControlException("Invalid time input");
        }
        
        return (currentTime.getTime() - timeOfDeath.getTime()) / MILISSECONDS_IN_HOUR * speedOfTravel;

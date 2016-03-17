@@ -129,18 +129,11 @@ public class GameMenuView extends View {
     private void calcTimeOfDeath() {
         CalcTimeOfDeathView calcTimeOfDeath = new CalcTimeOfDeathView();
         calcTimeOfDeath.display();
-        
     }
     
     private void calcSearchRadius() {
-        /*
-        GameMenuControl.calcSearchRadius(speedOfTravel, timeSinceDeath);
-        
         CalcSearchRadiusView calcSearchRadius = new CalcSearchRadiusView();
-        calcSearchRadius.calcSearchRadius();
-        */
-        
-        System.out.println("calcSearchRadius function called");
+        calcSearchRadius.display();
     }
     
     private void validateAlibi() {
