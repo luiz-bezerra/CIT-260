@@ -150,7 +150,6 @@ public class GameMenuView extends View {
         ValidateAlibiView validateAlibi = new ValidateAlibiView();
         validateAlibi.validateAlibi();
         */
-        
         System.out.println("validateAlibi function called");
     }
     

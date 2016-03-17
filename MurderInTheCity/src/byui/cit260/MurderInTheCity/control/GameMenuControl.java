@@ -5,6 +5,7 @@
  */
 package byui.cit260.MurderInTheCity.control;
 import byui.cit260.MurderInTheCity.model.Crime;
+import byui.cit260.MurderInTheCity.model.Evidence;
 import byui.cit260.MurderInTheCity.model.Game;
 import byui.cit260.MurderInTheCity.model.Map;
 import java.text.DateFormat;
@@ -25,7 +26,45 @@ public class GameMenuControl {
    }*/
    
    public void showEvidence() {
-       System.out.println("\nshowEvidence function called.");
+       // I know the following piece of code is a little redundant, since the evidence list
+       // was supposed to have been created already by the createNewGame function...
+       // But I'll change it later.
+       // TODO: Change this later, duh.
+       Evidence[] evidenceSortedList = this.sortEvidences(GameControl.createEvidenceList());
+       for (Evidence evidence : evidenceSortedList) {
+           System.out.println("\n" + evidence.getName() + ":");
+           System.out.println("- " + evidence.getDescription());
+       }
+   }
+   
+   public Evidence[] sortEvidences(Evidence evidenceList[]) {
+       
+       int smallestIndex;
+       String evidences[] = new String[evidenceList.length];
+       String smallestEvidenceStr;
+       Evidence smallestEvidence;
+       
+       for (int i = 0; i < evidenceList.length; i++) {
+           evidences[i] = evidenceList[i].getName();
+       }   
+       
+       for (int i = 0; i < evidenceList.length; i++) {
+           smallestIndex = i;
+           
+           for (int j = i + 1; j < evidenceList.length; j++){
+               if (evidences[j].compareToIgnoreCase(evidences[smallestIndex]) < 0)
+                   smallestIndex = j;
+           }
+           
+           smallestEvidenceStr = evidences[smallestIndex];
+           smallestEvidence = evidenceList[smallestIndex];
+           evidences[smallestIndex] = evidences[i];
+           evidenceList[smallestIndex] = evidenceList[i];
+           evidences[i] = smallestEvidenceStr;
+           evidenceList[i] = smallestEvidence;
+       }
+       
+       return evidenceList;
    }
    
    /*public String ShowSuspectList() {
