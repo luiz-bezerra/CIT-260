@@ -37,8 +37,11 @@ public class CalcSearchRadiusView extends View {
             catch (GameMenuControlException gmce) {
                 System.out.println(gmce.getMessage());
             }
+            catch (NumberFormatException nf) {
+                System.out.println("Please input a number between 0 and 200.");
+            }
             catch (Exception ex) {
-                System.out.println("What happened here?");
+                System.out.println("Unexpected Error");
             }
         } while (!valid);
         
