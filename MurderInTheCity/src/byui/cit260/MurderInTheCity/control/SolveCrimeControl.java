@@ -11,9 +11,10 @@ package byui.cit260.MurderInTheCity.control;
  */
 public class SolveCrimeControl {
     
-    /**
-    public void reportEvidence() {
-        
+    public boolean reportEvidence() {
+        GameMenuControl evidenceList = new GameMenuControl();
+        evidenceList.showEvidence();
+        return true;
     }
     
     public void drawConclusions() {
@@ -23,5 +24,4 @@ public class SolveCrimeControl {
     public void solveCrime() {
         
     }
-    */
 }

@@ -6,6 +6,7 @@
 package byui.cit260.MurderInTheCity.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 /**
  *
@@ -24,6 +25,12 @@ public class Evidence implements Serializable {
     }
     
     public Evidence() {
+        ArrayList<String> evidence = new ArrayList<String>();
+        evidence.add("Autopsy results");
+        evidence.add("Bloody hammer");
+        evidence.add("Harris Sheldon's fingerprints");
+        evidence.add("Tony Sumner's fingerprints");
+        evidence.add("Dan Sumner's fingerprints");
     }
     
     public void setName(String name) {

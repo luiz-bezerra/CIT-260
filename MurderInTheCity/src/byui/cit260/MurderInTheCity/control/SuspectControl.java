@@ -5,21 +5,27 @@
  */
 package byui.cit260.MurderInTheCity.control;
 
+import byui.cit260.MurderInTheCity.exceptions.SuspectControlExceptions;
+import byui.cit260.MurderInTheCity.model.Suspect;
+
 /**
  *
  * @author Daniel and Luiz
  */
 public class SuspectControl {
     
+    
+    
     public String showSuspects() {
         return "\nshowSuspects function called";
     }
     
-    public boolean removeSuspect(int suspectNumber) {
+    public boolean removeSuspect(int suspectNumber) throws SuspectControlExceptions {
         System.out.println("\nremoveSuspect function called");
         // Just for a matter of test
-        if (suspectNumber < 1)
-            return false;
+        if (suspectNumber < 1 || suspectNumber > Suspect.values().length) {
+            throw new SuspectControlExceptions("Input a valid number.");
+        }
         return true;
     }
 }

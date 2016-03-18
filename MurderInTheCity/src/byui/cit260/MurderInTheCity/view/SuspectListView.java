@@ -6,6 +6,7 @@
 package byui.cit260.MurderInTheCity.view;
 
 import byui.cit260.MurderInTheCity.control.SuspectControl;
+import byui.cit260.MurderInTheCity.exceptions.SuspectControlExceptions;
 import java.util.Scanner;
 
 /**
@@ -89,6 +90,10 @@ public class SuspectListView extends View {
             input = input.toUpperCase();
             if (!input.equals("E")) {
                 try {
+                    suspects.removeSuspect(Integer.parseInt(input));
+                    System.out.println("\nSuspect " + input + " removed from list.");
+                    this.updateSuspectList();
+                    /**
                     if (suspects.removeSuspect(Integer.parseInt(input))){
                         System.out.println("\nSuspect " + input + " removed from list.");
                         this.updateSuspectList();
@@ -96,7 +101,13 @@ public class SuspectListView extends View {
                     else{
                         System.out.println("\nInvalid suspect number. Try again.");
                         valid = false;
-                    }
+                    }**/
+                }
+                catch (SuspectControlExceptions sce) {
+                    System.out.println("\nInvalid input. Try again.");
+                }
+                catch (NumberFormatException ex) {
+                    System.out.println("\nInvalid input. Try again.");
                 }
                 catch (Exception ex) {
                     System.out.println("\nInvalid Selection. Try again.");
