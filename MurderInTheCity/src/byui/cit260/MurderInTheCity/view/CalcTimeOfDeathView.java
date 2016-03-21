@@ -6,6 +6,7 @@
 package byui.cit260.MurderInTheCity.view;
 
 import byui.cit260.MurderInTheCity.control.GameMenuControl;
+import byui.cit260.MurderInTheCity.exceptions.GameMenuControlException;
 import java.util.Scanner;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -99,8 +100,8 @@ public class CalcTimeOfDeathView extends View {
                 roomTemperature = Double.parseDouble(input);
                 valid = true;
             }
-            catch (Exception ex) {
-                System.out.println("\nInvalid input. Try again.");
+            catch (NumberFormatException nfe) {
+                System.out.println("\nTemperature should be a number. Try again.");
                 valid = false;
             }
         } while (!valid);
@@ -123,8 +124,8 @@ public class CalcTimeOfDeathView extends View {
                     valid = true;
                 }
             }
-            catch (Exception ex) {
-                System.out.println("\nInvalid input. Try again.");
+            catch (NumberFormatException nfe) {
+                System.out.println("\nTemperature should be a number. Try again.");
                 valid = false;
             }
         } while (!valid);
@@ -137,14 +138,19 @@ public class CalcTimeOfDeathView extends View {
                 valid = true;
             }
             catch (Exception ex) {
-                System.out.println("\nInvalid time found. Try again.");
+                System.out.println("\nTime should be written like '0:00 AM'");
                 valid = false;
             }
         } while (!valid);
         
         GameMenuControl gameControl = new GameMenuControl();
-        output = gameControl.calcTimeOfDeath(bodyTemperature, roomTemperature, timeFound);
-        System.out.println(output);
+        try {
+            output = gameControl.calcTimeOfDeath(bodyTemperature, roomTemperature, timeFound);
+            System.out.println(output);
+        }
+        catch (GameMenuControlException gmce) {
+            gmce.getMessage();
+        }
         //return true;
     }
     

@@ -6,7 +6,6 @@
 package byui.cit260.MurderInTheCity.view;
 
 import byui.cit260.MurderInTheCity.control.GameMenuControl;
-import byui.cit260.MurderInTheCity.model.Suspect;
 import murderinthecity.MurderInTheCity;
 /**
  *
