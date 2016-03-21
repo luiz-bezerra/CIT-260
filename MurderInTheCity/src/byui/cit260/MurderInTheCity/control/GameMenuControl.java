@@ -74,28 +74,23 @@ public class GameMenuControl {
    */
    long MILISSECONDS_IN_HOUR = 3600 * 1000;
    
-   public String calcTimeOfDeath(double bodyTemp, double roomTemp, Date timeFound) {
+   public String calcTimeOfDeath(double bodyTemp, double roomTemp, Date timeFound)
+                    throws GameMenuControlException {
        
-       // This validation is already done in the CalcTimeOfDeathView class
+       // This validation is already done in the CalcTimeOfDeathView class.
        // It is still kept here for testing purposes, though.
+       // I preferred to validate this data in the view class because it'll
+       // be validated the moment the user enters it. It's less frustrating to
+       // the player to be told to re-input the body temperature the moment
+       // he/she inputs it than having him/her to input the room temperature
+       // and the time the body was found and, just then, tell him/her he/she
+       // did it wrong. I'll do the same in the CalcSearchRadius function later.
        if (bodyTemp > 42) {
-           return "Body temperature too high";
+           throw new GameMenuControlException("Body temperature too high");
        }
        else if (bodyTemp < roomTemp) {
-           return "Body temperature too low";
+           throw new GameMenuControlException("Body temperature too low");
        }
-       
-       /*DateFormat dateFormat = new SimpleDateFormat("hh:mm a");
-       Date timeFound;
-       
-       try
-       {
-           timeFound = dateFormat.parse(timeFoundStr);
-       }
-       catch(Exception ex)
-       {
-           return "Invalid time found";
-       }*/
        
        DateFormat dateFormat = new SimpleDateFormat("hh:mm a");
        double STANDARD_TEMP = 36.5;
