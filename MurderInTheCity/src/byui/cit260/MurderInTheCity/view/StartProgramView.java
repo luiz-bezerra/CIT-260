@@ -37,7 +37,7 @@ public class StartProgramView extends View {
     
     /**
     private void showBanner() {
-        System.out.println(
+        this.console.println(
             "\n*******************************************" +
             "\n*                                         *" +
             "\n*            Murder in the City           *" +
@@ -67,13 +67,13 @@ public class StartProgramView extends View {
         
         boolean valid = false;
         while(!valid) {
-            System.out.println("Please enter your Name:");
+            this.console.println("Please enter your Name:");
             
             value = keyboard.nextLine();
             value = value.trim();
             
             if (value.length() < 2) {
-                System.out.println("Invalid input.");
+                this.console.println("Invalid input.");
                 continue;
             }
             valid = true;
@@ -84,7 +84,7 @@ public class StartProgramView extends View {
     
     
     private void showWelcomeMessage(Player player) {
-        System.out.println("Welcome to Murder in the City, " + player.getName());
+        this.console.println("Welcome to Murder in the City, " + player.getName());
     }
     
     private void showMainMenu() {
@@ -97,7 +97,7 @@ public class StartProgramView extends View {
     @Override
     public boolean doAction(String value) {
         boolean valid = true;
-        System.out.println("Welcome to Murder in the City, " + value + ".");
+        this.console.println("Welcome to Murder in the City, " + value + ".");
                 
         MainMenuView mainMenuView = new MainMenuView();
         

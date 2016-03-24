@@ -5,6 +5,7 @@
  */
 package byui.cit260.MurderInTheCity.view;
 
+import byui.cit260.MurderInTheCity.control.GameControl;
 import byui.cit260.MurderInTheCity.control.GameMenuControl;
 import murderinthecity.MurderInTheCity;
 /**
@@ -42,7 +43,7 @@ public class MainMenuView extends View {
     public void displayMainMenuView() {
         String input;
         do {
-            System.out.println(MENU);
+            this.console.println(MENU);
             
             input = this.getInput();   
             
@@ -76,7 +77,7 @@ public class MainMenuView extends View {
                 case "E":
                     return input;
                 default:
-                    System.out.println("\nInvalid Selection. Try again.");
+                    this.console.println("\nInvalid Selection. Try again.");
                     valid = false;
                     break;
             }
@@ -94,7 +95,14 @@ public class MainMenuView extends View {
     }
     
     private void startExistingGame() {
-        System.out.println("\nstartExistingGame function called");        
+        this.console.println("\nEnter the file path to load:");     
+        String filePath = this.getInput();
+        
+        try {
+            GameControl.getSavedGame(filePath);
+        } catch (Exception ex) {
+            ErrorView.display("MainMenuView", ex.getMessage());
+        }
     }
     
     private void displayHelpMenu() {
@@ -103,7 +111,14 @@ public class MainMenuView extends View {
     }
     
     private void saveGame() {
-        System.out.println("saveGame function called!");
+        this.console.println("\nEnter the file path to save to:");
+        String filePath = this.getInput();
+        
+        try {
+            GameControl.SaveGame(MurderInTheCity.getCurrentGame(), filePath);
+        } catch (Exception ex) {
+            ErrorView.display("MainMenuView", ex.getMessage());
+        }
     }
 
     @Override
@@ -128,7 +143,7 @@ public class MainMenuView extends View {
                 finish = true;
                 break;
             default:
-                System.out.println("\nInvalid Selection. Try again.");
+                this.console.println("\nInvalid Selection. Try again.");
         }
         
         return finish;

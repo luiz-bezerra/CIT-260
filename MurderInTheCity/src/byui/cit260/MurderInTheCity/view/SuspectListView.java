@@ -7,7 +7,10 @@ package byui.cit260.MurderInTheCity.view;
 
 import byui.cit260.MurderInTheCity.control.SuspectControl;
 import byui.cit260.MurderInTheCity.exceptions.SuspectControlExceptions;
+import java.io.IOException;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -27,7 +30,7 @@ public class SuspectListView extends View {
         this.updateSuspectList();
         
         do {
-            System.out.println(menu);
+            this.console.println(menu);
             
             input = this.getInput();
             
@@ -64,7 +67,7 @@ public class SuspectListView extends View {
                 case "E":
                     return input;
                 default:
-                    System.out.println("\nInvalid Selection. Try again.");
+                    this.console.println("\nInvalid Selection. Try again.");
                     valid = false;
                     break;
             }
@@ -74,9 +77,8 @@ public class SuspectListView extends View {
     }
     */
     
-    private void removeSuspect() {
+    private void removeSuspect() throws IOException {
         Scanner keyboard;
-        keyboard = new Scanner(System.in);
         boolean valid;
         String input;
         String menu = "\n" +
@@ -84,33 +86,33 @@ public class SuspectListView extends View {
                 "\nor press E to go back to the previous menu.";
                 
         do { 
-            System.out.println(menu);
+            this.console.println(menu);
             valid = true;
-            input = keyboard.nextLine();
+            input = this.keyboard.readLine();
             input = input.toUpperCase();
             if (!input.equals("E")) {
                 try {
                     suspects.removeSuspect(Integer.parseInt(input));
-                    System.out.println("\nSuspect " + input + " removed from list.");
+                    this.console.println("\nSuspect " + input + " removed from list.");
                     this.updateSuspectList();
                     /**
                     if (suspects.removeSuspect(Integer.parseInt(input))){
-                        System.out.println("\nSuspect " + input + " removed from list.");
+                        this.console.println("\nSuspect " + input + " removed from list.");
                         this.updateSuspectList();
                     }
                     else{
-                        System.out.println("\nInvalid suspect number. Try again.");
+                        this.console.println("\nInvalid suspect number. Try again.");
                         valid = false;
                     }**/
                 }
                 catch (SuspectControlExceptions sce) {
-                    System.out.println("\nInvalid input. Try again.");
+                    this.console.println("\nInvalid input. Try again.");
                 }
                 catch (NumberFormatException ex) {
-                    System.out.println("\nInvalid input. Try again.");
+                    this.console.println("\nInvalid input. Try again.");
                 }
                 catch (Exception ex) {
-                    System.out.println("\nInvalid Selection. Try again.");
+                    this.console.println("\nInvalid Selection. Try again.");
                         valid = false;
                 }
             }
@@ -124,12 +126,18 @@ public class SuspectListView extends View {
         
         switch (value) {
             case "R":
+        {
+            try {
                 this.removeSuspect();
+            } catch (IOException ex) {
+                Logger.getLogger(SuspectListView.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
                 break;
             case "E":
                 finish = true;
             default:
-                System.out.println("\nInvalid Selection. Try again.");
+                this.console.println("\nInvalid Selection. Try again.");
         }
         
         return finish;

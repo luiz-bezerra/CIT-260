@@ -5,6 +5,7 @@
  */
 package byui.cit260.MurderInTheCity.control;
 
+import byui.cit260.MurderInTheCity.exceptions.GameControlExceptions;
 import byui.cit260.MurderInTheCity.model.Crime;
 import byui.cit260.MurderInTheCity.model.Evidence;
 import byui.cit260.MurderInTheCity.model.Alibi;
@@ -13,6 +14,10 @@ import byui.cit260.MurderInTheCity.model.Map;
 import byui.cit260.MurderInTheCity.model.PiecesOfEvidence;
 import byui.cit260.MurderInTheCity.model.Player;
 import byui.cit260.MurderInTheCity.model.Suspect;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import murderinthecity.MurderInTheCity;
 
 /**
@@ -139,5 +144,27 @@ public class GameControl {
         alibi[Suspect.DanSumner.ordinal()] = danAlibi;
         
         return alibi;
+    }
+
+    public static void SaveGame(Game currentGame, String filePath) throws GameControlExceptions {
+        try ( FileOutputStream fops = new FileOutputStream(filePath)) {
+            ObjectOutputStream output = new ObjectOutputStream(fops);
+            
+            output.writeObject(currentGame);
+        } catch(Exception ex) {
+            throw new GameControlExceptions(ex.getMessage());
+        }
+    }
+
+    public static void getSavedGame(String filePath) throws GameControlExceptions {
+        Game game = null;
+        
+        try(FileInputStream fips = new FileInputStream(filePath)) {
+            ObjectInputStream input = new ObjectInputStream(fips);
+            
+            game = (Game) input.readObject();
+        } catch(Exception ex) {
+            throw new GameControlExceptions(ex.getMessage());
+        }
     }
 }

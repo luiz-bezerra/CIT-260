@@ -41,7 +41,7 @@ public class GameMenuView extends View {
     public void displayGameMenuView() {
         String input;
         do {
-            System.out.println(MENU);
+            this.console.println(MENU);
             
             input = this.getInput();   
             
@@ -101,7 +101,7 @@ public class GameMenuView extends View {
                 case "E":
                     return input;
                 default:
-                    System.out.println("\nInvalid Selection. Try again.");
+                    this.console.println("\nInvalid Selection. Try again.");
                     valid = false;
                     break;
             }
@@ -143,19 +143,19 @@ public class GameMenuView extends View {
         ValidateAlibiView validateAlibi = new ValidateAlibiView();
         validateAlibi.validateAlibi();
         */
-        System.out.println("validateAlibi function called");
+        this.console.println("validateAlibi function called");
     }
     
     private void solveCrime() {
-        System.out.println("solveCrime function called");
+        this.console.println("solveCrime function called");
     }
     
     private void moveToLocation() {
-        System.out.println("moveToLocation function called");
+        this.console.println("moveToLocation function called");
     }
     
     private void exploreCity() {
-        System.out.println("exploreCity function called");
+        this.console.println("exploreCity function called");
     }
     
     private void showProgress() {
@@ -164,7 +164,7 @@ public class GameMenuView extends View {
     }
     
     private void showCrimesSolved() {
-        System.out.println("showCrimesSolved function called");
+        this.console.println("showCrimesSolved function called");
     }
     
     private void displayHelpMenu() {
@@ -173,15 +173,15 @@ public class GameMenuView extends View {
     }
     
     private void resumeGame() {
-        System.out.println("resumeGame function called");
+        this.console.println("resumeGame function called");
     }
     
     private void restartGame() {
-        System.out.println("restartGame function called");
+        this.console.println("restartGame function called");
     }
     
     private void saveGame() {
-        System.out.println("saveGame function called");
+        this.console.println("saveGame function called");
     }
 
     @Override
@@ -239,7 +239,7 @@ public class GameMenuView extends View {
                 finish = true;
                 break;
             default:
-                System.out.println("\nInvalid Selection. Try again.");
+                this.console.println("\nInvalid Selection. Try again.");
         }
         
         return finish;

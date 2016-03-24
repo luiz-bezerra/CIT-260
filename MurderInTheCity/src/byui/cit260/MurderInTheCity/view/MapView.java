@@ -49,29 +49,29 @@ public class MapView extends View{
                 finish = true;
                 break;
             default:
-                System.out.println("\nInvalid Selection. Try again.");
+                this.console.println("\nInvalid Selection. Try again.");
         }
         return finish;
     }
 
     private void goToCafe() {
-        System.out.println("goToCafe funtion called!");
+        this.console.println("goToCafe funtion called!");
     }
 
     private void goToPub() {
-        System.out.println("goToPub funtion called!");
+        this.console.println("goToPub funtion called!");
     }
 
     private void goToStore() {
-        System.out.println("goToStore funtion called!");
+        this.console.println("goToStore funtion called!");
     }
 
     private void goToOffice() {
-        System.out.println("goToOffice funtion called!");
+        this.console.println("goToOffice funtion called!");
     }
 
     private void goToPrison() {
-        System.out.println("goToPrison funtion called!");
+        this.console.println("goToPrison funtion called!");
     }
     
 }

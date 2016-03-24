@@ -5,7 +5,12 @@
  */
 package byui.cit260.MurderInTheCity.view;
 
-import java.util.Scanner;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import murderinthecity.MurderInTheCity;
 
 /**
  *
@@ -14,6 +19,9 @@ import java.util.Scanner;
 public abstract class View implements ViewInterface {
     
     protected String displayMessage;
+    
+    protected final BufferedReader keyboard = MurderInTheCity.getInFile();
+    protected final PrintWriter console = MurderInTheCity.getOutFile();
     
     public View() {
     }
@@ -36,23 +44,27 @@ public abstract class View implements ViewInterface {
     
     @Override
     public String getInput() {
-        Scanner keyboard = new Scanner(System.in);
+        
         boolean valid = false;
-        String value = null;
+        String value = "";
         
         while (!valid) {
             
-            System.out.println("\n" + this.displayMessage);
-            
-            value = keyboard.nextLine();
-            value = value.trim();
-            
-            if (value.length() < 1) {
-                System.out.println("\n*** Enter a value ***");
-                continue;
+            try {
+                System.out.println("\n" + this.displayMessage);
+                
+                value = this.keyboard.readLine();
+                value = value.trim();
+                
+                if (value.length() < 1) {
+                    this.console.println("\n*** Enter a value ***");
+                    continue;
+                }
+                
+                break;
+            } catch (IOException ex) {
+                Logger.getLogger(View.class.getName()).log(Level.SEVERE, null, ex);
             }
-            
-            break;
         }
         
         return value;

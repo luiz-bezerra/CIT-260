@@ -19,6 +19,12 @@ import byui.cit260.MurderInTheCity.model.Crime;
 import byui.cit260.MurderInTheCity.model.CrimeScene;
 import byui.cit260.MurderInTheCity.model.Evidence;
 import byui.cit260.MurderInTheCity.view.StartProgramView;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -32,6 +38,11 @@ public class MurderInTheCity {
     
     private static Game currentGame = null;
     private static Player player = null;
+    
+    private static PrintWriter outFile = null;
+    private static BufferedReader inFile = null;
+    
+    private static PrintWriter logFile = null;
     
     public static Game getCurrentGame() {
         return currentGame;
@@ -48,157 +59,61 @@ public class MurderInTheCity {
     public static void setPlayer(Player player) {
         MurderInTheCity.player = player;
     }
+
+    public static PrintWriter getOutFile() {
+        return outFile;
+    }
+
+    public static void setOutFile(PrintWriter outFile) {
+        MurderInTheCity.outFile = outFile;
+    }
+
+    public static BufferedReader getInFile() {
+        return inFile;
+    }
+
+    public static void setInFile(BufferedReader inFile) {
+        MurderInTheCity.inFile = inFile;
+    }
+
+    public static PrintWriter getLogFile() {
+        return logFile;
+    }
+
+    public static void setLogFile(PrintWriter logFile) {
+        MurderInTheCity.logFile = logFile;
+    }
     
     public static void main(String[] args) {
-        
-        
-        /**
-        // Test string for classes
-        String classInfo;
 
-        // Testing the Player class
-        Player player = new Player();
-        
-        player.setName("Daniel Eckton");
-        player.setRankAchieved("Lieutenant");
-        player.setCrimesSolved(5);
-        player.setTimeAsDetective(3);
-        
-        String playerInfo = player.toString();
-        System.out.println(playerInfo);
-        
-        //Actor test
-        Actor actor = new Actor();
-        
-        actor.setName("Leeroy Jenkins");
-        actor.setDescription("A young detective, itching for the next big case.");
-        actor.setLocation("Convenience Store");
-        actor.setTypeOfActor("Detective");
-        
-        String actorInfo = actor.toString();
-        System.out.println(actorInfo);
-        
-        //Suspect test
-        Suspect suspect = new Suspect();
-        
-        suspect.setTimeAtLocation(730);
-        
-        String suspectInfo = suspect.toString();
-        System.out.println(suspectInfo);
-        
-        //Alibi test
-        Alibi alibi = new Alibi();
-        
-        alibi.setPlace("Home");
-        alibi.setTime(2245);
-        alibi.setCorroborator("Wife");
-        alibi.setDescription("I was at my house, watching T.V. at 10:45 last night. My wife can prove it.");
-        alibi.setValidated(true);
-        
-        String alibiInfo = alibi.toString();
-        System.out.println(alibiInfo);
-        
-        //Victim test
-        Victim victim = new Victim();
-        
-        victim.setTimeOfDeath(245);
-        victim.setBodyTemp(91);
-        victim.setTimeFound(1000);
-        
-        String victimInfo = victim.toString();
-        System.out.println(victimInfo);
-        
-        //Detective test
-        Detective detective = new Detective();
-        
-        detective.setTypeOfDetective("Partner");
-        
-        String detectiveInfo = detective.toString();
-        System.out.println(detectiveInfo);
-        
-        classInfo = player.toString();
-        System.out.println(classInfo);
-        
-        // Testing the Game class
-        Game game = new Game();
-        
-        game.setSavedGame(2);
-        
-        classInfo = game.toString();
-        System.out.println(classInfo);
-        
-        // Testing the Map class
-        Map map = new Map();
-        
-        map.setLocationCount(7);
-        
-        classInfo = map.toString();
-        System.out.println(classInfo);
-        
-        // Testing the Location class
-        Location location = new Location();
-        
-        location.setVisited(true);
-        location.setName("Zoo Manager Office");
-        location.setDescription("The victim boss' office.");
-        location.setDistanceFromCrime(2.9);
-        location.setParentLocation("City Zoo");
-        
-        classInfo = location.toString();
-        System.out.println(classInfo);
-        
-        // Testing the DefenseAttorneyOffice class
-        DefenseAttorneyOffice office = new DefenseAttorneyOffice();
-        
-        office.setSolve(false);
-        office.setEvidence("Fingerprints");
-        office.setSuspect("Sterling Meyers");
-        
-        classInfo = office.toString();
-        System.out.println(classInfo);
-        
-        // Testing the Crime class
-        Crime crime = new Crime();
-        
-        crime.setCrimeType("Murder");
-        crime.setCrimePlace("Pet Shop");
-        crime.setCrimeVictim("Luiz Bezerra");
-        crime.setCrimeOffender("Unknown");
-        crime.setSolved(false);
-        
-        classInfo = crime.toString();
-        System.out.println(classInfo);
-        
-        // Testing the CrimeScene class
-        CrimeScene crimeScene = new CrimeScene();
-        
-        crimeScene.setWitnesses(2);
-        crimeScene.setTemperature(76.9);
-        
-        classInfo = crimeScene.toString();
-        System.out.println(classInfo);
-        
-        // Testing the Evidence class
-        Evidence evidence = new Evidence();
-        
-        evidence.setDescription("Fingerprints found on the murder weapon");
-        evidence.setLocationCollected("Dumpster near the crime scene");
-        
-        classInfo = evidence.toString();
-        System.out.println(classInfo);
-        **/
-//>>>>>>> origin/master
-
-        StartProgramView startProgramView = new StartProgramView();
-        
-        
         
         try {
-            startProgramView.display();
+                       
+            MurderInTheCity.inFile = new BufferedReader(new InputStreamReader(System.in));
+            
+            MurderInTheCity.outFile = new PrintWriter(System.out, true);
+            
+            String filePath = "log.txt";
+            MurderInTheCity.logFile = new PrintWriter(filePath);
+            
+            StartProgramView startProgramView = new StartProgramView();
+            startProgramView.display();           
+            
         } catch (Throwable te) {
             System.out.println(te.getMessage());
             te.printStackTrace();
-            startProgramView.display();
+        } finally {
+            try {
+                if (MurderInTheCity.inFile != null)
+                    MurderInTheCity.inFile.close();
+                if (MurderInTheCity.outFile != null)
+                    MurderInTheCity.outFile.close();
+                if (MurderInTheCity.logFile != null)
+                    MurderInTheCity.logFile.close();
+            } catch (IOException ex) {
+                Logger.getLogger(MurderInTheCity.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
         }
     }
     

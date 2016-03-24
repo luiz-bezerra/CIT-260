@@ -41,21 +41,21 @@ public class ProfessionalProgressionView extends View {
                 finish = true;
                 break;
             default:
-                System.out.println("\nInvalid Selection. Try again.");
+                this.console.println("\nInvalid Selection. Try again.");
         }
         
         return finish;
     }
     
     private void showCrimesSolved() {
-        System.out.println("showCrimesSolved function called.");
+        this.console.println("showCrimesSolved function called.");
     }
     
     private void showTimeSpent() {
-        System.out.println("showTimeSpent function called.");
+        this.console.println("showTimeSpent function called.");
     }
     
     private void showCurrentRank() {
-        System.out.println("showCurrentRank function called.");
+        this.console.println("showCurrentRank function called.");
     }
 }

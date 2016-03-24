@@ -30,7 +30,7 @@ public class HelpMenuView extends View {
     public void displayHelpMenuView() {
         String input;
         do {
-            System.out.println(MENU);
+            this.console.println(MENU);
             
             input = this.getInput();   
             
@@ -66,7 +66,7 @@ public class HelpMenuView extends View {
             case "E":
                 return input;
             default:
-                System.out.println("\nInvalid Selection. Try again.");
+                this.console.println("\nInvalid Selection. Try again.");
                 valid = false;
                 break;
         }
@@ -77,7 +77,7 @@ public class HelpMenuView extends View {
     **/
     
     private void showPurpose() {
-        /**System.out.println(
+        /**this.console.println(
             "\n*******************************************" +
             "\n* In this game you will take the role of  *" +
             "\n* police officer Albert Hancock in his    *" +
@@ -99,13 +99,13 @@ public class HelpMenuView extends View {
         int i = 0;
         for (String rank : typeOfDetective) {
             
-            System.out.println(typeOfDetective[i]);
+            this.console.println(typeOfDetective[i]);
             i++;
         }
         
         for (i=0; i < typeOfDetective.length; i++) {
             if ("Lieutenant".equals(typeOfDetective[i])) {
-                System.out.println("Lieutenant is in index " + i);
+                this.console.println("Lieutenant is in index " + i);
                 return;
             }
         }
@@ -113,7 +113,7 @@ public class HelpMenuView extends View {
     }
     
     private void showMoving() {
-        System.out.println(
+        this.console.println(
             "\n*******************************************" +
             "\n* After pressing M, a list of possible    *" +
             "\n* locations will be shown. Each location  *" +
@@ -125,7 +125,7 @@ public class HelpMenuView extends View {
     }
     
     private void showTimeOfDeath() {
-        System.out.println(
+        this.console.println(
             "\n*******************************************" +
             "\n* After pressing T, you will be prompted  *" +
             "\n* to input the time the body was found,   *" +
@@ -136,7 +136,7 @@ public class HelpMenuView extends View {
     }
     
     private void showSearchRadius() {
-        System.out.println(
+        this.console.println(
             "\n*******************************************" +
             "\n* After pressing D, you will be prompted  *" +
             "\n* to input the speed of travel and the    *" +
@@ -147,7 +147,7 @@ public class HelpMenuView extends View {
     }
     
     private void showValidateAlibi() {
-        System.out.println(
+        this.console.println(
             "\n*******************************************" +
             "\n* After pressing V, you will be prompted  *" +
             "\n* to input the time of death and the      *" +
@@ -182,7 +182,7 @@ public class HelpMenuView extends View {
                 finish = true;
                 break;
             default:
-                System.out.println("\nInvalid Selection. Try again.");
+                this.console.println("\nInvalid Selection. Try again.");
         }
         
         return finish;
