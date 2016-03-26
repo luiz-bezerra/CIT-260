@@ -51,7 +51,7 @@ public abstract class View implements ViewInterface {
         while (!valid) {
             
             try {
-                System.out.println("\n" + this.displayMessage);
+                this.console.println("\n" + this.displayMessage);
                 
                 value = this.keyboard.readLine();
                 value = value.trim();
