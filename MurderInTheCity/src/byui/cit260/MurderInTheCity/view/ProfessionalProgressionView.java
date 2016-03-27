@@ -41,7 +41,7 @@ public class ProfessionalProgressionView extends View {
                 finish = true;
                 break;
             default:
-                this.console.println("\nInvalid Selection. Try again.");
+                ErrorView.display(this.getClass().getName(), "\nInvalid Selection. Try again.");
         }
         
         return finish;

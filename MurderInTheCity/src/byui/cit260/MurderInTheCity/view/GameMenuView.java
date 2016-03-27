@@ -5,8 +5,8 @@
  */
 package byui.cit260.MurderInTheCity.view;
 
-import byui.cit260.MurderInTheCity.model.Detective;
-
+import byui.cit260.MurderInTheCity.control.GameControl;
+import murderinthecity.MurderInTheCity;
 /**
  *
  * @author Daniel and Luiz
@@ -36,80 +36,6 @@ public class GameMenuView extends View {
                 "\n E - Exit Game                                " +
                 "\n----------------------------------------------");
     }
-    
-    /**
-    public void displayGameMenuView() {
-        String input;
-        do {
-            this.console.println(MENU);
-            
-            input = this.getInput();   
-            
-        } while (!input.equals("E"));
-    }
-    
-    
-    public String getInput() {
-        
-            value = value.toUpperCase();
-            switch (input) {
-                case "C":
-                    this.showCity();
-                    break;
-                case "I":
-                    this.showEvidenceList();
-                    break;
-                case "L":
-                    this.showSuspectList();
-                    break;
-                case "D":
-                    this.calcTimeOfDeath();
-                    break;
-                case "R":
-                    this.calcSearchRadius();
-                    break;
-                case "V":
-                    this.validateAlibi();
-                    break;
-                case "O":
-                    this.solveCrime();
-                    break;
-                case "M":
-                    this.moveToLocation();
-                    break;
-                case "X":
-                    this.exploreCity();
-                    break;
-                case "P":
-                    this.showProgress();
-                    break;
-                case "S":
-                    this.showCrimesSolved();
-                    break;
-                case "H":
-                    this.displayHelpMenu();
-                    break;
-                case "U":
-                    this.resumeGame();
-                    break;
-                case "T":
-                    this.restartGame();
-                    break;
-                case "G":
-                    this.saveGame();
-                    break;
-                case "E":
-                    return input;
-                default:
-                    this.console.println("\nInvalid Selection. Try again.");
-                    valid = false;
-                    break;
-            }
-        } while (!valid);
-        
-        return input;
-    }
-    **/
     
     private void showCity() {
         MapView map = new MapView();
@@ -181,7 +107,14 @@ public class GameMenuView extends View {
     }
     
     private void saveGame() {
-        this.console.println("saveGame function called");
+        this.console.println("\nEnter the file path to save to:");
+        String filePath = this.getInput(false);
+        
+        try {
+            GameControl.SaveGame(MurderInTheCity.getCurrentGame(), filePath);
+        } catch (Exception ex) {
+            ErrorView.display("MainMenuView", ex.getMessage());
+        }
     }
 
     @Override
@@ -239,7 +172,7 @@ public class GameMenuView extends View {
                 finish = true;
                 break;
             default:
-                this.console.println("\nInvalid Selection. Try again.");
+                ErrorView.display(this.getClass().getName(), "\nInvalid Selection. Try again.");
         }
         
         return finish;

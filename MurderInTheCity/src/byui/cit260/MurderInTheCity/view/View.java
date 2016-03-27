@@ -34,7 +34,7 @@ public abstract class View implements ViewInterface {
     public void display() {
         boolean done = false;
         do {
-            String value = this.getInput();
+            String value = this.getInput(true);
             if (value.toUpperCase().equals("E"))
                 return;
             
@@ -43,7 +43,7 @@ public abstract class View implements ViewInterface {
     }
     
     @Override
-    public String getInput() {
+    public String getInput(boolean showDisplay) {
         
         boolean valid = false;
         String value = "";
@@ -51,13 +51,14 @@ public abstract class View implements ViewInterface {
         while (!valid) {
             
             try {
-                this.console.println("\n" + this.displayMessage);
+                if (showDisplay)
+                    this.console.println("\n" + this.displayMessage);
                 
                 value = this.keyboard.readLine();
                 value = value.trim();
                 
                 if (value.length() < 1) {
-                    this.console.println("\n*** Enter a value ***");
+                    ErrorView.display(this.getClass().getName(), "*** Enter a value ***");
                     continue;
                 }
                 

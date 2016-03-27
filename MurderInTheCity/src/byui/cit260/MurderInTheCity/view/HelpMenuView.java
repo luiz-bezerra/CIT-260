@@ -5,12 +5,7 @@
  */
 package byui.cit260.MurderInTheCity.view;
 
-import byui.cit260.MurderInTheCity.control.GameControl;
-import byui.cit260.MurderInTheCity.control.GameMenuControl;
 import byui.cit260.MurderInTheCity.model.Detective;
-import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -23,64 +18,14 @@ public class HelpMenuView extends View {
             "\n----------------------------------------------" +
             "\n| Help Menu                                  |" +
             "\n----------------------------------------------" +
-            "\n P - Purpose of the game                      " +
+            "\n P - ~~~ SHOW DETECTIVE RANKS ~~~             " + // "\n P - Purpose of the game                      "
             "\n M - Moving in the game                       " +
             "\n T - Calculate time of death                  " +
             "\n D - Calculate search radius                  " +
             "\n V - Validate suspect's alibi                 " +
             "\n E - Exit Menu                                " +
-            "\n R - ~~ PRINT REPORT ~~                       " +
             "\n----------------------------------------------");
     }
-    /**  
-    public void displayHelpMenuView() {
-        String input;
-        do {
-            this.console.println(MENU);
-            
-            input = this.getInput();   
-            
-        } while (!input.equals("E"));
-    }
-    
-        
-    private String getInput() {
-        Scanner keyboard;
-        keyboard = new Scanner(System.in);
-        
-        boolean valid = true;
-        String input;
-        
-        do { input = keyboard.nextLine();
-        input = input.toUpperCase();
-        switch (input) {
-            case "P":
-                this.showPurpose();
-                break;
-            case "M":
-                this.showMoving();
-                break;
-            case "T":
-                this.showTimeOfDeath();
-                break;
-            case "D":
-                this.showSearchRadius();
-                break;
-            case "V":
-                this.showValidateAlibi();
-                break;
-            case "E":
-                return input;
-            default:
-                this.console.println("\nInvalid Selection. Try again.");
-                valid = false;
-                break;
-        }
-        } while (!valid);
-        
-        return input;
-    }
-    **/
     
     private void showPurpose() {
         this.console.println(
@@ -96,7 +41,26 @@ public class HelpMenuView extends View {
             "\n* protect you family from danger, and     *" +
             "\n* work with other agencies to solve       *" +
             "\n* crimes and bring justice to criminals!  *" +
-            "\n*******************************************");        
+            "\n*******************************************");
+           
+        /*Detective detective = new Detective();
+        String[] typeOfDetective = detective.getTypeOfDetective();
+        
+        
+        int i = 0;
+        for (String rank : typeOfDetective) {
+            
+            this.console.println(typeOfDetective[i]);
+            i++;
+        }
+        
+        for (i=0; i < typeOfDetective.length; i++) {
+            if ("Lieutenant".equals(typeOfDetective[i])) {
+                this.console.println("Lieutenant is in index " + i);
+                return;
+            }
+        }*/
+        
     }
     
     private void showMoving() {
@@ -165,33 +129,13 @@ public class HelpMenuView extends View {
             case "V":
                 this.showValidateAlibi();
                 break;
-            case "R":
-                this.printReport();
-                break;
             case "E":
                 finish = true;
                 break;
             default:
-                this.console.println("\nInvalid Selection. Try again.");
+                ErrorView.display(this.getClass().getName(), "\nInvalid Selection. Try again.");
         }
         
         return finish;
-    }
-
-    private void printReport() {
-        this.console.println("\nPlease enter the filepath for the report to be printed to:");
-        try {
-            String filePath = this.keyboard.readLine();
-            filePath.trim();
-            
-            GameMenuControl printReport = new GameMenuControl();
-            printReport.printEvidenceReport(GameControl.createEvidenceList(), filePath);
-            
-            this.console.println("\nSuccess! Report printed to " + filePath);
-        } catch (IOException ex) {
-            Logger.getLogger(HelpMenuView.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (Exception e) {
-            ErrorView.display("printReport()", e.getMessage());
-        }
     }
 }

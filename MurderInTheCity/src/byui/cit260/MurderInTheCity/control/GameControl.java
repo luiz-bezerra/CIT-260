@@ -147,11 +147,12 @@ public class GameControl {
     }
 
     public static void SaveGame(Game currentGame, String filePath) throws GameControlExceptions {
-        try ( FileOutputStream fops = new FileOutputStream(filePath)) {
+        try (FileOutputStream fops = new FileOutputStream(filePath)) {
             ObjectOutputStream output = new ObjectOutputStream(fops);
             
             output.writeObject(currentGame);
-        } catch(Exception ex) {
+        }
+        catch(Exception ex) {
             throw new GameControlExceptions(ex.getMessage());
         }
     }
@@ -163,8 +164,10 @@ public class GameControl {
             ObjectInputStream input = new ObjectInputStream(fips);
             
             game = (Game) input.readObject();
-        } catch(Exception ex) {
+        }
+        catch(Exception ex) {
             throw new GameControlExceptions(ex.getMessage());
         }
+        MurderInTheCity.setCurrentGame(game);
     }
 }

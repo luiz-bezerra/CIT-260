@@ -8,7 +8,6 @@ package byui.cit260.MurderInTheCity.view;
 import byui.cit260.MurderInTheCity.control.SuspectControl;
 import byui.cit260.MurderInTheCity.exceptions.SuspectControlExceptions;
 import java.io.IOException;
-import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -49,36 +48,7 @@ public class SuspectListView extends View {
             "\n----------------------------------------------";
     }
     
-    /**
-    private String getInput() {
-        Scanner keyboard;
-        keyboard = new Scanner(System.in);
-        
-        boolean valid = true;
-        String input;
-        
-        do { 
-            input = keyboard.nextLine();
-            input = input.toUpperCase();
-            switch (input) {
-                case "R":
-                    this.removeSuspect();
-                    break;
-                case "E":
-                    return input;
-                default:
-                    this.console.println("\nInvalid Selection. Try again.");
-                    valid = false;
-                    break;
-            }
-        } while (!valid);
-        
-        return input;
-    }
-    */
-    
     private void removeSuspect() throws IOException {
-        Scanner keyboard;
         boolean valid;
         String input;
         String menu = "\n" +
@@ -144,8 +114,9 @@ public class SuspectListView extends View {
     }
     
     @Override
-    public String getInput() {
+    public String getInput(boolean showDisplay) {
+        showDisplay = true;
         this.updateSuspectList();
-        return super.getInput();
+        return super.getInput(showDisplay);
     }
 }

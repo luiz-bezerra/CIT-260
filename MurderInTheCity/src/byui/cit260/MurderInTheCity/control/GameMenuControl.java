@@ -13,11 +13,6 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import byui.cit260.MurderInTheCity.model.Player;
-import java.io.FileNotFoundException;
-import java.io.PrintWriter;
-import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import murderinthecity.MurderInTheCity;
 
 /**
@@ -30,22 +25,8 @@ public class GameMenuControl {
    public String showCityLocations() {
        return ;
    }*/
-    
-    public void printEvidenceReport(Evidence[] evidenceList, String output) {
-        try (PrintWriter out = new PrintWriter(output)) {
-            out.println("\n\nEvidence Report");
-            out.printf("%n%-40s%-100s", "Name", "Description");
-            out.printf("%n%-40s%100s", "----------------------------------------", "----------------------------------------------------------------------------------------------------");
-            
-            for (Evidence evidence : evidenceList) {
-                out.printf("%n%-40s%-100s", evidence.getName(), evidence.getDescription());
-            }
-        } catch (FileNotFoundException ex) {
-            Logger.getLogger(GameMenuControl.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
    
-    public void showEvidence() {
+   public void showEvidence() {
        // I know the following piece of code is a little redundant, since the evidence list
        // was supposed to have been created already by the createNewGame function...
        // But I'll change it later.
@@ -188,8 +169,6 @@ public class GameMenuControl {
        
        Crime[] crime = GameControl.createCrime();
        game.setCrime(crime);
-       
-       
    }
    /**
    public void solveCrime() {
@@ -202,8 +181,7 @@ public class GameMenuControl {
    */
    
    
-   public void exploreCity() {
-       
+   public void exploreCity() {       
    }
    
    /**
