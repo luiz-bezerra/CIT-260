@@ -76,14 +76,14 @@ public class SuspectListView extends View {
                     }**/
                 }
                 catch (SuspectControlExceptions sce) {
-                    this.console.println("\nInvalid input. Try again.");
+                    ErrorView.display(this.getClass().getName(), "\nInvalid input. Try again.");
                 }
                 catch (NumberFormatException ex) {
-                    this.console.println("\nInvalid input. Try again.");
+                    ErrorView.display(this.getClass().getName(), "\nInvalid input. Try again.");
                 }
                 catch (Exception ex) {
-                    this.console.println("\nInvalid Selection. Try again.");
-                        valid = false;
+                    ErrorView.display(this.getClass().getName(), "\nInvalid Selection. Try again.");
+                    valid = false;
                 }
             }
         } while (!valid);
