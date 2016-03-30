@@ -5,6 +5,7 @@
  */
 package byui.cit260.MurderInTheCity.control;
 import byui.cit260.MurderInTheCity.exceptions.GameMenuControlException;
+import byui.cit260.MurderInTheCity.model.Alibi;
 import byui.cit260.MurderInTheCity.model.Crime;
 import byui.cit260.MurderInTheCity.model.Evidence;
 import byui.cit260.MurderInTheCity.model.Game;
@@ -13,6 +14,12 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import byui.cit260.MurderInTheCity.model.Player;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import murderinthecity.MurderInTheCity;
 
 /**
@@ -20,23 +27,56 @@ import murderinthecity.MurderInTheCity;
  * @author Daniel and Luiz
  */
 public class GameMenuControl {
-  
+    
     /**
    public String showCityLocations() {
        return ;
    }*/
+    
+    public void printEvidenceReport(Evidence[] evidenceList, String output) {
+        try (PrintWriter out = new PrintWriter(output)) {
+            out.println("\n\nEvidence Report");
+            out.printf("%n%-40s%-100s", "Name", "Description");
+            out.printf("%n%-40s%100s", "----------------------------------------", "----------------------------------------------------------------------------------------------------");
+             
+            for (Evidence evidence : evidenceList) {
+                out.printf("%n%-40s%-100s", evidence.getName(), evidence.getDescription());
+            }
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(GameMenuControl.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public void printAlibiReport(Alibi[] alibiList, String output) {
+        try (PrintWriter out = new PrintWriter(output)) {
+            out.printf("%-46s%-58s", "", "ALIBI REPORT");
+            out.printf("%n%-9s%-15s%-80s", "---------", "---------------", "--------------------------------------------------------------------------------");
+            out.printf("%n%-9s%-15s%-80s", "Time", "Corroborator", "Description");
+            out.printf("%n%-9s%-15s%-80s", "---------", "---------------", "--------------------------------------------------------------------------------");
+             
+            for (Alibi alibi : alibiList) {
+                out.printf("%n%-9s%-15s%-80s", alibi.getTime(), alibi.getCorroborator(), alibi.getDescription());
+            }
+        }        
+        catch (IOException ioEx) {
+            System.out.println("IO Error printing report:\n" + ioEx.getMessage());
+        }
+        catch (Exception ex) {
+            System.out.println("Error printing report:\n" + ex.getMessage());
+        }
+    }
    
-   public void showEvidence() {
-       // I know the following piece of code is a little redundant, since the evidence list
-       // was supposed to have been created already by the createNewGame function...
-       // But I'll change it later.
-       // TODO: Change this later, duh.
+    public void showEvidence() {
+        // I know the following piece of code is a little redundant, since the evidence list
+        // was supposed to have been created already by the createNewGame function...
+        // But I'll change it later.
+        // TODO: Change this later, duh.
        Evidence[] evidenceSortedList = this.sortEvidences(GameControl.createEvidenceList());
-       for (Evidence evidence : evidenceSortedList) {
-           System.out.println("\n" + evidence.getName() + ":");
-           System.out.println("- " + evidence.getDescription());
-       }
-   }
+        for (Evidence evidence : evidenceSortedList) {
+            System.out.println("\n" + evidence.getName() + ":");
+            System.out.println("- " + evidence.getDescription());
+        }
+    }
    
    public Evidence[] sortEvidences(Evidence evidenceList[]) {
        
