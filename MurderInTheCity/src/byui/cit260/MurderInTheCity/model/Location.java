@@ -14,7 +14,6 @@ import java.util.Objects;
  */
 public class Location implements Serializable {
     
-    
     // Class instance variables
     private int row;
     private int column;
@@ -22,6 +21,7 @@ public class Location implements Serializable {
     private String description;
     private double distanceFromCrime;
     private String parentLocation;
+    private Scene scene;
 
     public Location() {
     }
@@ -124,5 +124,11 @@ public class Location implements Serializable {
         this.parentLocation = parentLocation;
     }
 
+    public Scene getScene() {
+        return scene;
+    }
     
+    public void setScene(Scene scene) {
+        this.scene = scene;
+    }
 }
