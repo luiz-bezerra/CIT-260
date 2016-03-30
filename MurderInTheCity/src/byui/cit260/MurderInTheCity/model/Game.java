@@ -23,7 +23,7 @@ public class Game implements Serializable {
     private Crime[] crime;
     private Evidence[] evidence;
     private Alibi[] alibi;
-    
+    private Scene[] scene;
 
     @Override
     public int hashCode() {
@@ -104,5 +104,13 @@ public class Game implements Serializable {
     
     public void setAlibi(Alibi[] alibi) {
         this.alibi = alibi;
+    }
+    
+    public Scene[] getScene() {
+        return scene;
+    }
+    
+    public void setScene(Scene[] scene) {
+        this.scene = scene;
     }
 }

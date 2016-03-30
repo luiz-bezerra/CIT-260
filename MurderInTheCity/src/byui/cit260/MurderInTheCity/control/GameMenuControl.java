@@ -14,6 +14,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import byui.cit260.MurderInTheCity.model.Player;
+import byui.cit260.MurderInTheCity.model.Scene;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -198,7 +199,7 @@ public class GameMenuControl {
        return player;
    }
    
-   public static void createNewGame(Player player) {
+   /*public static void createNewGame(Player player) {
        Game game = new Game();
        MurderInTheCity.setCurrentGame(game);
        
@@ -209,7 +210,10 @@ public class GameMenuControl {
        
        Crime[] crime = GameControl.createCrime();
        game.setCrime(crime);
-   }
+       
+       Scene[] scene = GameControl.createScenes();
+       game.setScene(scene);
+   }*/
    /**
    public void solveCrime() {
        

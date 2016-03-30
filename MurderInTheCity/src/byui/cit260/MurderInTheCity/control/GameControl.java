@@ -30,7 +30,7 @@ public class GameControl {
     
     public static void createNewGame(Player player) {
        Game game = new Game();
-       MurderInTheCity.setCurrentGame(game);
+       //MurderInTheCity.setCurrentGame(game);
        
        game.setPlayer(player);
        
@@ -45,6 +45,11 @@ public class GameControl {
        
        Alibi[] alibi = GameControl.createAlibiList();
        game.setAlibi(alibi);
+       
+       Scene[] scene = GameControl.createScenes();
+       game.setScene(scene);
+       
+       MurderInTheCity.setCurrentGame(game);
     }
     
     public static Crime[] createCrime() {
@@ -238,7 +243,7 @@ public class GameControl {
               + "\nAlbert: That's right! That's why we're here!"
               + "\n"
               + "\nJessica: So, why don't we start by looking at the pieces of"
-              + "\nevidence we've gathered so far? Just go to the game menu and"
+              + "\nevidence we've gathered so far? Just go to the Game Menu and"
               + "\npress 'I'");
         //scenes.setLocation(PoliceStation);
         scenes[SceneType.EvidenceTutorial.ordinal()] = evidenceTutorial;

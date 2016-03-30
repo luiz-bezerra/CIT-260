@@ -6,7 +6,7 @@
 package byui.cit260.MurderInTheCity.view;
 
 import byui.cit260.MurderInTheCity.control.GameControl;
-import byui.cit260.MurderInTheCity.control.GameMenuControl;
+import byui.cit260.MurderInTheCity.model.SceneType;
 import murderinthecity.MurderInTheCity;
 /**
  *
@@ -29,10 +29,12 @@ public class MainMenuView extends View {
     }
     
     private void startNewGame() {
-        GameMenuControl.createNewGame(MurderInTheCity.getPlayer());
+        GameControl.createNewGame(MurderInTheCity.getPlayer());
         
-        GameMenuView gameMenu = new GameMenuView();
-        gameMenu.display();
+        /*GameMenuView gameMenu = new GameMenuView();
+        gameMenu.display();*/
+        SceneView sceneView = new SceneView(SceneType.Intro);
+        sceneView.display();
     }
     
     private void startExistingGame() {

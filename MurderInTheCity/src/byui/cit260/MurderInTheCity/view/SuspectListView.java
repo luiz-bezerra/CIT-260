@@ -19,23 +19,6 @@ public class SuspectListView extends View {
     
     SuspectControl suspects = new SuspectControl();
     
-    /*public SuspectListView() {
-        super("");
-    }*/
-    
-    /*public void displaySuspectListView() {
-        
-        String input;
-        this.updateSuspectList();
-        
-        do {
-            this.console.println(menu);
-            
-            input = this.getInput();
-            
-        } while (!input.equals("E"));
-    }*/
-    
     private void updateSuspectList() {
         this.displayMessage = "\n" +
             "\n----------------------------------------------" +
