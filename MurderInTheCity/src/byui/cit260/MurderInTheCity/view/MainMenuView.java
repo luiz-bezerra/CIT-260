@@ -33,7 +33,7 @@ public class MainMenuView extends View {
         
         /*GameMenuView gameMenu = new GameMenuView();
         gameMenu.display();*/
-        SceneView sceneView = new SceneView(SceneType.Intro);
+        SceneView sceneView = new SceneView(SceneType.Intro, false);
         sceneView.display();
     }
     

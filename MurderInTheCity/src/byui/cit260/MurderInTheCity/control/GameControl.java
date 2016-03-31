@@ -220,6 +220,7 @@ public class GameControl {
               + "\nwanted to work as a detective and the victim was his friend."
               + "\nThey assigned a partner to work with him, Jessica Waters.");
         //scenes.setLocation(Park);
+        intro.setCompleted(false);
         scenes[SceneType.Intro.ordinal()] = intro;
         
         Scene evidenceTutorial = new Scene();
@@ -246,6 +247,7 @@ public class GameControl {
               + "\nevidence we've gathered so far? Just go to the Game Menu and"
               + "\npress 'I'");
         //scenes.setLocation(PoliceStation);
+        intro.setCompleted(false);
         scenes[SceneType.EvidenceTutorial.ordinal()] = evidenceTutorial;
         
         Scene alibiTutorial = new Scene();
@@ -264,6 +266,7 @@ public class GameControl {
               + "\n2 - 20-years old Tony Sumner"
               + "\n3 - 23-years old Dan Sumner");
         //scenes.setLocation(PoliceStation);
+        intro.setCompleted(false);
         scenes[SceneType.AlibiTutorial.ordinal()] = alibiTutorial;
         
         Scene harrisSheldonAlibi = new Scene();
@@ -291,6 +294,7 @@ public class GameControl {
               + "\nJessica: Mr. Sheldon's alibi was added to your list. You can"
               + "\nsee it anytime, by going to the Game Menu and pressing 'A'");
         //scenes.setLocation(PoliceStation);
+        intro.setCompleted(false);
         scenes[SceneType.HarrisSheldonAlibi.ordinal()] = harrisSheldonAlibi;
         
         return scenes;

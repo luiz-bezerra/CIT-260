@@ -18,15 +18,31 @@ public class SceneView extends View {
     
     Scene[] scene = MurderInTheCity.getCurrentGame().getScene();
     SceneType sceneType;
+    boolean showDisplay;
     
-    public SceneView(SceneType sceneType) { 
+    public SceneView(SceneType sceneType, boolean showDisplay) { 
         this.sceneType = sceneType;
+        this.showDisplay = showDisplay;
+    }
+    
+    @Override
+    public void display() {
+        boolean done = false;
+        do {
+            String value = this.getInput(showDisplay);
+            if (value.toUpperCase().equals("E"))
+                return;
+            
+            done = this.doAction(value);
+        } while (!done);
     }
     
     @Override
     public String getInput(boolean showDisplay) {
-        //showDisplay = true;
-        this.displayMessage = scene[sceneType.ordinal()].getDescription() +
+        this.displayMessage = scene[sceneType.ordinal()].getDescription();
+        
+        if (showDisplay)
+            this.displayMessage +=
                 "\n----------------------------------------------" +
                 "\n| Main Menu                                  |" +
                 "\n----------------------------------------------" +
@@ -35,13 +51,23 @@ public class SceneView extends View {
                 "\n M - Move to a New Location                   " +
                 "\n G - Game Menu                                " +
                 "\n----------------------------------------------";
-        return super.getInput(showDisplay);
+        else
+            this.displayMessage +=
+                "\n\nPress any key to continue";
+        
+        this.console.println("\n" + this.displayMessage);
+        return super.getInput(false);
     }
     
     @Override
     public boolean doAction(String value) {
         boolean finish = false;
         value = value.toUpperCase();
+        
+        if (!showDisplay) {
+            finish = true;
+            return finish;
+        }        
         
         switch (value) {
             case "T":
