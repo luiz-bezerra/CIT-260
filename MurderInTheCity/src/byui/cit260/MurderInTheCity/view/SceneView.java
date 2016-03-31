@@ -18,7 +18,17 @@ public class SceneView extends View {
     
     Scene[] scene = MurderInTheCity.getCurrentGame().getScene();
     SceneType sceneType;
-    boolean showDisplay;
+    boolean showDisplay, alreadyDisplayed;
+    String sceneMenu = 
+            "\n----------------------------------------------" +
+            "\n| Scene Menu                                 |" +
+            "\n----------------------------------------------" +
+            "\n T - Talk                                     " +
+            "\n X - Explore the Location                     " +
+            "\n M - Move to a New Location                   " +
+            "\n O - Turn On Tablet                           " +
+            "\n G - Game Menu                                " +
+            "\n----------------------------------------------";;
     
     public SceneView(SceneType sceneType, boolean showDisplay) { 
         this.sceneType = sceneType;
@@ -29,33 +39,40 @@ public class SceneView extends View {
     public void display() {
         boolean done = false;
         do {
+            if (MurderInTheCity.getSkipScene()){
+                MurderInTheCity.setSkipScene(false);
+                scene[sceneType.ordinal()].setCompleted(true);
+                break;
+            }
+            
             String value = this.getInput(showDisplay);
             if (value.toUpperCase().equals("E"))
                 return;
             
             done = this.doAction(value);
         } while (!done);
+        
+        SceneControl.startNextScene();
     }
     
     @Override
     public String getInput(boolean showDisplay) {
         this.displayMessage = scene[sceneType.ordinal()].getDescription();
         
-        if (showDisplay)
-            this.displayMessage +=
-                "\n----------------------------------------------" +
-                "\n| Main Menu                                  |" +
-                "\n----------------------------------------------" +
-                "\n T - Talk                                     " +
-                "\n X - Explore the Location                     " +
-                "\n M - Move to a New Location                   " +
-                "\n G - Game Menu                                " +
-                "\n----------------------------------------------";
-        else
-            this.displayMessage +=
-                "\n\nPress any key to continue";
+        if (alreadyDisplayed) {
+            this.console.println("\n" + sceneMenu);
+        }
+        else {
+            if (showDisplay)
+                this.displayMessage += sceneMenu;
+            else
+                this.displayMessage +=
+                    "\n\nPress any key to continue";
+            
+            this.console.println("\n" + this.displayMessage);
+            alreadyDisplayed = true;
+        }
         
-        this.console.println("\n" + this.displayMessage);
         return super.getInput(false);
     }
     
@@ -65,8 +82,8 @@ public class SceneView extends View {
         value = value.toUpperCase();
         
         if (!showDisplay) {
-            finish = true;
-            return finish;
+            scene[sceneType.ordinal()].setCompleted(true);
+            return true;
         }        
         
         switch (value) {
@@ -78,11 +95,16 @@ public class SceneView extends View {
                 break;
             case "M":
                 this.moveToNewLocation();
+                scene[sceneType.ordinal()].setCompleted(true);
+                break;
+            case "O":
+                this.showTabletMenu();
                 break;
             case "G":
                 this.showGameMenu();
                 break;
             case "E":
+                scene[sceneType.ordinal()].setCompleted(true);
                 finish = true;
                 break;
             default:
@@ -101,6 +123,11 @@ public class SceneView extends View {
 
     private void moveToNewLocation() {
         SceneControl.moveToNewLocation();
+    }
+    
+    private void showTabletMenu() {
+        TabletMenuView tabletMenu = new TabletMenuView();
+        tabletMenu.display();
     }
 
     private void showGameMenu() {

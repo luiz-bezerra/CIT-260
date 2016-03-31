@@ -43,6 +43,15 @@ public class MurderInTheCity {
     private static BufferedReader inFile = null;
     
     private static PrintWriter logFile = null;
+    private static boolean skipScene = false;
+    
+    public static boolean getSkipScene() {
+        return skipScene;
+    }
+    
+    public static void setSkipScene(boolean skipScene) {
+        MurderInTheCity.skipScene = skipScene;
+    }
     
     public static Game getCurrentGame() {
         return currentGame;

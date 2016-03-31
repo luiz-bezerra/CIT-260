@@ -63,7 +63,7 @@ public class GameControl {
         Evidence autopsyResults = new Evidence();
         autopsyResults.setName("Autopsy results");
         autopsyResults.setDescription("death by head trauma due to two blows received on the head");
-        autopsyResults.setLocationCollected("");
+        autopsyResults.setLocationCollected("???");
         evidence[PiecesOfEvidence.AutopsyResults.ordinal()] = autopsyResults;
         
         Evidence bloodyHammer = new Evidence();
@@ -75,19 +75,19 @@ public class GameControl {
         Evidence harrisFingerprints = new Evidence();
         harrisFingerprints.setName("Harris Sheldon's fingerprints");
         harrisFingerprints.setDescription("Fingerprints of Harris Sheldon found on the murder weapon");
-        harrisFingerprints.setLocationCollected("");
+        harrisFingerprints.setLocationCollected("Park");
         evidence[PiecesOfEvidence.HarrisFingerprints.ordinal()] = harrisFingerprints;
         
         Evidence tonyFingerprints = new Evidence();
         tonyFingerprints.setName("Tony Sumner's fingerprints");
         tonyFingerprints.setDescription("Fingerprints of Tony Sumner found on the murder weapon");
-        tonyFingerprints.setLocationCollected("");
+        tonyFingerprints.setLocationCollected("Park");
         evidence[PiecesOfEvidence.TonyFingerprints.ordinal()] = tonyFingerprints;
         
         Evidence danFingerprints = new Evidence();
         danFingerprints.setName("Dan Sumner's fingerprints");
         danFingerprints.setDescription("Fingerprints of Dan Sumner found on the murder weapon");
-        danFingerprints.setLocationCollected("");
+        danFingerprints.setLocationCollected("Park");
         evidence[PiecesOfEvidence.DanFingerprints.ordinal()] = danFingerprints;
         
         Evidence auraTestimony = new Evidence();
@@ -133,19 +133,19 @@ public class GameControl {
         Alibi[] alibi = new Alibi[3];
         
         Alibi harrisAlibi = new Alibi();
-        harrisAlibi.setTime("10:00 PM");
+        harrisAlibi.setTime("");
         harrisAlibi.setDescription("Harris Sheldon was watching TV home with his wife");
         harrisAlibi.setCorroborator("Aura Sheldon");
         alibi[Suspect.HarrisSheldon.ordinal()] = harrisAlibi;
         
         Alibi tonyAlibi = new Alibi();
-        tonyAlibi.setTime("10:00 PM");
+        tonyAlibi.setTime("");
         tonyAlibi.setDescription("Tony Sumner was running close to his house, practicing for a marathon");
         tonyAlibi.setCorroborator("Mark Jones");
         alibi[Suspect.TonySumner.ordinal()] = tonyAlibi;
         
         Alibi danAlibi = new Alibi();
-        danAlibi.setTime("10:00 PM");
+        danAlibi.setTime("");
         danAlibi.setDescription("Dan Sumner was at the movies with his girlfriend");
         danAlibi.setCorroborator("Joan Delger");
         alibi[Suspect.DanSumner.ordinal()] = danAlibi;
@@ -153,7 +153,7 @@ public class GameControl {
         return alibi;
     }
 
-    public static void SaveGame(Game currentGame, String filePath) throws GameControlExceptions {
+    public static void saveGame(Game currentGame, String filePath) throws GameControlExceptions {
         try (FileOutputStream fops = new FileOutputStream(filePath)) {
             ObjectOutputStream output = new ObjectOutputStream(fops);
             
@@ -244,8 +244,9 @@ public class GameControl {
               + "\nAlbert: That's right! That's why we're here!"
               + "\n"
               + "\nJessica: So, why don't we start by looking at the pieces of"
-              + "\nevidence we've gathered so far? Just go to the Game Menu and"
-              + "\npress 'I'");
+              + "\nevidence we've gathered so far? You can see them in your"
+              + "\ntablet. Just press 'O' to turn it on and then press 'L'"
+              + "\nto check the evidences.");
         //scenes.setLocation(PoliceStation);
         intro.setCompleted(false);
         scenes[SceneType.EvidenceTutorial.ordinal()] = evidenceTutorial;
@@ -262,9 +263,9 @@ public class GameControl {
               + "\nJessica: Who would you like to talk to first? Just press the"
               + "\nnumber of person and press 'Enter'."
               + "\n"
-              + "\n1 - 47-years old Harris Sheldon"
-              + "\n2 - 20-years old Tony Sumner"
-              + "\n3 - 23-years old Dan Sumner");
+              + "\n1 - Harris Sheldon"
+              + "\n2 - Tony Sumner"
+              + "\n3 - Dan Sumner");
         //scenes.setLocation(PoliceStation);
         intro.setCompleted(false);
         scenes[SceneType.AlibiTutorial.ordinal()] = alibiTutorial;
@@ -273,7 +274,7 @@ public class GameControl {
         harrisSheldonAlibi.setDescription(
                 "\nJessica: Ok, I'll bring Mr. Sheldon, then."
               + "\n"
-              + "\nAfter a short time, a middle-aged man comes and sits in the"
+              + "\nAfter a short time, a middle-aged man comes and sits on the"
               + "\nchair in front of Albert. Albert questioned him about the"
               + "\nnight of the crime."
               + "\n"
@@ -292,10 +293,89 @@ public class GameControl {
               + "Mr. Sheldon is escorted back to his cell."
               + "\n"
               + "\nJessica: Mr. Sheldon's alibi was added to your list. You can"
-              + "\nsee it anytime, by going to the Game Menu and pressing 'A'");
+              + "\nsee it anytime, by turning on your tablet and pressing 'S'"
+              + "\n"
+              + "\nAlbert: Ok, thanks!"
+              + "\n"
+              + "\nJessica: Who would you like to interview now?"
+              + "\n"
+              + "\n2 - Tony Sumner"
+              + "\n3 - Dan Sumner");
         //scenes.setLocation(PoliceStation);
         intro.setCompleted(false);
         scenes[SceneType.HarrisSheldonAlibi.ordinal()] = harrisSheldonAlibi;
+        
+        Scene tonySumnerAlibi = new Scene();
+        tonySumnerAlibi.setDescription(
+                "\nJessica: Ok, I'll bring Tony Sumner, then."
+              + "\n"
+              + "\nAfter a short time, a young and athletic-looking man comes"
+              + "\nand sits on the chair in front of Albert. Albert questioned"
+              + "\nhim about the night of the crime."
+              + "\n"
+              + "\nTony: Well, I was running on my street that night. I'm"
+              + "\npreparing for a marathon, you know, and since it's pretty"
+              + "\nhot lately, I decided to run after the sunset. If you don't"
+              + "\nbelieve me, you can ask my neighbor, he saw me running!"
+              + "\n"
+              + "\nAlbert: If that's true, why did we find your fingerprints on"
+              + "\nthe murder weapon?"
+              + "\n"
+              + "\nTony: I used a hammer I found home to nail a picture in the"
+              + "\nwall earlier that day, but didn't use it for anything later."
+              + "\n"
+              + "\nAlbert: Ok, then. Thank you for your cooperation."
+              + "\n"
+              + "Tony is escorted back to his cell."
+              + "\n"
+              + "\nJessica: Tony Sumner's alibi was added to your list. You can"
+              + "\nsee it anytime, by turning on your tablet and pressing 'S'"
+              + "\n"
+              + "\nAlbert: Ok, thanks!"
+              + "\n"
+              + "\nJessica: Who would you like to interview now?"
+              + "\n"
+              + "\n1 - Harris Sheldon"
+              + "\n3 - Dan Sumner");
+        //scenes.setLocation(PoliceStation);
+        intro.setCompleted(false);
+        scenes[SceneType.TonySumnerAlibi.ordinal()] = tonySumnerAlibi;
+        
+        Scene danSumnerAlibi = new Scene();
+        danSumnerAlibi.setDescription(
+                "\nJessica: Ok, I'll bring Dan Sumner, then."
+              + "\n"
+              + "\nAfter a short time, a young and strong-looking man comes and"
+              + "\nsits on the chair in front of Albert. Albert questioned him"
+              + "\nabout the night of the crime."
+              + "\n"
+              + "\nDan: I left home that night to go to the movies with my"
+              + "\ngirlfriend. The movie started at 9:30 PM and ended around"
+              + "\n11:30 PM, so, it can't have been me!"
+              + "\n"
+              + "\nAlbert: If that's true, why did we find your fingerprints on"
+              + "\nthe murder weapon?"
+              + "\n"
+              + "\nDan: Well, I work as a woodworker, and I asked my boss if I"
+              + "\ncould borrow his hammer, because I needed to fix a wooden"
+              + "\nchair back home."
+              + "\n"
+              + "\nAlbert: Alright. Thank you for your cooperation."
+              + "\n"
+              + "Dan is escorted back to his cell."
+              + "\n"
+              + "\nJessica: Dan Sumner's alibi was added to your list. You can"
+              + "\nsee it anytime, by turning on your tablet and pressing 'S'"
+              + "\n"
+              + "\nAlbert: Ok, thanks!"
+              + "\n"
+              + "\nJessica: Who would you like to interview now?"
+              + "\n"
+              + "\n1 - Harris Sheldon"
+              + "\n2 - Tony Sumner");
+        //scenes.setLocation(PoliceStation);
+        intro.setCompleted(false);
+        scenes[SceneType.DanSumnerAlibi.ordinal()] = danSumnerAlibi;
         
         return scenes;
     }

@@ -6,7 +6,7 @@
 package byui.cit260.MurderInTheCity.view;
 
 import byui.cit260.MurderInTheCity.control.GameControl;
-import byui.cit260.MurderInTheCity.model.SceneType;
+import byui.cit260.MurderInTheCity.control.SceneControl;
 import murderinthecity.MurderInTheCity;
 /**
  *
@@ -22,7 +22,6 @@ public class MainMenuView extends View {
             "\n----------------------------------------------" +
             "\n N - New Game                                 " +
             "\n H - Get Help                                 " +
-            "\n S - Save Game                                " +
             "\n R - Resume Game                              " +
             "\n E - Exit Game                                " +
             "\n----------------------------------------------");
@@ -33,8 +32,7 @@ public class MainMenuView extends View {
         
         /*GameMenuView gameMenu = new GameMenuView();
         gameMenu.display();*/
-        SceneView sceneView = new SceneView(SceneType.Intro, false);
-        sceneView.display();
+        SceneControl.startNextScene();
     }
     
     private void startExistingGame() {
@@ -48,8 +46,9 @@ public class MainMenuView extends View {
             ErrorView.display("MainMenuView", ex.getMessage());
         }
         
-        GameMenuView gameMenu = new GameMenuView();
-        gameMenu.display();
+        /*GameMenuView gameMenu = new GameMenuView();
+        gameMenu.display();*/
+        SceneControl.startNextScene();
     }
     
     private void displayHelpMenu() {
@@ -57,16 +56,16 @@ public class MainMenuView extends View {
         helpMenuView.display();
     }
     
-    private void saveGame() {
+    /*private void saveGame() {
         this.console.println("\nEnter the file path to save to:");
         String filePath = this.getInput(false);
         
         try {
-            GameControl.SaveGame(MurderInTheCity.getCurrentGame(), filePath);
+            GameControl.saveGame(MurderInTheCity.getCurrentGame(), filePath);
         } catch (Exception ex) {
             ErrorView.display("MainMenuView", ex.getMessage());
         }
-    }
+    }*/
 
     @Override
     public boolean doAction(String value) {
@@ -83,9 +82,9 @@ public class MainMenuView extends View {
             case "H":
                 this.displayHelpMenu();
                 break;
-            case "S":
+            /*case "S":
                 this.saveGame();
-                break;
+                break;*/
             case "E":
                 finish = true;
                 break;

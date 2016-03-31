@@ -15,6 +15,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import byui.cit260.MurderInTheCity.model.Player;
 import byui.cit260.MurderInTheCity.model.Scene;
+import byui.cit260.MurderInTheCity.model.SceneType;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -67,7 +68,7 @@ public class GameMenuControl {
         }
     }
    
-    public void showEvidence() {
+    /*public void showEvidence() {
         // I know the following piece of code is a little redundant, since the evidence list
         // was supposed to have been created already by the createNewGame function...
         // But I'll change it later.
@@ -77,6 +78,28 @@ public class GameMenuControl {
             System.out.println("\n" + evidence.getName() + ":");
             System.out.println("- " + evidence.getDescription());
         }
+    }*/
+    
+    public String showEvidence() {
+        Evidence[] evidences = MurderInTheCity.getCurrentGame().getEvidence();
+        String evidenceList =
+                    "\n----------------------------------------------" +
+                    "\n  Evidence List                               " +
+                    "\n----------------------------------------------";
+        
+        for (Evidence evidence : evidences) {
+            if (!evidence.getLocationCollected().equals(""))
+                evidenceList += "\n" + evidence.getName() + ":"
+                              + "\n- " + evidence.getDescription() + "\n";
+        }
+        
+        //Seeing evidences triggers continuing the first scene
+        Scene[] scene = MurderInTheCity.getCurrentGame().getScene();
+        
+        if (!scene[SceneType.EvidenceTutorial.ordinal()].getCompleted())
+            MurderInTheCity.setSkipScene(true);
+        
+        return evidenceList;
     }
    
    public Evidence[] sortEvidences(Evidence evidenceList[]) {

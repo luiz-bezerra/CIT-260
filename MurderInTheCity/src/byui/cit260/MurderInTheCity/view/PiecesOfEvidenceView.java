@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package byui.cit260.MurderInTheCity.view;
+
 import byui.cit260.MurderInTheCity.control.GameMenuControl;
 
 /**
@@ -14,8 +15,8 @@ public class PiecesOfEvidenceView extends View {
     
     @Override
     public void display() {
-        GameMenuControl gameControl = new GameMenuControl();
-        gameControl.showEvidence();
+        GameMenuControl gameControl = new GameMenuControl();                
+        this.console.println(gameControl.showEvidence());
     }
     
     @Override
