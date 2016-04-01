@@ -7,7 +7,6 @@ package byui.cit260.MurderInTheCity.view;
 
 import byui.cit260.MurderInTheCity.control.GameMenuControl;
 import byui.cit260.MurderInTheCity.exceptions.GameMenuControlException;
-import java.util.Scanner;
 
 /**
  *
@@ -34,13 +33,13 @@ public class CalcSearchRadiusView extends View {
                 valid = true;
             }
             catch (GameMenuControlException gmce) {
-                this.console.println(gmce.getMessage());
+                ErrorView.display(this.getClass().getName(), gmce.getMessage());
             }
             catch (NumberFormatException nf) {
-                this.console.println("Please input a number between 0 and 200.");
+                ErrorView.display(this.getClass().getName(), "Please input a number between 0 and 200.");
             }
             catch (Exception ex) {
-                this.console.println("Unexpected Error");
+                ErrorView.display(this.getClass().getName(), "Unexpected Error");
             }
         } while (!valid);
         

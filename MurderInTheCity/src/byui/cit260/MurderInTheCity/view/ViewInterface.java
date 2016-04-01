@@ -12,7 +12,7 @@ package byui.cit260.MurderInTheCity.view;
 public interface ViewInterface {
     
     public void display();
-    public String getInput();
+    public String getInput(boolean showDisplay);
     public boolean doAction(String value);
     
 }

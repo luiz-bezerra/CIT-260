@@ -6,6 +6,7 @@
 package byui.cit260.MurderInTheCity.control;
 
 import byui.cit260.MurderInTheCity.model.Map;
+import byui.cit260.MurderInTheCity.model.Scene;
 
 /**
  *
@@ -21,7 +22,9 @@ public class MapControl {
     
     public static Map createMap() {
         
-        Map map = new Map(2, 3);
+        Map map = new Map(2, 7);
+        
+        Scene[] scenes = GameControl.createScenes();
         
         return map;
     }

@@ -6,7 +6,7 @@
 package byui.cit260.MurderInTheCity.view;
 
 import byui.cit260.MurderInTheCity.control.GameControl;
-import byui.cit260.MurderInTheCity.control.GameMenuControl;
+import byui.cit260.MurderInTheCity.model.SceneType;
 import murderinthecity.MurderInTheCity;
 /**
  *
@@ -28,81 +28,28 @@ public class MainMenuView extends View {
             "\n----------------------------------------------");
     }
     
-    /**
-    private final String MENU = "\n" +
-            "\n----------------------------------------------" +
-            "\n| Main Menu                                  |" +
-            "\n----------------------------------------------" +
-            "\n N - New Game                                 " +
-            "\n H - Get Help                                 " +
-            "\n S - Save Game                                " +
-            "\n R - Resume Game                              " +
-            "\n E - Exit Game                                " +
-            "\n----------------------------------------------";
-    
-    public void displayMainMenuView() {
-        String input;
-        do {
-            this.console.println(MENU);
-            
-            input = this.getInput();   
-            
-        } while (!input.equals("E"));
-    }
-    
-        
-    private String getInput() {
-        Scanner keyboard;
-        keyboard = new Scanner(System.in);
-        
-        boolean valid = true;
-        String input;
-        
-        do { 
-            input = keyboard.nextLine();
-            input = input.toUpperCase();
-            switch (input) {
-                case "N":
-                    this.startNewGame();
-                    break;
-                case "R":
-                    this.startExistingGame();
-                    break;
-                case "H":
-                    this.displayHelpMenu();
-                    break;
-                case "S":
-                    this.saveGame();
-                    break;
-                case "E":
-                    return input;
-                default:
-                    this.console.println("\nInvalid Selection. Try again.");
-                    valid = false;
-                    break;
-            }
-        } while (!valid);
-        
-        return input;
-    }
-    **/
-    
     private void startNewGame() {
-        GameMenuControl.createNewGame(MurderInTheCity.getPlayer());
+        GameControl.createNewGame(MurderInTheCity.getPlayer());
         
-        GameMenuView gameMenu = new GameMenuView();
-        gameMenu.display();
+        /*GameMenuView gameMenu = new GameMenuView();
+        gameMenu.display();*/
+        SceneView sceneView = new SceneView(SceneType.Intro);
+        sceneView.display();
     }
     
     private void startExistingGame() {
         this.console.println("\nEnter the file path to load:");     
-        String filePath = this.getInput();
+        String filePath = this.getInput(false);
         
         try {
             GameControl.getSavedGame(filePath);
-        } catch (Exception ex) {
+        }
+        catch (Exception ex) {
             ErrorView.display("MainMenuView", ex.getMessage());
         }
+        
+        GameMenuView gameMenu = new GameMenuView();
+        gameMenu.display();
     }
     
     private void displayHelpMenu() {
@@ -112,7 +59,7 @@ public class MainMenuView extends View {
     
     private void saveGame() {
         this.console.println("\nEnter the file path to save to:");
-        String filePath = this.getInput();
+        String filePath = this.getInput(false);
         
         try {
             GameControl.SaveGame(MurderInTheCity.getCurrentGame(), filePath);
@@ -143,7 +90,7 @@ public class MainMenuView extends View {
                 finish = true;
                 break;
             default:
-                this.console.println("\nInvalid Selection. Try again.");
+                ErrorView.display(this.getClass().getName(), "\nInvalid Selection. Try again.");
         }
         
         return finish;

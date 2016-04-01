@@ -5,6 +5,8 @@
  */
 package byui.cit260.MurderInTheCity.view;
 
+import byui.cit260.MurderInTheCity.control.LocationControl;
+
 /**
  *
  * @author Daniel
@@ -16,12 +18,15 @@ public class MapView extends View{
         "\n----------------------------------------------" +
         "\n| Map                                        |" +
         "\n----------------------------------------------" +
-        "\n C - Cafe                                     " +
-        "\n P - Pub                                      " +
-        "\n S - Store                                    " +
-        "\n O - Office                                   " +
-        "\n R - Prison                                   " +
-        "\n E - Exit Map                                 " +
+        "\n P - Police Station                           " +
+        "\n D - Defense Attorney's Office                " +
+        "\n A - Addison Park                             " +
+        "\n C - Convenience Store                        " +
+        "\n S - Sheldon Family House                     " +
+        "\n M - Mark Jones' House                        " +
+        "\n J - Joan Delger's House                      " +
+        "\n B - Sumner Brothers' House                   " +
+        "\n E - Exit                                     " +
         "\n----------------------------------------------");
     }
     @Override
@@ -30,20 +35,29 @@ public class MapView extends View{
         boolean finish = false;
         
         switch (value) {
-            case "C":
-                this.goToCafe();
-                break;
             case "P":
-                this.goToPub();
+                this.goToPoliceStation();
                 break;
-            case "S":
+            case "D":
+                this.goToDAOffice();
+                break;
+            case "A":
+                this.goToPark();
+                break;
+            case "C":
                 this.goToStore();
                 break;
-            case "O":
-                this.goToOffice();
+            case "S":
+                this.goToSheldonHouse();
                 break;
-            case "R":
-                this.goToPrison();
+            case "M":
+                this.goToJonesHouse();
+                break;
+            case "J":
+                this.goToDelgerHouse();
+                break;
+            case "B":
+                this.goToSumnerHouse();
                 break;
             case "E":
                 finish = true;
@@ -54,24 +68,36 @@ public class MapView extends View{
         return finish;
     }
 
-    private void goToCafe() {
-        this.console.println("goToCafe funtion called!");
+    private void goToPoliceStation() {
+        LocationControl.goToPoliceStation();
     }
 
-    private void goToPub() {
-        this.console.println("goToPub funtion called!");
+    private void goToDAOffice() {
+        LocationControl.goToDAOffice();
+    }
+
+    private void goToPark() {
+        LocationControl.goToPark();
     }
 
     private void goToStore() {
-        this.console.println("goToStore funtion called!");
+        LocationControl.goToStore();
     }
 
-    private void goToOffice() {
-        this.console.println("goToOffice funtion called!");
+    private void goToSheldonHouse() {
+        LocationControl.goToSheldonHome();
     }
 
-    private void goToPrison() {
-        this.console.println("goToPrison funtion called!");
+    private void goToJonesHouse() {
+        LocationControl.goToJonesHome();
     }
-    
+
+    private void goToDelgerHouse() {
+        LocationControl.goToDelgerHome();
+    }
+
+    private void goToSumnerHouse() {
+        LocationControl.goToSumnerHome();
+    }
+
 }

@@ -14,14 +14,16 @@ import java.util.Objects;
  */
 public class Location implements Serializable {
     
-    
     // Class instance variables
     private int row;
     private int column;
     private Boolean visited;
     private String description;
+    /*
     private double distanceFromCrime;
     private String parentLocation;
+    private Scene scene;
+    */
 
     public Location() {
     }
@@ -33,8 +35,8 @@ public class Location implements Serializable {
         hash = 23 * hash + this.column;
         hash = 23 * hash + Objects.hashCode(this.visited);
         hash = 23 * hash + Objects.hashCode(this.description);
-        hash = 23 * hash + (int) (Double.doubleToLongBits(this.distanceFromCrime) ^ (Double.doubleToLongBits(this.distanceFromCrime) >>> 32));
-        hash = 23 * hash + Objects.hashCode(this.parentLocation);
+      /*hash = 23 * hash + (int) (Double.doubleToLongBits(this.distanceFromCrime) ^ (Double.doubleToLongBits(this.distanceFromCrime) >>> 32));
+        hash = 23 * hash + Objects.hashCode(this.parentLocation);*/
         return hash;
     }
 
@@ -55,16 +57,16 @@ public class Location implements Serializable {
         }
         if (this.column != other.column) {
             return false;
-        }
+        } /*
         if (Double.doubleToLongBits(this.distanceFromCrime) != Double.doubleToLongBits(other.distanceFromCrime)) {
             return false;
-        }
+        } */
         if (!Objects.equals(this.description, other.description)) {
             return false;
-        }
+        } /*
         if (!Objects.equals(this.parentLocation, other.parentLocation)) {
             return false;
-        }
+        } */
         if (!Objects.equals(this.visited, other.visited)) {
             return false;
         }
@@ -73,7 +75,7 @@ public class Location implements Serializable {
 
     @Override
     public String toString() {
-        return "Location{" + "visited=" + visited + ", name=" /**+ name **/+ ", description=" + description + ", distanceFromCrime=" + distanceFromCrime + ", parentLocation=" + parentLocation + '}';
+        return "Location{" + "visited=" + visited + ", name=" /**+ name **/+ ", description=" + description + ", distanceFromCrime=" + /*distanceFromCrime + */", parentLocation=" + /*parentLocation + */ '}';
     }
 
     public int getRow() {
@@ -107,7 +109,7 @@ public class Location implements Serializable {
     public void setDescription(String description) {
         this.description = description;
     }
-
+    /*
     public double getDistanceFromCrime() {
         return distanceFromCrime;
     }
@@ -124,5 +126,12 @@ public class Location implements Serializable {
         this.parentLocation = parentLocation;
     }
 
+    public Scene getScene() {
+        return scene;
+    }
     
+    public void setScene(Scene scene) {
+        this.scene = scene;
+    }
+    */
 }
