@@ -25,20 +25,30 @@ public class SceneControl {
         }*/
         
         if (!scene[SceneType.Intro.ordinal()].getCompleted()) {
-            sceneView = new SceneView(SceneType.Intro, false);
+            sceneView = new SceneView(SceneType.Intro, true);
         }
         else if (!scene[SceneType.EvidenceTutorial.ordinal()].getCompleted()) {
-            sceneView = new SceneView(SceneType.EvidenceTutorial, true);
+            sceneView = new SceneView(SceneType.EvidenceTutorial, false);
         }
         else if (!scene[SceneType.AlibiTutorial.ordinal()].getCompleted()) {
-            sceneView = new SceneView(SceneType.AlibiTutorial, true);
+            sceneView = new SceneView(SceneType.AlibiTutorial, false);
         }
         
         sceneView.display();
     }
     
     public static void talk() {
-        System.out.println("talk function called");
+        Scene[] scene = MurderInTheCity.getCurrentGame().getScene();
+        SceneView sceneView = null;
+        
+        if (!scene[SceneType.EvidenceTutorial.ordinal()].getCompleted()) {
+            sceneView = new SceneView(SceneType.EvidenceTutorialTalk, true);
+        }
+        else if (!scene[SceneType.AlibiTutorial.ordinal()].getCompleted()) {
+            sceneView = new SceneView(SceneType.AlibiTutorialTalk, false);
+        }
+        
+        sceneView.display();
     }
     
     public static void exploreLocation() {

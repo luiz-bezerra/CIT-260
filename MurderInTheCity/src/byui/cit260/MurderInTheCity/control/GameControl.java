@@ -218,7 +218,8 @@ public class GameControl {
               + "\nclues just by intuition, and thus decided to give him the "
               + "\nchance of further investigating that crime, since he always "
               + "\nwanted to work as a detective and the victim was his friend."
-              + "\nThey assigned a partner to work with him, Jessica Waters.");
+              + "\nThey assigned a partner to work with him, Jessica Waters."
+              + "\n");
         //scenes.setLocation(Park);
         intro.setCompleted(false);
         scenes[SceneType.Intro.ordinal()] = intro;
@@ -246,10 +247,20 @@ public class GameControl {
               + "\nJessica: So, why don't we start by looking at the pieces of"
               + "\nevidence we've gathered so far? You can see them in your"
               + "\ntablet. Just press 'O' to turn it on and then press 'L'"
-              + "\nto check the evidences.");
+              + "\nto check the evidences."
+              + "\n");
         //scenes.setLocation(PoliceStation);
         intro.setCompleted(false);
         scenes[SceneType.EvidenceTutorial.ordinal()] = evidenceTutorial;
+        
+        Scene evidenceTutorialTalk = new Scene();
+        evidenceTutorialTalk.setDescription(
+                "\nJessica: Please, take a look at the evidence list before we"
+              + "\nmove on."
+              + "\n");
+        //scenes.setLocation(PoliceStation);
+        intro.setCompleted(false);
+        scenes[SceneType.EvidenceTutorialTalk.ordinal()] = evidenceTutorialTalk;
         
         Scene alibiTutorial = new Scene();
         alibiTutorial.setDescription(
@@ -260,15 +271,21 @@ public class GameControl {
               + "\nAlbert and Jessica go to a small room inside that police"
               + "\nstation."
               + "\n"
-              + "\nJessica: Who would you like to talk to first? Just press the"
-              + "\nnumber of person and press 'Enter'."
-              + "\n"
-              + "\n1 - Harris Sheldon"
-              + "\n2 - Tony Sumner"
-              + "\n3 - Dan Sumner");
+              + "\nJessica: Are you ready for the interviews? Just press 'T' to"
+              + "\nstart talking."
+              + "\n");
         //scenes.setLocation(PoliceStation);
         intro.setCompleted(false);
         scenes[SceneType.AlibiTutorial.ordinal()] = alibiTutorial;
+        
+        Scene alibiTutorialTalk = new Scene();
+        alibiTutorialTalk.setDescription(
+                "\nJessica: Who would you like to talk to first? Just press the"
+              + "\nthe number of the person."
+              + "\n");
+        //scenes.setLocation(PoliceStation);
+        intro.setCompleted(false);
+        scenes[SceneType.AlibiTutorialTalk.ordinal()] = alibiTutorialTalk;
         
         Scene harrisSheldonAlibi = new Scene();
         harrisSheldonAlibi.setDescription(

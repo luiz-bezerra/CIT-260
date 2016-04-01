@@ -12,7 +12,9 @@ package byui.cit260.MurderInTheCity.model;
 public enum SceneType {
     Intro,
     EvidenceTutorial,
+    EvidenceTutorialTalk,
     AlibiTutorial,
+    AlibiTutorialTalk,
     HarrisSheldonAlibi,
     TonySumnerAlibi,
     DanSumnerAlibi,

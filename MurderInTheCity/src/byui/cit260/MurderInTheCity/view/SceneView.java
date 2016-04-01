@@ -18,7 +18,7 @@ public class SceneView extends View {
     
     Scene[] scene = MurderInTheCity.getCurrentGame().getScene();
     SceneType sceneType;
-    boolean showDisplay, alreadyDisplayed;
+    boolean isCutscene, alreadyDisplayed;
     String sceneMenu = 
             "\n----------------------------------------------" +
             "\n| Scene Menu                                 |" +
@@ -30,9 +30,9 @@ public class SceneView extends View {
             "\n G - Game Menu                                " +
             "\n----------------------------------------------";;
     
-    public SceneView(SceneType sceneType, boolean showDisplay) { 
+    public SceneView(SceneType sceneType, boolean isCutscene) { 
         this.sceneType = sceneType;
-        this.showDisplay = showDisplay;
+        this.isCutscene = isCutscene;
     }
     
     @Override
@@ -45,7 +45,7 @@ public class SceneView extends View {
                 break;
             }
             
-            String value = this.getInput(showDisplay);
+            String value = this.getInput(!isCutscene);
             if (value.toUpperCase().equals("E"))
                 return;
             
@@ -81,7 +81,7 @@ public class SceneView extends View {
         boolean finish = false;
         value = value.toUpperCase();
         
-        if (!showDisplay) {
+        if (isCutscene) {
             scene[sceneType.ordinal()].setCompleted(true);
             return true;
         }        
