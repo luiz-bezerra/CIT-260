@@ -20,6 +20,7 @@ public class Crime implements Serializable {
     private String crimeOffender;
     private Boolean solved;
     private String[] crimeType;
+    private Suspect[] suspect;
 
     @Override
     public int hashCode() {
@@ -105,5 +106,13 @@ public class Crime implements Serializable {
     
     public String[] getCrimeType() {
         return crimeType;
+    }
+    
+    public Suspect[] getSuspect() {
+        return suspect;
+    }
+    
+    public void setSuspect(Suspect[] suspect) {
+        this.suspect = suspect;
     }
 }

@@ -8,6 +8,7 @@ package byui.cit260.MurderInTheCity.control;
 import byui.cit260.MurderInTheCity.model.Scene;
 import byui.cit260.MurderInTheCity.model.SceneType;
 import byui.cit260.MurderInTheCity.view.SceneView;
+import byui.cit260.MurderInTheCity.view.TalkView;
 import murderinthecity.MurderInTheCity;
 
 /**
@@ -20,10 +21,6 @@ public class SceneControl {
         Scene[] scene = MurderInTheCity.getCurrentGame().getScene();
         SceneView sceneView = null;
         
-        /*for (Scene scenes : scene) {
-            System.out.println(scenes.getDescription());
-        }*/
-        
         if (!scene[SceneType.Intro.ordinal()].getCompleted()) {
             sceneView = new SceneView(SceneType.Intro, true);
         }
@@ -33,22 +30,27 @@ public class SceneControl {
         else if (!scene[SceneType.AlibiTutorial.ordinal()].getCompleted()) {
             sceneView = new SceneView(SceneType.AlibiTutorial, false);
         }
+        else if (!scene[SceneType.MoveToLocationTutorial.ordinal()].getCompleted()) {
+            sceneView = new SceneView(SceneType.MoveToLocationTutorial, false);
+        }
         
         sceneView.display();
     }
     
-    public static void talk() {
-        Scene[] scene = MurderInTheCity.getCurrentGame().getScene();
-        SceneView sceneView = null;
+    public static void talk(Scene[] scene, SceneType sceneType) {
+        TalkView talkView = null;
         
-        if (!scene[SceneType.EvidenceTutorial.ordinal()].getCompleted()) {
-            sceneView = new SceneView(SceneType.EvidenceTutorialTalk, true);
+        if (sceneType.equals(SceneType.EvidenceTutorial)) {
+            talkView = new TalkView(SceneType.EvidenceTutorialTalk, false);
         }
-        else if (!scene[SceneType.AlibiTutorial.ordinal()].getCompleted()) {
-            sceneView = new SceneView(SceneType.AlibiTutorialTalk, false);
+        else if (sceneType.equals(SceneType.AlibiTutorial)) {
+            talkView = new TalkView(SceneType.AlibiTutorialTalk, true);
+        }
+        else if (sceneType.equals(SceneType.MoveToLocationTutorial)) {
+            talkView = new TalkView(SceneType.MoveToLocationTutorialTalk, false);
         }
         
-        sceneView.display();
+        talkView.display();
     }
     
     public static void exploreLocation() {

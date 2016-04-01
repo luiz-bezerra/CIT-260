@@ -18,6 +18,8 @@ public enum SceneType {
     HarrisSheldonAlibi,
     TonySumnerAlibi,
     DanSumnerAlibi,
+    MoveToLocationTutorial,
+    MoveToLocationTutorialTalk,
     AuraSheldonInterview1,
     MarkJonesInterview1,
     JoanDelgerInterview1,

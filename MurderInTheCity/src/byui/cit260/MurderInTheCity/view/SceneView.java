@@ -28,7 +28,7 @@ public class SceneView extends View {
             "\n M - Move to a New Location                   " +
             "\n O - Turn On Tablet                           " +
             "\n G - Game Menu                                " +
-            "\n----------------------------------------------";;
+            "\n----------------------------------------------";
     
     public SceneView(SceneType sceneType, boolean isCutscene) { 
         this.sceneType = sceneType;
@@ -114,7 +114,7 @@ public class SceneView extends View {
     }
 
     private void talk() {
-        SceneControl.talk();
+        SceneControl.talk(scene, sceneType);
     }
 
     private void exploreLocation() {
