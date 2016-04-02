@@ -17,6 +17,7 @@ import byui.cit260.MurderInTheCity.model.Player;
 import byui.cit260.MurderInTheCity.model.Scene;
 import byui.cit260.MurderInTheCity.model.SceneType;
 import byui.cit260.MurderInTheCity.model.Suspect;
+import byui.cit260.MurderInTheCity.model.SuspectName;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
@@ -38,9 +39,6 @@ public class GameControl {
        Map map = MapControl.createMap();
        game.setMap(map);
        
-       Crime[] crime = GameControl.createCrime();
-       game.setCrime(crime);
-       
        Evidence[] evidence = GameControl.createEvidenceList();
        game.setEvidence(evidence);
        
@@ -51,13 +49,49 @@ public class GameControl {
        game.setScene(scene);
        
        Location[][] locations = GameControl.createLocations();
+       Crime[] crime = GameControl.createCrime(alibi);
+       game.setCrime(crime);
+       
+//>>>>>>> origin/master
        
        MurderInTheCity.setCurrentGame(game);
     }
     
-    public static Crime[] createCrime() {
-        System.out.println("createCrime function called.");
-        return null;
+    public static Crime[] createCrime(Alibi[] alibi) {
+        Crime[] crime = new Crime[1];
+        
+        Crime firstCrime = new Crime();
+        firstCrime.setCrimeOffender("Tony Sumner");
+        firstCrime.setCrimePlace("Park");
+        firstCrime.setSolved(false);
+        firstCrime.setSuspect(GameControl.createSuspectList(alibi));
+        crime[0] = firstCrime;
+        
+        return crime;
+    }
+    
+    public static Suspect[] createSuspectList(Alibi[] alibi) {
+        Suspect[] suspect = new Suspect[3];
+        
+        Suspect harrisSheldon = new Suspect();
+        harrisSheldon.setName("Harris Sheldon");
+        harrisSheldon.setAlibi(alibi[SuspectName.HarrisSheldon.ordinal()]);
+        harrisSheldon.setTimeAtLocation(0);
+        suspect[SuspectName.HarrisSheldon.ordinal()] = harrisSheldon;
+        
+        Suspect tonySumner = new Suspect();
+        tonySumner.setName("Tony Sumner");
+        tonySumner.setAlibi(alibi[SuspectName.TonySumner.ordinal()]);
+        tonySumner.setTimeAtLocation(0);
+        suspect[SuspectName.TonySumner.ordinal()] = tonySumner;
+        
+        Suspect danSumner = new Suspect();
+        danSumner.setName("Dan Sumner");
+        danSumner.setAlibi(alibi[SuspectName.DanSumner.ordinal()]);
+        danSumner.setTimeAtLocation(0);
+        suspect[SuspectName.DanSumner.ordinal()] = danSumner;
+        
+        return suspect;
     }
     
     public static Evidence[] createEvidenceList() {
@@ -66,7 +100,7 @@ public class GameControl {
         Evidence autopsyResults = new Evidence();
         autopsyResults.setName("Autopsy results");
         autopsyResults.setDescription("death by head trauma due to two blows received on the head");
-        autopsyResults.setLocationCollected("");
+        autopsyResults.setLocationCollected("???");
         evidence[PiecesOfEvidence.AutopsyResults.ordinal()] = autopsyResults;
         
         Evidence bloodyHammer = new Evidence();
@@ -78,19 +112,19 @@ public class GameControl {
         Evidence harrisFingerprints = new Evidence();
         harrisFingerprints.setName("Harris Sheldon's fingerprints");
         harrisFingerprints.setDescription("Fingerprints of Harris Sheldon found on the murder weapon");
-        harrisFingerprints.setLocationCollected("");
+        harrisFingerprints.setLocationCollected("Park");
         evidence[PiecesOfEvidence.HarrisFingerprints.ordinal()] = harrisFingerprints;
         
         Evidence tonyFingerprints = new Evidence();
         tonyFingerprints.setName("Tony Sumner's fingerprints");
         tonyFingerprints.setDescription("Fingerprints of Tony Sumner found on the murder weapon");
-        tonyFingerprints.setLocationCollected("");
+        tonyFingerprints.setLocationCollected("Park");
         evidence[PiecesOfEvidence.TonyFingerprints.ordinal()] = tonyFingerprints;
         
         Evidence danFingerprints = new Evidence();
         danFingerprints.setName("Dan Sumner's fingerprints");
         danFingerprints.setDescription("Fingerprints of Dan Sumner found on the murder weapon");
-        danFingerprints.setLocationCollected("");
+        danFingerprints.setLocationCollected("Park");
         evidence[PiecesOfEvidence.DanFingerprints.ordinal()] = danFingerprints;
         
         Evidence auraTestimony = new Evidence();
@@ -136,27 +170,37 @@ public class GameControl {
         Alibi[] alibi = new Alibi[3];
         
         Alibi harrisAlibi = new Alibi();
-        harrisAlibi.setTime("10:00 PM");
-        harrisAlibi.setDescription("Harris Sheldon was watching TV home with his wife");
+        harrisAlibi.setTime("");
+        harrisAlibi.setDescription(
+                        "Harris Sheldon was watching TV \n     " +
+                        "home with his wife");
         harrisAlibi.setCorroborator("Aura Sheldon");
-        alibi[Suspect.HarrisSheldon.ordinal()] = harrisAlibi;
+        alibi[SuspectName.HarrisSheldon.ordinal()] = harrisAlibi;
         
         Alibi tonyAlibi = new Alibi();
-        tonyAlibi.setTime("10:00 PM");
-        tonyAlibi.setDescription("Tony Sumner was running close to his house, practicing for a marathon");
+        tonyAlibi.setTime("");
+        tonyAlibi.setDescription(
+                        "Tony Sumner was running close to \n     " +
+                        "his house, practicing for a marathon");
         tonyAlibi.setCorroborator("Mark Jones");
-        alibi[Suspect.TonySumner.ordinal()] = tonyAlibi;
+        alibi[SuspectName.TonySumner.ordinal()] = tonyAlibi;
         
         Alibi danAlibi = new Alibi();
-        danAlibi.setTime("10:00 PM");
-        danAlibi.setDescription("Dan Sumner was at the movies with his girlfriend");
+        danAlibi.setTime("");
+        danAlibi.setDescription(
+                        "Dan Sumner was at the movies with \n     " +
+                        "his girlfriend");
         danAlibi.setCorroborator("Joan Delger");
-        alibi[Suspect.DanSumner.ordinal()] = danAlibi;
+        alibi[SuspectName.DanSumner.ordinal()] = danAlibi;
         
         return alibi;
     }
 
-    public static void SaveGame(Game currentGame, String filePath) throws GameControlExceptions {
+//<<<<<<< HEAD
+    
+//=======
+    public static void saveGame(Game currentGame, String filePath) throws GameControlExceptions {
+//>>>>>>> origin/master
         try (FileOutputStream fops = new FileOutputStream(filePath)) {
             ObjectOutputStream output = new ObjectOutputStream(fops);
             
@@ -221,8 +265,10 @@ public class GameControl {
               + "\nclues just by intuition, and thus decided to give him the "
               + "\nchance of further investigating that crime, since he always "
               + "\nwanted to work as a detective and the victim was his friend."
-              + "\nThey assigned a partner to work with him, Jessica Waters.");
+              + "\nThey assigned a partner to work with him, Jessica Waters."
+              + "\n");
         //scenes.setLocation(Park);
+        intro.setCompleted(false);
         scenes[SceneType.Intro.ordinal()] = intro;
         
         Scene evidenceTutorial = new Scene();
@@ -246,10 +292,22 @@ public class GameControl {
               + "\nAlbert: That's right! That's why we're here!"
               + "\n"
               + "\nJessica: So, why don't we start by looking at the pieces of"
-              + "\nevidence we've gathered so far? Just go to the Game Menu and"
-              + "\npress 'I'");
+              + "\nevidence we've gathered so far? You can see them in your"
+              + "\ntablet. Just press 'O' to turn it on and then press 'L'"
+              + "\nto check the evidences."
+              + "\n");
         //scenes.setLocation(PoliceStation);
+        evidenceTutorial.setCompleted(false);
         scenes[SceneType.EvidenceTutorial.ordinal()] = evidenceTutorial;
+        
+        Scene evidenceTutorialTalk = new Scene();
+        evidenceTutorialTalk.setDescription(
+                "\nJessica: Please, take a look at the evidence list before we"
+              + "\nmove on."
+              + "\n");
+        //scenes.setLocation(PoliceStation);
+        evidenceTutorialTalk.setCompleted(false);
+        scenes[SceneType.EvidenceTutorialTalk.ordinal()] = evidenceTutorialTalk;
         
         Scene alibiTutorial = new Scene();
         alibiTutorial.setDescription(
@@ -260,20 +318,27 @@ public class GameControl {
               + "\nAlbert and Jessica go to a small room inside that police"
               + "\nstation."
               + "\n"
-              + "\nJessica: Who would you like to talk to first? Just press the"
-              + "\nnumber of person and press 'Enter'."
-              + "\n"
-              + "\n1 - 47-years old Harris Sheldon"
-              + "\n2 - 20-years old Tony Sumner"
-              + "\n3 - 23-years old Dan Sumner");
+              + "\nJessica: Are you ready for the interviews? Just press 'T' to"
+              + "\nstart talking."
+              + "\n");
         //scenes.setLocation(PoliceStation);
+        alibiTutorial.setCompleted(false);
         scenes[SceneType.AlibiTutorial.ordinal()] = alibiTutorial;
+        
+        Scene alibiTutorialTalk = new Scene();
+        alibiTutorialTalk.setDescription(
+                "\nJessica: Which suspect would you like to talk to first? Just"
+              + "\npress the number of the person."
+              + "\n");
+        //scenes.setLocation(PoliceStation);
+        alibiTutorialTalk.setCompleted(false);
+        scenes[SceneType.AlibiTutorialTalk.ordinal()] = alibiTutorialTalk;
         
         Scene harrisSheldonAlibi = new Scene();
         harrisSheldonAlibi.setDescription(
                 "\nJessica: Ok, I'll bring Mr. Sheldon, then."
               + "\n"
-              + "\nAfter a short time, a middle-aged man comes and sits in the"
+              + "\nAfter a short time, a middle-aged man comes and sits on the"
               + "\nchair in front of Albert. Albert questioned him about the"
               + "\nnight of the crime."
               + "\n"
@@ -292,9 +357,115 @@ public class GameControl {
               + "Mr. Sheldon is escorted back to his cell."
               + "\n"
               + "\nJessica: Mr. Sheldon's alibi was added to your list. You can"
-              + "\nsee it anytime, by going to the Game Menu and pressing 'A'");
+              + "\nsee it anytime, by turning on your tablet and pressing 'S'"
+              + "\n"
+              + "\nAlbert: Ok, thanks!"
+              + "\n"
+              + "\nJessica: Who would you like to interview now?"
+              + "\n");
         //scenes.setLocation(PoliceStation);
+        harrisSheldonAlibi.setCompleted(false);
         scenes[SceneType.HarrisSheldonAlibi.ordinal()] = harrisSheldonAlibi;
+        
+        Scene tonySumnerAlibi = new Scene();
+        tonySumnerAlibi.setDescription(
+                "\nJessica: Ok, I'll bring Tony Sumner, then."
+              + "\n"
+              + "\nAfter a short time, a young and athletic-looking man comes"
+              + "\nand sits on the chair in front of Albert. Albert questioned"
+              + "\nhim about the night of the crime."
+              + "\n"
+              + "\nTony: Well, I was running on my street that night. I'm"
+              + "\npreparing for a marathon, you know, and since it's pretty"
+              + "\nhot lately, I decided to run after the sunset. If you don't"
+              + "\nbelieve me, you can ask my neighbor, he saw me running!"
+              + "\n"
+              + "\nAlbert: If that's true, why did we find your fingerprints on"
+              + "\nthe murder weapon?"
+              + "\n"
+              + "\nTony: I used a hammer I found home to nail a picture in the"
+              + "\nwall earlier that day, but didn't use it for anything later."
+              + "\n"
+              + "\nAlbert: Ok, then. Thank you for your cooperation."
+              + "\n"
+              + "Tony is escorted back to his cell."
+              + "\n"
+              + "\nJessica: Tony Sumner's alibi was added to your list. You can"
+              + "\nsee it anytime, by turning on your tablet and pressing 'S'"
+              + "\n"
+              + "\nAlbert: Ok, thanks!"
+              + "\n"
+              + "\nJessica: Who would you like to interview now?"
+              + "\n");
+        //scenes.setLocation(PoliceStation);
+        tonySumnerAlibi.setCompleted(false);
+        scenes[SceneType.TonySumnerAlibi.ordinal()] = tonySumnerAlibi;
+        
+        Scene danSumnerAlibi = new Scene();
+        danSumnerAlibi.setDescription(
+                "\nJessica: Ok, I'll bring Dan Sumner, then."
+              + "\n"
+              + "\nAfter a short time, a young and strong-looking man comes and"
+              + "\nsits on the chair in front of Albert. Albert questioned him"
+              + "\nabout the night of the crime."
+              + "\n"
+              + "\nDan: I left home that night to go to the movies with my"
+              + "\ngirlfriend. The movie started at 9:30 PM and ended around"
+              + "\n11:30 PM, so, it can't have been me!"
+              + "\n"
+              + "\nAlbert: If that's true, why did we find your fingerprints on"
+              + "\nthe murder weapon?"
+              + "\n"
+              + "\nDan: Well, I work as a woodworker, and I asked my boss if I"
+              + "\ncould borrow his hammer, because I needed to fix a wooden"
+              + "\nchair back home."
+              + "\n"
+              + "\nAlbert: Alright. Thank you for your cooperation."
+              + "\n"
+              + "Dan is escorted back to his cell."
+              + "\n"
+              + "\nJessica: Dan Sumner's alibi was added to your list. You can"
+              + "\nsee it anytime, by turning on your tablet and pressing 'S'"
+              + "\n"
+              + "\nAlbert: Ok, thanks!"
+              + "\n"
+              + "\nJessica: Who would you like to interview now?"
+              + "\n");
+        //scenes.setLocation(PoliceStation);
+        danSumnerAlibi.setCompleted(false);
+        scenes[SceneType.DanSumnerAlibi.ordinal()] = danSumnerAlibi;
+        
+        Scene moveToLocationTutorial = new Scene();
+        moveToLocationTutorial.setDescription(
+                "\nJessica: All our suspects had an alibi and they say they"
+              + "\neven have witnesses to corroborate with their alibis..."
+              + "\n"
+              + "\nAlbert: Well, let's talk to those witnesses, then. See if"
+              + "\ntheir accounts match. I also want to talk to the owner of"
+              + "\nthat convenience store close to the crime scene once more..."
+              + "\nI feel like I can get some more information from him."
+              + "\n"
+              + "\nJessica: Agreed. So, we are going to talk to Mrs. Sheldon,"
+              + "\nto the Sumner Brothers' neighbor - a man called Mark Jones -"
+              + "\nto Dan Sumner's girlfriend, whose name is Joan Delger, and"
+              + "\nto the convenience store owner."
+              + "\n"
+              + "\nAlbert: That's right."
+              + "\n"
+              + "\nJessica: So, just press 'M' and choose where you want to go"
+              + "\nfirst."
+              + "\n");
+        //scenes.setLocation(Po0liceStation);
+        moveToLocationTutorial.setCompleted(false);
+        scenes[SceneType.MoveToLocationTutorial.ordinal()] = moveToLocationTutorial;
+        
+        Scene moveToLocationTutorialTalk = new Scene();
+        moveToLocationTutorialTalk.setDescription(
+                "\nJessica: Let's talk to the alibi corroborators!"
+              + "\n");
+        //scenes.setLocation(PoliceStation);
+        moveToLocationTutorialTalk.setCompleted(false);
+        scenes[SceneType.MoveToLocationTutorialTalk.ordinal()] = moveToLocationTutorialTalk;
         
         return scenes;
     }
@@ -307,6 +478,9 @@ public class GameControl {
         policeStation.setColumn(0);
         policeStation.setDescription("Police Station");
         policeStation.setVisited(false);
+      /*policeStation.setDistanceFromCrime(0);
+        policeStation.setParentLocation(parentLocation);
+        policeStation.setScene(scene);*/
         locations[0][0] = policeStation;
         
         
@@ -315,6 +489,9 @@ public class GameControl {
         daOffice.setColumn(1);
         daOffice.setDescription("Defense Attourney's Office");
         daOffice.setVisited(false);
+      /*daOffice.setDistanceFromCrime(0);
+        daOffice.setParentLocation(parentLocation);
+        daOffice.setScene(scene);*/
         locations[0][1] = daOffice;
         
         Location park = new Location();
@@ -322,6 +499,9 @@ public class GameControl {
         park.setColumn(0);
         park.setDescription("Addison Park");
         park.setVisited(false);
+      /*park.setDistanceFromCrime(0);
+        park.setParentLocation(parentLocation);
+        park.setScene(scene);*/
         locations[1][0] = park;
         
         Location store = new Location();
@@ -329,6 +509,9 @@ public class GameControl {
         store.setColumn(1);
         store.setDescription("Convenience Store");
         store.setVisited(false);
+      /*store.setDistanceFromCrime(0);
+        store.setParentLocation(parentLocation);
+        store.setScene(scene);*/
         locations[1][1] = store;
         
         Location sheldonHouse = new Location();
@@ -336,6 +519,9 @@ public class GameControl {
         sheldonHouse.setColumn(2);
         sheldonHouse.setDescription("Sheldon Family House");
         sheldonHouse.setVisited(false);
+      /*sheldonHouse.setDistanceFromCrime(0);
+        sheldonHouse.setParentLocation(parentLocation);
+        sheldonHouse.setScene(scene);*/
         locations[1][2] = sheldonHouse;
         
         Location jonesHouse = new Location();
@@ -343,6 +529,9 @@ public class GameControl {
         jonesHouse.setColumn(3);
         jonesHouse.setDescription("Mark Jones' House");
         jonesHouse.setVisited(false);
+      /*jonesHouse.setDistanceFromCrime(0);
+        jonesHouse.setParentLocation(parentLocation);
+        jonesHouse.setScene(scene);*/
         locations[1][3] = jonesHouse;
         
         Location delgerHouse = new Location();
@@ -350,6 +539,9 @@ public class GameControl {
         delgerHouse.setColumn(4);
         delgerHouse.setDescription("Joan Delger's House");
         delgerHouse.setVisited(false);
+      /*delgerHouse.setDistanceFromCrime(0);
+        delgerHouse.setParentLocation(parentLocation);
+        delgerHouse.setScene(scene);*/
         locations[1][4] = delgerHouse;
         
         Location sumnerHouse = new Location();
@@ -357,8 +549,12 @@ public class GameControl {
         sumnerHouse.setColumn(5);
         sumnerHouse.setDescription("Sumner Brothers' House");
         sumnerHouse.setVisited(false);
+      /*sumnerHouse.setDistanceFromCrime(0);
+        sumnerHouse.setParentLocation(parentLocation);
+        sumnerHouse.setScene(scene);*/
         locations[1][5] = sumnerHouse;
         
         return locations;
     } 
+
 }

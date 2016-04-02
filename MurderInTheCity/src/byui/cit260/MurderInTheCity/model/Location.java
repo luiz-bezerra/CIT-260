@@ -19,11 +19,10 @@ public class Location implements Serializable {
     private int column;
     private Boolean visited;
     private String description;
-    /*
     private double distanceFromCrime;
     private String parentLocation;
     private Scene scene;
-    */
+    
 
     public Location() {
     }
@@ -109,7 +108,7 @@ public class Location implements Serializable {
     public void setDescription(String description) {
         this.description = description;
     }
-    /*
+   
     public double getDistanceFromCrime() {
         return distanceFromCrime;
     }
@@ -133,5 +132,5 @@ public class Location implements Serializable {
     public void setScene(Scene scene) {
         this.scene = scene;
     }
-    */
+    
 }

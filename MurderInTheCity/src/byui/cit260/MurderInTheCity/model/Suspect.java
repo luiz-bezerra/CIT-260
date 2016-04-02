@@ -5,24 +5,26 @@
  */
 package byui.cit260.MurderInTheCity.model;
 
-//import java.io.Serializable;
+import java.io.Serializable;
 
 /**
  *
  * @author Daniel & Luiz
  */
 
-public enum Suspect {
+/*public enum Suspect {
     HarrisSheldon(),
     TonySumner(),
     DanSumner();
-}
+}*/
 
-/*
+
 public class Suspect implements Serializable {
     
     //class instance variables
     private double timeAtLocation;
+    private String name;
+    private Alibi alibi;
     
     public Suspect() {
     }
@@ -33,6 +35,22 @@ public class Suspect implements Serializable {
 
     public void setTimeAtLocation(double timeAtLocation) {
         this.timeAtLocation = timeAtLocation;
+    }
+    
+    public String getName() {
+        return name;
+    }
+    
+    public void setName(String name) {
+        this.name = name;
+    }
+    
+    public Alibi getAlibi() {
+        return alibi;
+    }
+    
+    public void setAlibi(Alibi alibi) {
+        this.alibi = alibi;
     }
 
     @Override
@@ -64,7 +82,4 @@ public class Suspect implements Serializable {
         }
         return true;
     }
-    
-    
 }
-*/

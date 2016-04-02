@@ -15,6 +15,7 @@ import java.util.Objects;
 public class Scene implements Serializable {
     
     String description;
+    boolean completed;
     
     public String getDescription() {
         return description;
@@ -22,5 +23,13 @@ public class Scene implements Serializable {
     
     public void setDescription(String description) {
         this.description = description;
+    }
+    
+    public boolean getCompleted() {
+        return completed;
+    }
+    
+    public void setCompleted(boolean completed) {
+        this.completed = completed;
     }
 }

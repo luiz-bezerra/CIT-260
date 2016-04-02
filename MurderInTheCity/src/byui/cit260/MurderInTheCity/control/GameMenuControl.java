@@ -5,6 +5,7 @@
  */
 package byui.cit260.MurderInTheCity.control;
 import byui.cit260.MurderInTheCity.exceptions.GameMenuControlException;
+import byui.cit260.MurderInTheCity.model.Alibi;
 import byui.cit260.MurderInTheCity.model.Crime;
 import byui.cit260.MurderInTheCity.model.Evidence;
 import byui.cit260.MurderInTheCity.model.Game;
@@ -13,7 +14,14 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import byui.cit260.MurderInTheCity.model.Player;
+//<<<<<<< HEAD
 import java.io.FileNotFoundException;
+//=======
+import byui.cit260.MurderInTheCity.model.Scene;
+import byui.cit260.MurderInTheCity.model.SceneType;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+//>>>>>>> origin/master
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -25,7 +33,7 @@ import murderinthecity.MurderInTheCity;
  * @author Daniel and Luiz
  */
 public class GameMenuControl {
-  
+    
     /**
    public String showCityLocations() {
        return ;
@@ -36,7 +44,7 @@ public class GameMenuControl {
             out.println("\n\nEvidence Report");
             out.printf("%n%-40s%-100s", "Name", "Description");
             out.printf("%n%-40s%100s", "----------------------------------------", "----------------------------------------------------------------------------------------------------");
-            
+             
             for (Evidence evidence : evidenceList) {
                 out.printf("%n%-40s%-100s", evidence.getName(), evidence.getDescription());
             }
@@ -44,18 +52,51 @@ public class GameMenuControl {
             Logger.getLogger(GameMenuControl.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+
+    public void printAlibiReport(Alibi[] alibiList, String output) {
+        try (PrintWriter out = new PrintWriter(output)) {
+            out.printf("%-46s%-58s", "", "ALIBI REPORT");
+            out.printf("%n%-9s%-15s%-80s", "---------", "---------------", "--------------------------------------------------------------------------------");
+            out.printf("%n%-9s%-15s%-80s", "Time", "Corroborator", "Description");
+            out.printf("%n%-9s%-15s%-80s", "---------", "---------------", "--------------------------------------------------------------------------------");
+             
+            for (Alibi alibi : alibiList) {
+                out.printf("%n%-9s%-15s%-80s", alibi.getTime(), alibi.getCorroborator(), alibi.getDescription());
+            }
+        }        
+        catch (IOException ioEx) {
+            System.out.println("IO Error printing report:\n" + ioEx.getMessage());
+        }
+        catch (Exception ex) {
+            System.out.println("Error printing report:\n" + ex.getMessage());
+//>>>>>>> origin/master
+        }
+    }
    
-    public void showEvidence() {
-       // I know the following piece of code is a little redundant, since the evidence list
-       // was supposed to have been created already by the createNewGame function...
-       // But I'll change it later.
-       // TODO: Change this later, duh.
-       Evidence[] evidenceSortedList = this.sortEvidences(GameControl.createEvidenceList());
-       for (Evidence evidence : evidenceSortedList) {
-           System.out.println("\n" + evidence.getName() + ":");
-           System.out.println("- " + evidence.getDescription());
-       }
-   }
+//<<<<<<< HEAD
+    
+    
+    public String showEvidence() {
+        Evidence[] evidences = MurderInTheCity.getCurrentGame().getEvidence();
+        String evidenceList =
+                    "\n----------------------------------------------" +
+                    "\n  Evidence List                               " +
+                    "\n----------------------------------------------";
+        
+        for (Evidence evidence : evidences) {
+            if (!evidence.getLocationCollected().equals(""))
+                evidenceList += "\n" + evidence.getName() + ":"
+                              + "\n- " + evidence.getDescription() + "\n";
+        }
+        
+        //Seeing evidences triggers continuing the first scene
+        Scene[] scene = MurderInTheCity.getCurrentGame().getScene();
+        
+        if (!scene[SceneType.EvidenceTutorial.ordinal()].getCompleted())
+            MurderInTheCity.setSkipScene(true);
+        
+        return evidenceList;
+    }
    
    public Evidence[] sortEvidences(Evidence evidenceList[]) {
        
@@ -177,7 +218,7 @@ public class GameMenuControl {
        return player;
    }
    
-   public static void createNewGame(Player player) {
+   /*public static void createNewGame(Player player) {
        Game game = new Game();
        MurderInTheCity.setCurrentGame(game);
        
@@ -189,8 +230,9 @@ public class GameMenuControl {
        Crime[] crime = GameControl.createCrime();
        game.setCrime(crime);
        
-       
-   }
+       Scene[] scene = GameControl.createScenes();
+       game.setScene(scene);
+   }*/
    /**
    public void solveCrime() {
        
@@ -202,8 +244,7 @@ public class GameMenuControl {
    */
    
    
-   public void exploreCity() {
-       
+   public void exploreCity() {       
    }
    
    /**

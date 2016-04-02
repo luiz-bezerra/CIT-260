@@ -24,7 +24,7 @@ public class MapControl {
         
         Map map = new Map(2, 7);
         
-        Scene[] scenes = GameControl.createScenes();
+        //Scene[] scenes = GameControl.createScenes();
         
         return map;
     }

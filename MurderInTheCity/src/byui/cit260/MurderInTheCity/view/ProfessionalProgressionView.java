@@ -48,7 +48,8 @@ public class ProfessionalProgressionView extends View {
     }
     
     private void showCrimesSolved() {
-        this.console.println("showCrimesSolved function called.");
+        CrimesSolvedView crimesSolved = new CrimesSolvedView();
+        crimesSolved.display();
     }
     
     private void showTimeSpent() {

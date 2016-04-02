@@ -13,7 +13,7 @@ import murderinthecity.MurderInTheCity;
  */
 public class GameMenuView extends View {
 
-    public GameMenuView() {
+    /*public GameMenuView() {
             super("\n" +
                 "\n----------------------------------------------" +
                 "\n| Game Menu                                  |" +
@@ -35,6 +35,23 @@ public class GameMenuView extends View {
                 "\n G - Save Game                                " +
                 "\n E - Exit Game                                " +
                 "\n----------------------------------------------");
+<<<<<<< HEAD
+=======
+    }*/
+    
+    public GameMenuView() {
+            super("\n" +
+                "\n----------------------------------------------" +
+                "\n| Game Menu                                  |" +
+                "\n----------------------------------------------" +
+                "\n P - Professional Progression                 " +
+             /* "\n S - Crimes Solved                            " + */
+                "\n H - Get Help                                 " +
+             /* "\n U - Resume Game                              " + */
+                "\n T - Restart Game                             " +
+                "\n G - Save Game                                " +
+                "\n E - Exit Menu                                " +
+                "\n----------------------------------------------");
     }
     
     private void showCity() {
@@ -42,7 +59,7 @@ public class GameMenuView extends View {
         map.display();
     }
     
-    private void showEvidenceList() {
+    /*private void showEvidenceList() {
         PiecesOfEvidenceView evidence = new PiecesOfEvidenceView();
         evidence.display();
     }
@@ -63,12 +80,12 @@ public class GameMenuView extends View {
     }
     
     private void validateAlibi() {
-        /*
-        GameMenuControl.validateAlibi(place, time, timeOfDeath, searchRadius);
         
-        ValidateAlibiView validateAlibi = new ValidateAlibiView();
-        validateAlibi.validateAlibi();
-        */
+        //GameMenuControl.validateAlibi(place, time, timeOfDeath, searchRadius);
+        
+        //ValidateAlibiView validateAlibi = new ValidateAlibiView();
+        //validateAlibi.validateAlibi();
+        
         this.console.println("validateAlibi function called");
     }
     
@@ -82,28 +99,29 @@ public class GameMenuView extends View {
     
     private void exploreCity() {
         this.console.println("exploreCity function called");
-    }
+    }*/
     
     private void showProgress() {
         ProfessionalProgressionView professionalProgressionView = new ProfessionalProgressionView();
         professionalProgressionView.display();
     }
     
-    private void showCrimesSolved() {
+  /*private void showCrimesSolved() {
         this.console.println("showCrimesSolved function called");
-    }
+    }*/
     
     private void displayHelpMenu() {
         HelpMenuView helpMenuView = new HelpMenuView();
         helpMenuView.display();
     }
     
-    private void resumeGame() {
+ /* private void resumeGame() {
         this.console.println("resumeGame function called");
-    }
+    } */
     
     private void restartGame() {
-        this.console.println("restartGame function called");
+        StartProgramView restart = new StartProgramView();
+        restart.display();
     }
     
     private void saveGame() {
@@ -111,7 +129,9 @@ public class GameMenuView extends View {
         String filePath = this.getInput(false);
         
         try {
-            GameControl.SaveGame(MurderInTheCity.getCurrentGame(), filePath);
+
+            GameControl.saveGame(MurderInTheCity.getCurrentGame(), filePath);
+            this.console.println("\nGame saved!");
         } catch (Exception ex) {
             ErrorView.display("MainMenuView", ex.getMessage());
         }
@@ -123,7 +143,7 @@ public class GameMenuView extends View {
         value = value.toUpperCase();
         
         switch (value) {
-            case "C":
+            /*case "C":
                 this.showCity();
                 break;
             case "I":
@@ -149,19 +169,19 @@ public class GameMenuView extends View {
                 break;
             case "X":
                 this.exploreCity();
-                break;
+                break;*/
             case "P":
                 this.showProgress();
                 break;
-            case "S":
+          /*case "S":
                 this.showCrimesSolved();
-                break;
+                break;*/
             case "H":
                 this.displayHelpMenu();
                 break;
-            case "U":
+          /*case "U":
                 this.resumeGame();
-                break;
+                break; */
             case "T":
                 this.restartGame();
                 break;

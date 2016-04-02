@@ -51,4 +51,9 @@ public class CalcSearchRadiusView extends View {
         //This function shouldn't be used
         return true;
     }
+
+    @Override
+    public String getInput(boolean showDisplay) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }
