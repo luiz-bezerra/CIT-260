@@ -455,7 +455,7 @@ public class GameControl {
               + "\nJessica: So, just press 'M' and choose where you want to go"
               + "\nfirst."
               + "\n");
-        //scenes.setLocation(Po0liceStation);
+        //scenes.setLocation(PoliceStation);
         moveToLocationTutorial.setCompleted(false);
         scenes[SceneType.MoveToLocationTutorial.ordinal()] = moveToLocationTutorial;
         

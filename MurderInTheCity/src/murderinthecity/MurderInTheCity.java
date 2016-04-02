@@ -36,6 +36,8 @@ public class MurderInTheCity {
      * @param args the command line arguments
      */
     
+    public static long begin;
+    
     private static Game currentGame = null;
     private static Player player = null;
     
@@ -94,10 +96,12 @@ public class MurderInTheCity {
     }
     
     public static void main(String[] args) {
-
+        
         
         try {
-                       
+            
+            begin = System.currentTimeMillis();
+            
             MurderInTheCity.inFile = new BufferedReader(new InputStreamReader(System.in));
             
             MurderInTheCity.outFile = new PrintWriter(System.out, true);

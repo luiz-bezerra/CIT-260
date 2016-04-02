@@ -5,6 +5,8 @@
  */
 package byui.cit260.MurderInTheCity.view;
 
+import murderinthecity.MurderInTheCity;
+
 /**
  *
  * @author Daniel
@@ -53,10 +55,22 @@ public class ProfessionalProgressionView extends View {
     }
     
     private void showTimeSpent() {
-        this.console.println("showTimeSpent function called.");
+        long timeAsDetective = 0;
+        String sfx = "";
+        long timeAsDetectiveMS = System.currentTimeMillis() - MurderInTheCity.begin;
+        
+        if (timeAsDetectiveMS < 60000 && timeAsDetectiveMS > 1000) {
+            timeAsDetective = timeAsDetectiveMS/1000;
+            sfx = " Seconds";
+        } else if (timeAsDetectiveMS < 3600000 && timeAsDetectiveMS > 60000) {
+            timeAsDetective = timeAsDetectiveMS/60000;
+            sfx = " Minutes";
+        }
+        this.console.println("Current time spent as a detective: " + timeAsDetective + sfx);
     }
     
     private void showCurrentRank() {
-        this.console.println("showCurrentRank function called.");
+        DetectiveView rank = new DetectiveView();
+        rank.display();
     }
 }
