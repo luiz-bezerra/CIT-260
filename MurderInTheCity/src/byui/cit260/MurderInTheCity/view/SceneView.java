@@ -46,13 +46,16 @@ public class SceneView extends View {
             }
             
             String value = this.getInput(!isCutscene);
-            if (value.toUpperCase().equals("E"))
-                return;
+            /*if (value.toUpperCase().equals("E"))
+                return;*/
             
             done = this.doAction(value);
         } while (!done);
         
-        SceneControl.startNextScene();
+        if (MurderInTheCity.getExitGame())
+            MurderInTheCity.setExitGame(false);
+        else
+            SceneControl.startNextScene();
     }
     
     @Override
@@ -67,13 +70,23 @@ public class SceneView extends View {
                 this.displayMessage += sceneMenu;
             else
                 this.displayMessage +=
-                    "\n\nPress any key to continue";
+                    "\n\nPress Enter to continue";
             
             this.console.println("\n" + this.displayMessage);
             alreadyDisplayed = true;
         }
         
-        return super.getInput(false);
+        if (showDisplay)
+            return super.getInput(false);
+        
+        this.console.println("\n" + this.displayMessage);
+        
+        try {
+            return this.keyboard.readLine();
+        }
+        catch (Exception ex) {
+            return "";
+        }
     }
     
     @Override
@@ -102,11 +115,14 @@ public class SceneView extends View {
                 break;
             case "G":
                 this.showGameMenu();
+                if (MurderInTheCity.getExitGame()) {
+                    finish = true;
+                }
                 break;
-            case "E":
+            /*case "E":
                 scene[sceneType.ordinal()].setCompleted(true);
                 finish = true;
-                break;
+                break;*/
             default:
                 ErrorView.display(this.getClass().getName(), "\nInvalid Selection. Try again.");
         }

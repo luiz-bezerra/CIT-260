@@ -44,13 +44,13 @@ public class GameMenuView extends View {
                 "\n----------------------------------------------" +
                 "\n| Game Menu                                  |" +
                 "\n----------------------------------------------" +
+                "\n R - Resume Game                              " +
+                "\n H - Get Help                                 " +
                 "\n P - Professional Progression                 " +
              /* "\n S - Crimes Solved                            " + */
-                "\n H - Get Help                                 " +
-             /* "\n U - Resume Game                              " + */
                 "\n T - Restart Game                             " +
-                "\n G - Save Game                                " +
-                "\n E - Exit Menu                                " +
+                "\n S - Save Game                                " +
+                "\n E - Exit Game                                " +
                 "\n----------------------------------------------");
     }
     
@@ -138,6 +138,18 @@ public class GameMenuView extends View {
     }
 
     @Override
+    public void display() {
+        boolean done = false;
+        do {
+            String value = this.getInput(true);
+            /*if (value.toUpperCase().equals("E"))
+                return;*/
+            
+            done = this.doAction(value);
+        } while (!done);
+    }
+    
+    @Override
     public boolean doAction(String value) {
         boolean finish = false;
         value = value.toUpperCase();
@@ -154,11 +166,11 @@ public class GameMenuView extends View {
                 break;
             case "D":
                 this.calcTimeOfDeath();
-                break;
+                break;*/
             case "R":
-                this.calcSearchRadius();
+                finish = true;
                 break;
-            case "V":
+            /*case "V":
                 this.validateAlibi();
                 break;
             case "O":
@@ -185,11 +197,12 @@ public class GameMenuView extends View {
             case "T":
                 this.restartGame();
                 break;
-            case "G":
+            case "S":
                 this.saveGame();
                 break;
             case "E":
                 finish = true;
+                MurderInTheCity.setExitGame(true);
                 break;
             default:
                 ErrorView.display(this.getClass().getName(), "\nInvalid Selection. Try again.");

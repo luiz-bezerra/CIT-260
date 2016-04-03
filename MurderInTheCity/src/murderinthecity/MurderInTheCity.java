@@ -46,6 +46,7 @@ public class MurderInTheCity {
     
     private static PrintWriter logFile = null;
     private static boolean skipScene = false;
+    private static boolean exitGame = false;
     
     public static boolean getSkipScene() {
         return skipScene;
@@ -53,6 +54,14 @@ public class MurderInTheCity {
     
     public static void setSkipScene(boolean skipScene) {
         MurderInTheCity.skipScene = skipScene;
+    }
+    
+    public static boolean getExitGame() {
+        return exitGame;
+    }
+    
+    public static void setExitGame(boolean exitGame) {
+        MurderInTheCity.exitGame = exitGame;
     }
     
     public static Game getCurrentGame() {

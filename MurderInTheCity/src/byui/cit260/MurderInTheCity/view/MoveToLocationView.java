@@ -35,28 +35,28 @@ public class MoveToLocationView extends View{
         
         switch (value) {
             case "1":
-                
+                moveToLocation();
                 break;
             case "2":
-                
+                moveToLocation();
                 break;
             case "3":
-                
+                moveToLocation();
                 break;
             case "4":
-                
+                moveToLocation();
                 break;
             case "5":
-                
+                moveToLocation();
                 break;
             case "6":
-                
+                moveToLocation();
                 break;
             case "7":
-                
+                moveToLocation();
                 break;
             case "8":
-                
+                moveToLocation();
                 break;
             case "E":
                 finish = true;
@@ -65,5 +65,9 @@ public class MoveToLocationView extends View{
                 ErrorView.display(this.getClass().getName(), "\nInvalid Selection. Try again.");
         }
         return finish;
+    }
+    
+    private void moveToLocation() {
+        this.console.println("moveToLocation functino called");
     }
 }
