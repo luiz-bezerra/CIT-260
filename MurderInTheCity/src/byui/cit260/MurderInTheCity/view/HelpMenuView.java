@@ -26,7 +26,9 @@ public class HelpMenuView extends View {
             "\n M - Moving in the game                       " +
             "\n T - Calculate time of death                  " +
             "\n D - Calculate search radius                  " +
-            "\n V - Validate suspect's alibi                 " +
+         /* "\n V - Validate suspect's alibi                 " + */
+            "\n O - Using the tablet                         " +
+            "\n R - Viewing progress                         " +
             "\n E - Exit Menu                                " +
          /* "\n R - ~~ PRINT EVIDENCE REPORT ~~              " +
             "\n A - ~~ PRINT ALIBI REPORT ~~                 " + */
@@ -58,6 +60,7 @@ public class HelpMenuView extends View {
             "\n* will have a different number. Just      *" +
             "\n* press the number of the location you    *" +
             "\n* want to go, and press enter.            *" +
+            "\n Pressing E exits the menu.                " +
             "\n*******************************************");
             
     }
@@ -101,7 +104,7 @@ public class HelpMenuView extends View {
     private void showTimeOfDeath() {
         this.console.println(
             "\n*******************************************" +
-            "\n* After pressing T, you will be prompted  *" +
+            "\n* After pressing D, you will be prompted  *" +
             "\n* to input the time the body was found,   *" +
             "\n* the body temperature, and the room      *" +
             "\n* temperature. Then the computer computes *" +
@@ -112,14 +115,14 @@ public class HelpMenuView extends View {
     private void showSearchRadius() {
         this.console.println(
             "\n*******************************************" +
-            "\n* After pressing D, you will be prompted  *" +
+            "\n* After pressing R, you will be prompted  *" +
             "\n* to input the speed of travel and the    *" +
             "\n* time since death. Then the computer     *" +
             "\n* computes the search radius and shows    *" +
             "\n* you.                                    *" +
             "\n*******************************************");
     }
-    
+    /*
     private void showValidateAlibi() {
         this.console.println(
             "\n*******************************************" +
@@ -130,7 +133,7 @@ public class HelpMenuView extends View {
             "\n* valid, and shows you.                   *" +
             "\n*******************************************");
     }
-
+    */
     @Override
     public boolean doAction(String value) {
         boolean finish = false;
@@ -149,12 +152,15 @@ public class HelpMenuView extends View {
             case "D":
                 this.showSearchRadius();
                 break;
-            case "V":
+         /* case "V":
                 this.showValidateAlibi();
+                break; */
+            case "O":
+                this.showTablet();
                 break;
-          /*case "R":
-                this.printReport();
-                break;*/
+            case "R":
+                this.showProgress();
+                break;
             case "E":
                 finish = true;
                 break;
@@ -166,6 +172,29 @@ public class HelpMenuView extends View {
         }
         
         return finish;
+    }
+
+    private void showTablet() {
+        this.console.println(
+        "\n*******************************************" +
+        "\n After pressing O, you will be prompted to " +
+        "\n choose to either view the Evidence List,  " +
+        "\n Suspect List, or to Calculate the Time of " +
+        "\n Death, or Calculate the Search Radius.    " +
+        "\n Pressing E turns the tablet off.          " +
+        "\n*******************************************");
+    }
+
+    private void showProgress() {
+        this.console.println(
+        "\n*******************************************" +
+        "\n After pressing P, you will be prompted to " +
+        "\n choose to view either the crimes you've   " +
+        "\n already solved, view how much time you've " +
+        "\n spent as a detective, or to view your     " +
+        "\n current rank.                             " +
+        "\n Pressing E exits the menu.                " +
+        "\n*******************************************");
     }
 
 }
