@@ -23,11 +23,11 @@ public class SceneView extends View {
             "\n----------------------------------------------" +
             "\n| Scene Menu                                 |" +
             "\n----------------------------------------------" +
-            "\n T - Talk                                     " +
-            "\n X - Explore the Location                     " +
-            "\n M - Move to a New Location                   " +
-            "\n O - Turn On Tablet                           " +
-            "\n G - Game Menu                                " +
+            "\n 1 - Talk                                     " +
+            "\n 2 - Explore the Location                     " +
+            "\n 3 - Move to a New Location                   " +
+            "\n 4 - Turn On Tablet                           " +
+            "\n 5 - Game Menu                                " +
             "\n----------------------------------------------";
     
     public SceneView(SceneType sceneType, boolean isCutscene) { 
@@ -100,20 +100,20 @@ public class SceneView extends View {
         }        
         
         switch (value) {
-            case "T":
+            case "1":
                 this.talk();
                 break;
-            case "X":
+            case "2":
                 this.exploreLocation();
                 break;
-            case "M":
+            case "3":
                 this.moveToNewLocation();
                 scene[sceneType.ordinal()].setCompleted(true);
                 break;
-            case "O":
+            case "4":
                 this.showTabletMenu();
                 break;
-            case "G":
+            case "5":
                 this.showGameMenu();
                 if (MurderInTheCity.getExitGame()) {
                     finish = true;

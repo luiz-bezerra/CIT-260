@@ -16,10 +16,10 @@ public class TabletMenuView extends View {
                 "\n----------------------------------------------" +
                 "\n| Tablet                                     |" +
                 "\n----------------------------------------------" +
-                "\n L - Evidence List                            " +
-                "\n S - Suspect List                             " +
-                "\n D - Calculate Time of Death                  " +
-                "\n R - Calculate Search Radius                  " +
+                "\n 1 - Evidence List                            " +
+                "\n 2 - Suspect List                             " +
+                "\n 3 - Calculate Time of Death                  " +
+                "\n 4 - Calculate Search Radius                  " +
                 "\n E - Turn Off Tablet                          " +
                 "\n----------------------------------------------");
     }
@@ -29,16 +29,16 @@ public class TabletMenuView extends View {
         boolean finish = false;
         value = value.toUpperCase();
         switch (value) {
-            case "L":
+            case "1":
                 this.showEvidenceList();
                 break;
-            case "S":
+            case "2":
                 this.showSuspectList();
                 break;
-            case "D":
+            case "3":
                 this.calcTimeOfDeath();
                 break;
-            case "R":
+            case "4":
                 this.calcSearchRadius();
                 break;
             case "E":

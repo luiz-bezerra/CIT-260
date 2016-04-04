@@ -18,14 +18,14 @@ public class MapView extends View{
         "\n----------------------------------------------" +
         "\n| Map                                        |" +
         "\n----------------------------------------------" +
-        "\n P - Police Station                           " +
-        "\n D - Defense Attorney's Office                " +
-        "\n A - Addison Park                             " +
-        "\n C - Convenience Store                        " +
-        "\n S - Sheldon Family House                     " +
-        "\n M - Mark Jones' House                        " +
-        "\n J - Joan Delger's House                      " +
-        "\n B - Sumner Brothers' House                   " +
+        "\n 1 - Police Station                           " +
+        "\n 2 - Defense Attorney's Office                " +
+        "\n 3 - Addison Park                             " +
+        "\n 4 - Convenience Store                        " +
+        "\n 5 - Sheldon Family House                     " +
+        "\n 6 - Mark Jones' House                        " +
+        "\n 7 - Joan Delger's House                      " +
+        "\n 8 - Sumner Brothers' House                   " +
         "\n E - Exit                                     " +
         "\n----------------------------------------------");
     }
@@ -35,28 +35,28 @@ public class MapView extends View{
         boolean finish = false;
         
         switch (value) {
-            case "P":
+            case "1":
                 this.goToPoliceStation();
                 break;
-            case "D":
+            case "2":
                 this.goToDAOffice();
                 break;
-            case "A":
+            case "3":
                 this.goToPark();
                 break;
-            case "C":
+            case "4":
                 this.goToStore();
                 break;
-            case "S":
+            case "5":
                 this.goToSheldonHouse();
                 break;
-            case "M":
+            case "6":
                 this.goToJonesHouse();
                 break;
-            case "J":
+            case "7":
                 this.goToDelgerHouse();
                 break;
-            case "B":
+            case "8":
                 this.goToSumnerHouse();
                 break;
             case "E":

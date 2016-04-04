@@ -20,9 +20,9 @@ public class MainMenuView extends View {
             "\n----------------------------------------------" +
             "\n| Main Menu                                  |" +
             "\n----------------------------------------------" +
-            "\n N - New Game                                 " +
-            "\n H - Get Help                                 " +
-            "\n R - Resume Game                              " +
+            "\n 1 - New Game                                 " +
+            "\n 2 - Get Help                                 " +
+            "\n 3 - Resume Game                              " +
             "\n E - Exit Game                                " +
             "\n----------------------------------------------");
     }
@@ -73,13 +73,13 @@ public class MainMenuView extends View {
         value = value.toUpperCase();
         
         switch (value) {
-            case "N":
+            case "1":
                 this.startNewGame();
                 break;
-            case "R":
+            case "3":
                 this.startExistingGame();
                 break;
-            case "H":
+            case "2":
                 this.displayHelpMenu();
                 break;
             /*case "S":

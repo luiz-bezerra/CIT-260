@@ -44,12 +44,12 @@ public class GameMenuView extends View {
                 "\n----------------------------------------------" +
                 "\n| Game Menu                                  |" +
                 "\n----------------------------------------------" +
-                "\n R - Resume Game                              " +
-                "\n H - Get Help                                 " +
-                "\n P - Professional Progression                 " +
+                "\n 1 - Resume Game                              " +
+                "\n 2 - Get Help                                 " +
+                "\n 3 - Professional Progression                 " +
              /* "\n S - Crimes Solved                            " + */
-                "\n T - Restart Game                             " +
-                "\n S - Save Game                                " +
+                "\n 4 - Restart Game                             " +
+                "\n 5 - Save Game                                " +
                 "\n E - Exit Game                                " +
                 "\n----------------------------------------------");
     }
@@ -167,7 +167,7 @@ public class GameMenuView extends View {
             case "D":
                 this.calcTimeOfDeath();
                 break;*/
-            case "R":
+            case "1":
                 finish = true;
                 break;
             /*case "V":
@@ -182,22 +182,22 @@ public class GameMenuView extends View {
             case "X":
                 this.exploreCity();
                 break;*/
-            case "P":
+            case "3":
                 this.showProgress();
                 break;
           /*case "S":
                 this.showCrimesSolved();
                 break;*/
-            case "H":
+            case "2":
                 this.displayHelpMenu();
                 break;
           /*case "U":
                 this.resumeGame();
                 break; */
-            case "T":
+            case "4":
                 this.restartGame();
                 break;
-            case "S":
+            case "5":
                 this.saveGame();
                 break;
             case "E":

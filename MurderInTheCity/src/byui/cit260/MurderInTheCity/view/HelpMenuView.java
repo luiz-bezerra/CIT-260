@@ -22,13 +22,13 @@ public class HelpMenuView extends View {
             "\n----------------------------------------------" +
             "\n| Help Menu                                  |" +
             "\n----------------------------------------------" +
-            "\n P - Purpose of the game                      " +
-            "\n M - Moving in the game                       " +
-            "\n T - Calculate time of death                  " +
-            "\n D - Calculate search radius                  " +
+            "\n 1 - Purpose of the game                      " +
+            "\n 2 - Moving in the game                       " +
+            "\n 3 - Calculate time of death                  " +
+            "\n 4 - Calculate search radius                  " +
          /* "\n V - Validate suspect's alibi                 " + */
-            "\n O - Using the tablet                         " +
-            "\n R - Viewing progress                         " +
+            "\n 5 - Using the tablet                         " +
+            "\n 6 - Viewing progress                         " +
             "\n E - Exit Menu                                " +
          /* "\n R - ~~ PRINT EVIDENCE REPORT ~~              " +
             "\n A - ~~ PRINT ALIBI REPORT ~~                 " + */
@@ -55,12 +55,12 @@ public class HelpMenuView extends View {
     private void showMoving() {
         this.console.println(
             "\n*******************************************" +
-            "\n* After pressing M, a list of possible    *" +
-            "\n* locations will be shown. Each location  *" +
-            "\n* will have a different number. Just      *" +
-            "\n* press the number of the location you    *" +
-            "\n* want to go, and press enter.            *" +
-            "\n Pressing E exits the menu.                " +
+            "\n* After opening the move menu, a list of  *" +
+            "\n* possible locations will be shown. Each  *" +
+            "\n* location will have a different number.  *" +
+            "\n* Just press the number of the location   *" +
+            "\n* you want to go, and press enter.        *" +
+            "\n* Pressing E exits the menu.              *" +
             "\n*******************************************");
             
     }
@@ -104,9 +104,10 @@ public class HelpMenuView extends View {
     private void showTimeOfDeath() {
         this.console.println(
             "\n*******************************************" +
-            "\n* After pressing D, you will be prompted  *" +
-            "\n* to input the time the body was found,   *" +
-            "\n* the body temperature, and the room      *" +
+            "\n* After opening the time of death         *" +
+            "\n* calculator, you will be prompted to     *" +
+            "\n* input the time the body was found, the  *" +
+            "\n* body temperature, and the room          *" +
             "\n* temperature. Then the computer computes *" +
             "\n* the time of death and shows you.        *" +
             "\n*******************************************");
@@ -115,8 +116,9 @@ public class HelpMenuView extends View {
     private void showSearchRadius() {
         this.console.println(
             "\n*******************************************" +
-            "\n* After pressing R, you will be prompted  *" +
-            "\n* to input the speed of travel and the    *" +
+            "\n* After opening the search radius         *" +
+            "\n* calculator, you will be prompted to     *" +
+            "\n* input the speed of travel and the       *" +
             "\n* time since death. Then the computer     *" +
             "\n* computes the search radius and shows    *" +
             "\n* you.                                    *" +
@@ -140,25 +142,25 @@ public class HelpMenuView extends View {
         value = value.toUpperCase();
         
         switch (value) {
-            case "P":
+            case "1":
                 this.showPurpose();
                 break;
-            case "M":
+            case "2":
                 this.showMoving();
                 break;
-            case "T":
+            case "3":
                 this.showTimeOfDeath();
                 break;
-            case "D":
+            case "4":
                 this.showSearchRadius();
                 break;
          /* case "V":
                 this.showValidateAlibi();
                 break; */
-            case "O":
+            case "5":
                 this.showTablet();
                 break;
-            case "R":
+            case "6":
                 this.showProgress();
                 break;
             case "E":
@@ -177,23 +179,25 @@ public class HelpMenuView extends View {
     private void showTablet() {
         this.console.println(
         "\n*******************************************" +
-        "\n After pressing O, you will be prompted to " +
-        "\n choose to either view the Evidence List,  " +
-        "\n Suspect List, or to Calculate the Time of " +
-        "\n Death, or Calculate the Search Radius.    " +
-        "\n Pressing E turns the tablet off.          " +
+        "\n* After opening the tablet, you will be   *" +
+        "\n* prompted to choose to either view the   *" +
+        "\n* Evidence List, Suspect List, or to      *" +
+        "\n* Calculate the Time of Death, or Search  *" +
+        "\n* Radius.                                 *" +
+        "\n* Pressing E turns the tablet off.        *" +
         "\n*******************************************");
     }
 
     private void showProgress() {
         this.console.println(
         "\n*******************************************" +
-        "\n After pressing P, you will be prompted to " +
-        "\n choose to view either the crimes you've   " +
-        "\n already solved, view how much time you've " +
-        "\n spent as a detective, or to view your     " +
-        "\n current rank.                             " +
-        "\n Pressing E exits the menu.                " +
+        "\n* After opening the progress menu, you    *" +
+        "\n* will be prompted to choose to view      *" +
+        "\n* either the crimes you've already        *" +
+        "\n* solved, view how much time you've spent *" +
+        "\n* as a detective, or to view your current *" +
+        "\n* rank.*                                  *" +
+        "\n* Pressing E exits the menu.              *" +
         "\n*******************************************");
     }
 

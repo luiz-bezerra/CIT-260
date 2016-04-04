@@ -18,9 +18,9 @@ public class ProfessionalProgressionView extends View {
             "\n----------------------------------------------" +
             "\n| Professional Progression                   |" +
             "\n----------------------------------------------" +
-            "\n C - Crimes Solved                            " +
-            "\n T - Time Spent as a Detective                " +
-            "\n R - Current Professional Rank                " +
+            "\n 1 - Crimes Solved                            " +
+            "\n 2 - Time Spent as a Detective                " +
+            "\n 3 - Current Professional Rank                " +
             "\n E - Exit Menu                                " +
             "\n----------------------------------------------");
     }
@@ -30,13 +30,13 @@ public class ProfessionalProgressionView extends View {
         value = value.toUpperCase();
         
         switch (value) {
-            case "C":
+            case "1":
                 this.showCrimesSolved();
                 break;
-            case "T":
+            case "2":
                 this.showTimeSpent();
                 break;
-            case "R":
+            case "3":
                 this.showCurrentRank();
                 break;
             case "E":
