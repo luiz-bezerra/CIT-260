@@ -6,6 +6,7 @@
 package byui.cit260.MurderInTheCity.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Objects;
 
 /**
@@ -21,7 +22,7 @@ public class Game implements Serializable {
     private Map map;
     
     private Crime[] crime;
-    private Evidence[] evidence;
+    private ArrayList<Evidence> evidence;
     private Alibi[] alibi;
     private Scene[] scene;
 
@@ -90,11 +91,11 @@ public class Game implements Serializable {
         this.crime = crime;
     }
     
-    public Evidence[] getEvidence() {
+    public ArrayList<Evidence> getEvidence() {
         return evidence;
     }
     
-    public void setEvidence(Evidence[] evidence) {
+    public void setEvidence(ArrayList<Evidence> evidence) {
         this.evidence = evidence;
     }
     

@@ -22,6 +22,7 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.util.ArrayList;
 import murderinthecity.MurderInTheCity;
 
 /**
@@ -32,14 +33,13 @@ public class GameControl {
     
     public static void createNewGame(Player player) {
        Game game = new Game();
-       //MurderInTheCity.setCurrentGame(game);
        
        game.setPlayer(player);
        
        Map map = MapControl.createMap();
        game.setMap(map);
        
-       Evidence[] evidence = GameControl.createEvidenceList();
+       ArrayList<Evidence> evidence = GameControl.createEvidenceList();
        game.setEvidence(evidence);
        
        Alibi[] alibi = GameControl.createAlibiList();
@@ -51,8 +51,6 @@ public class GameControl {
        Location[][] locations = GameControl.createLocations();
        Crime[] crime = GameControl.createCrime(alibi);
        game.setCrime(crime);
-       
-//>>>>>>> origin/master
        
        MurderInTheCity.setCurrentGame(game);
     }
@@ -94,74 +92,74 @@ public class GameControl {
         return suspect;
     }
     
-    public static Evidence[] createEvidenceList() {
-        Evidence[] evidence = new Evidence[11];
+    public static ArrayList<Evidence> createEvidenceList() {
+        ArrayList<Evidence> evidence = new ArrayList<>();
         
         Evidence autopsyResults = new Evidence();
         autopsyResults.setName("Autopsy results");
         autopsyResults.setDescription("death by head trauma due to two blows received on the head");
         autopsyResults.setLocationCollected("???");
-        evidence[PiecesOfEvidence.AutopsyResults.ordinal()] = autopsyResults;
+        evidence.add(PiecesOfEvidence.AutopsyResults.ordinal(), autopsyResults);
         
         Evidence bloodyHammer = new Evidence();
         bloodyHammer.setName("Bloody hammer");
         bloodyHammer.setDescription("confirmed to have been the murder weapon");
         bloodyHammer.setLocationCollected("Park");
-        evidence[PiecesOfEvidence.BloodyHammer.ordinal()] = bloodyHammer;
+        evidence.add(PiecesOfEvidence.BloodyHammer.ordinal(), bloodyHammer);
         
         Evidence harrisFingerprints = new Evidence();
         harrisFingerprints.setName("Harris Sheldon's fingerprints");
         harrisFingerprints.setDescription("Fingerprints of Harris Sheldon found on the murder weapon");
         harrisFingerprints.setLocationCollected("Park");
-        evidence[PiecesOfEvidence.HarrisFingerprints.ordinal()] = harrisFingerprints;
+        evidence.add(PiecesOfEvidence.HarrisFingerprints.ordinal(), harrisFingerprints);
         
         Evidence tonyFingerprints = new Evidence();
         tonyFingerprints.setName("Tony Sumner's fingerprints");
         tonyFingerprints.setDescription("Fingerprints of Tony Sumner found on the murder weapon");
         tonyFingerprints.setLocationCollected("Park");
-        evidence[PiecesOfEvidence.TonyFingerprints.ordinal()] = tonyFingerprints;
+        evidence.add(PiecesOfEvidence.TonyFingerprints.ordinal(), tonyFingerprints);
         
         Evidence danFingerprints = new Evidence();
         danFingerprints.setName("Dan Sumner's fingerprints");
         danFingerprints.setDescription("Fingerprints of Dan Sumner found on the murder weapon");
         danFingerprints.setLocationCollected("Park");
-        evidence[PiecesOfEvidence.DanFingerprints.ordinal()] = danFingerprints;
+        evidence.add(PiecesOfEvidence.DanFingerprints.ordinal(), danFingerprints);
         
         Evidence auraTestimony = new Evidence();
         auraTestimony.setName("Aura Sheldon's testimony");
         auraTestimony.setDescription("Harris Sheldon was watching TV with her around 10 PM");
         auraTestimony.setLocationCollected("");
-        evidence[PiecesOfEvidence.AuraTestimony.ordinal()] = auraTestimony;
+        evidence.add(PiecesOfEvidence.AuraTestimony.ordinal(), auraTestimony);
         
         Evidence markTestimony = new Evidence();
         markTestimony.setName("Mark Jones' testimony");
         markTestimony.setDescription("Tony Sumner was running shirtless around 10 PM");
         markTestimony.setLocationCollected("");
-        evidence[PiecesOfEvidence.MarkTestimony.ordinal()] = markTestimony;
+        evidence.add(PiecesOfEvidence.MarkTestimony.ordinal(), markTestimony);
         
         Evidence joanTestimony = new Evidence();
         joanTestimony.setName("Joan Delger's testimony");
         joanTestimony.setDescription("Dan Sumner was at the movies with her at 10 PM");
         joanTestimony.setLocationCollected("");
-        evidence[PiecesOfEvidence.JoanTestimony.ordinal()] = joanTestimony;
+        evidence.add(PiecesOfEvidence.JoanTestimony.ordinal(), joanTestimony);
         
         Evidence storeOwnerTestimony = new Evidence();
         storeOwnerTestimony.setName("Convenience store owner's testimony");
         storeOwnerTestimony.setDescription("no vehicles passed by that place since 9 PM");
         storeOwnerTestimony.setLocationCollected("");
-        evidence[PiecesOfEvidence.StoreOwnerTestimony.ordinal()] = storeOwnerTestimony;
+        evidence.add(PiecesOfEvidence.StoreOwnerTestimony.ordinal(), storeOwnerTestimony);
         
         Evidence bloodyShirt = new Evidence();
         bloodyShirt.setName("Blood stained T-shirt");
         bloodyShirt.setDescription("found in the Sumner brothers' house and confirmed to be stained with the blood of the victim");
         bloodyShirt.setLocationCollected("");
-        evidence[PiecesOfEvidence.BloodyShirt.ordinal()] = bloodyShirt;
+        evidence.add(PiecesOfEvidence.BloodyShirt.ordinal(), bloodyShirt);
         
         Evidence joanDanSelfie = new Evidence();
         joanDanSelfie.setName("Joan and Dan's selfie");
         joanDanSelfie.setDescription("selfie taken in the night of the murder, proving Dan Sumner was wearing a gray T-shirt");
         joanDanSelfie.setLocationCollected("");
-        evidence[PiecesOfEvidence.JoanDanSelfie.ordinal()] = joanDanSelfie;
+        evidence.add(PiecesOfEvidence.JoanDanSelfie.ordinal(), joanDanSelfie);
         
         return evidence;
     }

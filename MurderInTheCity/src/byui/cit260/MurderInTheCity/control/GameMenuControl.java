@@ -6,22 +6,15 @@
 package byui.cit260.MurderInTheCity.control;
 import byui.cit260.MurderInTheCity.exceptions.GameMenuControlException;
 import byui.cit260.MurderInTheCity.model.Alibi;
-import byui.cit260.MurderInTheCity.model.Crime;
 import byui.cit260.MurderInTheCity.model.Evidence;
-import byui.cit260.MurderInTheCity.model.Game;
-import byui.cit260.MurderInTheCity.model.Map;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import byui.cit260.MurderInTheCity.model.Player;
-//<<<<<<< HEAD
-import java.io.FileNotFoundException;
-//=======
 import byui.cit260.MurderInTheCity.model.Scene;
 import byui.cit260.MurderInTheCity.model.SceneType;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-//>>>>>>> origin/master
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -39,7 +32,7 @@ public class GameMenuControl {
        return ;
    }*/
     
-    public void printEvidenceReport(Evidence[] evidenceList, String output) {
+    public void printEvidenceReport(ArrayList<Evidence> evidenceList, String output) {
         try (PrintWriter out = new PrintWriter(output)) {
             out.println("\n\nEvidence Report");
             out.printf("%n%-40s%-100s", "Name", "Description");
@@ -69,15 +62,11 @@ public class GameMenuControl {
         }
         catch (Exception ex) {
             System.out.println("Error printing report:\n" + ex.getMessage());
-//>>>>>>> origin/master
         }
     }
-   
-//<<<<<<< HEAD
-    
     
     public String showEvidence() {
-        Evidence[] evidences = MurderInTheCity.getCurrentGame().getEvidence();
+        ArrayList<Evidence> evidences = MurderInTheCity.getCurrentGame().getEvidence();
         String evidenceList =
                     "\n----------------------------------------------" +
                     "\n  Evidence List                               " +
